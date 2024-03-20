@@ -15,7 +15,6 @@ export function Header() {
       <div className=" flex gap-5">
         <div className="flex justify-center items-center">
           <label className="input h-[35px] input-bordered flex items-center gap-2">
-            <SearchIcon />
             <input type="text" className="grow" placeholder="Хайх" />
           </label>
         </div>
