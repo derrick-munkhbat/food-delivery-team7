@@ -2,10 +2,10 @@ import express from "express";
 
 const app = express();
 
-const port = "8080";
+const port = "3000";
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.send("hello team, the backend is running");
 });
 
 app.listen(port, () => {
