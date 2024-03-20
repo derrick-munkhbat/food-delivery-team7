@@ -1,7 +1,7 @@
+import { Header } from "../components/Header"
 
 
 export default function Home() {
-  const title = "Hello hello world";
+  return  <div className="bg-red-500"><Header/></div>
 
-  return <p>{title}</p>;
 }
