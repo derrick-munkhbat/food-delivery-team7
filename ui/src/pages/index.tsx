@@ -1,7 +1,9 @@
 
 
 export default function Home() {
-  const title = "Hello hello world";
 
-  return <p>{title}</p>;
+const title ="Hello World"
+  return <p>
+{title}
+  </p>;
 }
