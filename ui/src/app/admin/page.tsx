@@ -1,12 +1,9 @@
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { DetailIcon } from "../../../public/Icons/DetailIcon";
 import { AddIcon } from "../../../public/Icons/AddIcon";
 
 export default function AdminMenu() {
   return (
     <div className="bg-white">
-      <Header />
       <div className="flex container mx-auto w-full">
         <div className="w-1/4 pt-[26px] pr-[26px]">
           <h1 className="text-[22px] text-[#272727] font-bold mb-10">Food menu</h1>
@@ -29,7 +26,7 @@ export default function AdminMenu() {
             </button>
             <button className="btn bg-white">
               <AddIcon />
-              <p className="text-lg font-medium">Create New Category</p>
+              <p className="text-lg font-medium text-[#5E6166]">Create New Category</p>
             </button>
           </div>
         </div>
@@ -40,7 +37,6 @@ export default function AdminMenu() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
