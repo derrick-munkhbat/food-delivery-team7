@@ -1,3 +1,5 @@
+"use client";
+
 import { DetailIcon } from "../../../public/Icons/DetailIcon";
 import { AddIcon } from "../../../public/Icons/AddIcon";
 
@@ -31,7 +33,7 @@ export default function AdminMenu() {
               className="btn bg-white"
             >
               <AddIcon />
-              <p className="text-lg font-medium text-[#5E6166]">Create New Category</p>
+              <p className="text-lg font-medium">Create New Category</p>
             </button>
             <dialog id="my_modal_3" className="modal">
               <div className="modal-box">
