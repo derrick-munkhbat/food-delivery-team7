@@ -1,4 +1,5 @@
 import { Header } from "../components/Header"
+import { Footer } from "@/components/Footer"
 
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
   <div className="bg-red-500">
     <Header/>
     hello team, this is the homepage.
+    <Footer/>
   </div>
 
 )}
