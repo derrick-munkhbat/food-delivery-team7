@@ -1,5 +1,5 @@
 export const menuItems = [
-    {id: '1', name: 'Нүүр', link: '/'},
+    {id: '1', name: 'Нүүр', link: './'},
     {id: '2', name: 'Холбоо барих', link: '/contact-us'},
     {id: '3', name: 'Хоолны цэс', link: '/menu'},
     {id: '4', name: 'Үйлчилгээний нөхцөл', link: '/tos'},
