@@ -1,4 +1,4 @@
-import { menuItems } from "./Data/MenuItems";
+// import { menuItems } from "./Data/MenuItems";
 import { LogoMain } from "../../public/LogoMain";
 import { FacebookLogo } from "../../public/Social/FacebookIcon";
 import { InstagramLogo } from "../../public/Social/InstagramIcon";
@@ -9,8 +9,8 @@ import { FooterBg } from "../../public/FooterBg";
 
 export function Footer({}) {
   return (
-    <div className="footer footer-center w-full bg-[#18BA51] relative">
-      <div className="absolute left-0 top-0">
+    <div className="footer footer-center bg-[#18BA51] relative">
+      <div className="absolute left-0 top-0 w-full">
         <FooterBg />
       </div>
       <div className="container grid gap-10 mx-auto p-[120px]">
