@@ -3,36 +3,13 @@ import Link from "next/link"
 import { useState } from "react"
 
 export default function Home() {
-    const [hide , SetHide] = useState("hide")
     const [email, setEmail]= useState("")
     const [pass, setPass]= useState("")
-    function Hider(){
-        console.log("hide")
-
-    }
-    // function handleSubmit() {
-        // console.log({ email, pass });
-        // axios
-        //   .post("http://localhost:3000/users/login", {
-        //     email,
-        //     pass,
-        //   })
-        //   .then(() => {
-        //     alert("Success");
-        //     localStorage.setItem("login", ${email}:${pass});
-        //     window.location = "/records";
-        //   })
-        //   .catch((e) => {
-        //     if (e.response.status === 401) {
-        //       alert("Username or password is incorrect");
-        //     }
-        //   });
-      
-    return <div className="flex items-center w-1/4 min-h-screen p-4  lg:justify-center  mx-auto  ">
+    return<div className="flex items-center w-1/4 min-h-screen p-4  lg:justify-center  mx-auto">
     <div
-      className="flex flex-col overflow-hidden  rounded-md  max md:flex-row md:flex-1 lg:w-2/3 mx-auto"
+      className="flex flex-col overflow-hidden  rounded-md  max md:flex-row md:flex-1 lg:w-2/3 mx-auto "
     >
-      <div className="p-5  bg-white md:flex-1 lg:w2/3 lg:mx-auto">
+      <div className="p-5  bg-white md:flex-1 lg:w2/3 lg:mx-auto ">
         <h3 className="my-4 text-2xl font-semibold text-gray-700 flex justify-center">Нэвтрэх</h3>
         <form action="#" className="flex flex-col space-y-5">
           <div className="flex flex-col space-y-1">
@@ -58,7 +35,7 @@ export default function Home() {
             value={pass} onChange={(e) => setPass(e.target.value)}
               className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
             />
-            <button type="button" onClick={Hider} data-hs-toggle-password='{
+            <button type="button"  data-hs-toggle-password='{
             "target": "#hs-toggle-password"
             }' className="absolute top-0 end-0 flex items-center p-3.5 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             <svg className="flex-shrink-0 size-3.5  text-gray-400 dark:text-neutral-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -87,12 +64,9 @@ export default function Home() {
           </div>
           <div className="flex flex-col space-y-5">
             <span className="flex items-center justify-center space-x-2">
-              {/* <span className="h-px bg-gray-400 w-14"></span> */}
               <div className="flex flex-col">
               <span>Эсвэл</span>
               </div>
-              
-              {/* <span className="h-px bg-gray-400 w-14"></span> */}
             </span>
             <Link href="sign-up">
                 <button 
