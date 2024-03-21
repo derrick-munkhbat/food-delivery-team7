@@ -2,7 +2,7 @@ export function FooterBg() {
   return (
     <svg
       width="1440"
-      height="1056"
+      height="788"
       viewBox="0 0 1440 1056"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
