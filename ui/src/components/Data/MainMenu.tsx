@@ -1,4 +1,4 @@
-import { MainMenuitems } from "./MainMenuItrems";
+import { MainMenuitems } from "./MainMenuItems";
 
 export function Mainmenu() {
   return (

@@ -62,14 +62,16 @@ function MobileMenu() {
         }`}
       >
         <div className="flex p-3 gap-5">
-          <button className="text-2xl" onClick={closeMenu}>
-            <IoChevronBack />
-          </button>
-          <img
-            src="https://assets-global.website-files.com/64d1a97b791d8ca9bb004633/65cca425b8c0d5d11e8e2992_Logo.svg"
-            loading="lazy"
-            alt="Pinecone Academy Logo"
-          />
+          <div>
+            <button className="text-2xl" onClick={closeMenu}>
+              <IoChevronBack />
+            </button>
+            <img
+              src="https://assets-global.website-files.com/64d1a97b791d8ca9bb004633/65cca425b8c0d5d11e8e2992_Logo.svg"
+              loading="lazy"
+              alt="Pinecone Academy Logo"
+            />
+          </div>
         </div>
       </div>
     </>
