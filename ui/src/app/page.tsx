@@ -28,11 +28,11 @@ export default function Home() {
         //     }
         //   });
       
-    return <div className="flex items-center w-1/4 min-h-screen p-4  lg:justify-center  mx-auto">
+    return <div className="flex items-center w-1/4 min-h-screen p-4  lg:justify-center  mx-auto  ">
     <div
       className="flex flex-col overflow-hidden  rounded-md  max md:flex-row md:flex-1 lg:w-2/3 mx-auto"
     >
-      <div className="p-5  bg-white md:flex-1 lg:w2/3 lg:mx-auto ">
+      <div className="p-5  bg-white md:flex-1 lg:w2/3 lg:mx-auto">
         <h3 className="my-4 text-2xl font-semibold text-gray-700 flex justify-center">Нэвтрэх</h3>
         <form action="#" className="flex flex-col space-y-5">
           <div className="flex flex-col space-y-1">
