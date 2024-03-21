@@ -1,12 +1,18 @@
 import { Header } from "../components/Header";
 import { Footer } from "@/components/Footer";
+import { Login } from "@/components/Login";
+import { SignUp } from "@/components/SignUp";
+import { Sign } from "crypto";
 
 export default function Home() {
   return (
-    <div className="bg-red-500">
+    <div className="">
       <Header />
-      hello team, this is the homepage.
+      <Login/>
+      <SignUp/>
+      {/* hello team, this is the homepage. */}
       <Footer />
+
     </div>
   );
 }
