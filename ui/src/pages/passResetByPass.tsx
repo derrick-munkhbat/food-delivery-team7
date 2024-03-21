@@ -1,6 +1,6 @@
 
 
-export function passResetByNewPass (){
+export default function PassResetByNewPass (){
 
     return (
         <div>
