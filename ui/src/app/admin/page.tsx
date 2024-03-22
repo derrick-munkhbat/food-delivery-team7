@@ -2,9 +2,11 @@
 import React from "react";
 import { DetailIcon } from "../../components/icons/DetailIcon";
 import { AddIcon } from "../../components/icons/AddIcon";
+import { AddMenu } from "@/components/Add-menu";
 
 
 export default function AdminMenu() {
+  
   return (
     <div className="bg-white">
       <div className="flex container mx-auto w-full">
@@ -59,7 +61,7 @@ export default function AdminMenu() {
         <div className="w-3/4 bg-[#F7F7F8] pl-6 py-6">
           <div className="flex justify-between py-4">
             <h1 className="text-[22px] text-[#272727] font-bold ">Breakfast</h1>
-            <button className="btn">Add new food</button>
+            <AddMenu />
           </div>
         </div>
       </div>
