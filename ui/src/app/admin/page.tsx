@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { DetailIcon } from "../../../public/Icons/DetailIcon";
 import { AddIcon } from "../../../public/Icons/AddIcon";
 

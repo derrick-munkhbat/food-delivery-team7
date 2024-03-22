@@ -4,7 +4,7 @@ import { useState } from "react";
 import { HeaderLogo } from "../../public/Headerlogo";
 import { NevtrehIcon } from "../../public/Nevtrehicon";
 import { SagsIcon } from "../../public/SagsIcon";
-import { SearchIcon } from "../../public/SearchIcon";
+import { SearchIcon } from "../../public/Icons/SearchIcon";
 import { Menu } from "../../public/Icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/DATA/MainMenu";
@@ -13,7 +13,10 @@ export function Header() {
   return (
     <div className="top-0 z-10 bg-white  h-[57px] justify-between w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[24px] ">
       <div className=" font-bold flex gap-8 justify-center items-center">
-        <HeaderLogo />
+        <a href="/">
+          <HeaderLogo />
+        </a>
+
         <div className="flex  items-center justify-center flex-1 max-sm:hidden">
           <Mainmenu />
         </div>
