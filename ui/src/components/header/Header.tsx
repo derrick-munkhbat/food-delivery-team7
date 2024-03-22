@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { HeaderLogo } from "../../public/Headerlogo";
-import { NevtrehIcon } from "../../public/Nevtrehicon";
-import { SagsIcon } from "../../public/SagsIcon";
-import { SearchIcon } from "../../public/Icons/SearchIcon";
-import { Menu } from "../../public/Icons/Menuicon";
+import { HeaderLogo } from "../../../public/Headerlogo";
+import { NevtrehIcon } from "../../../public/Nevtrehicon";
+import { SagsIcon } from "../../../public/SagsIcon";
+import { SearchIcon } from "../icons/SearchIcon";
+import { Menu } from "../icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
-import { Mainmenu } from "@/components/DATA/MainMenu";
+import { Mainmenu } from "@/components/header/MainMenu";
 
 export function Header() {
   return (
@@ -16,7 +16,6 @@ export function Header() {
         <a href="/">
           <HeaderLogo />
         </a>
-
         <div className="flex  items-center justify-center flex-1 max-sm:hidden">
           <Mainmenu />
         </div>
@@ -64,8 +63,8 @@ function MobileMenu() {
           visible ? "right-0" : "-right-full"
         }`}
       >
-        <div className="flex p-3 gap-5">
-          <div>
+        <div>
+          <div className="flex p-3 gap-5 items-center justify-center">
             <button className="text-2xl" onClick={closeMenu}>
               <IoChevronBack />
             </button>
@@ -74,6 +73,10 @@ function MobileMenu() {
               loading="lazy"
               alt="Pinecone Academy Logo"
             />
+          </div>
+          <div className="flex flex-col">
+            <MobileMenu />
+            hi
           </div>
         </div>
       </div>
