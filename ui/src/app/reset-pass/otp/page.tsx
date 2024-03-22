@@ -5,7 +5,7 @@ export default function PassResetByCode (){
             <h1 className="text-2xl">Нууц үг сэргээх</h1>
             <div className="flex flex-col w-full max-w-xs gap-3">
                 <div>
-                    <p className="text-sm">Таны <span className="text-green-600">example@pinecone.mn</span> хаяг руу сэргээх код илгээх болно. </p>
+                    <p className="text-sm text-yellow-600">Таны <span className="text-green-600">example@pinecone.mn</span> хаяг руу сэргээх код илгээх болно. </p>
                 </div>
                 <div className="flex flex-col gap-2">
                     <p className="text-sm">Нууц үг сэргээх код</p>

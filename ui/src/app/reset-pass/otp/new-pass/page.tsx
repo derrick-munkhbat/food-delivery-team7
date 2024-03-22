@@ -1,9 +1,17 @@
+<<<<<<< Updated upstream
 import { CheckIcon } from "../../../../components/icons/CheckIcon";
+=======
+import { CheckIcon } from "../../../../../public/Icons/CheckIcon";
+>>>>>>> Stashed changes
 
 export default function PassResetByNewPass() {
   return (
     <>
+<<<<<<< Updated upstream
       <div className="flex gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-2/6 p-5">
+=======
+      <div className="flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-2/6 p-5">
+>>>>>>> Stashed changes
         <CheckIcon />
         <h1 className="text-green-600">Нууц үг амжилттай солигдлоо</h1>
       </div>
