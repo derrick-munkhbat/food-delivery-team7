@@ -2,7 +2,11 @@ import { LogoMain } from "../../public/LogoMain";
 import { FacebookLogo } from "../../public/Social/FacebookIcon";
 import { InstagramLogo } from "../../public/Social/InstagramIcon";
 import { TwitterLogo } from "../../public/Social/TwitterIcon";
+<<<<<<< HEAD:ui/src/components/Footer.tsx
 import { menuItems } from "./header/mainMenuItems";
+=======
+import { menuItems } from "@/components/header/mainMenuItems";
+>>>>>>> b1e8e56 (admin):ui/src/app/Footer.tsx
 
 export function Footer() {
   return (
