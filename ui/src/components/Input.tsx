@@ -9,7 +9,7 @@ export function Input(){
           placeholder="Нэр"
           type="name"
           autoFocus
-          className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+          className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
         />
       </div>
       <div className="flex flex-col space-y-1">
@@ -18,7 +18,7 @@ export function Input(){
           placeholder="Имэйл"
           type="email"
           autoFocus
-          className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+          className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
         />
       </div>
       <div className="flex flex-col space-y-1">
@@ -27,7 +27,7 @@ export function Input(){
           placeholder="Хаяг"
           type="location"
           autoFocus
-          className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+          className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
         />
       </div>
       <div className="flex flex-col space-y-1">
@@ -39,7 +39,7 @@ export function Input(){
          placeholder="Нууц үг"
           type="password"
           id="password"            
-          className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+          className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
         />
         <button type="button"  data-hs-toggle-password='{
         "target": "#hs-toggle-password"
@@ -56,7 +56,7 @@ export function Input(){
         <input
          placeholder="Нууц үг давтах"
           type="password"            
-          className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+          className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
         />
         <button type="button"  data-hs-toggle-password='{
         "target": "#hs-toggle-password"
