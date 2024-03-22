@@ -2,7 +2,7 @@ import { LogoMain } from "../../public/LogoMain";
 import { FacebookLogo } from "../../public/Social/FacebookIcon";
 import { InstagramLogo } from "../../public/Social/InstagramIcon";
 import { TwitterLogo } from "../../public/Social/TwitterIcon";
-import { menuItems } from "@/components/Data/MenuItems";
+import { menuItems } from "@/components/DATA/MenuItems";
 
 export function Footer() {
   return (

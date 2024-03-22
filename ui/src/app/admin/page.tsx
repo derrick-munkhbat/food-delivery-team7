@@ -3,6 +3,7 @@
 import { DetailIcon } from "../../../public/Icons/DetailIcon";
 import { AddIcon } from "../../../public/Icons/AddIcon";
 
+
 export default function AdminMenu() {
   return (
     <div className="bg-white">
@@ -28,8 +29,7 @@ export default function AdminMenu() {
               <p className="text-lg font-medium">Breakfast</p>
               <DetailIcon />
             </button>
-            <button
-              onClick={() => document.getElementById("my_modal_3").showModal()}
+            <button  onClick={() => document.getElementById("my_modal_3").showModal()}
               className="btn bg-white"
             >
               <AddIcon />

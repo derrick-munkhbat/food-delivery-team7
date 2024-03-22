@@ -10,6 +10,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/DATA/MainMenu";
 
 export function Header() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="top-0 z-10 bg-white  h-[57px] justify-between w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[24px] ">
       <div className=" font-bold flex gap-8 justify-center items-center">
@@ -30,8 +31,9 @@ export function Header() {
           <p>Сагс</p>
         </div>
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
-          <NevtrehIcon />
+          <NevtrehIcon/>
           <p>Нэвтрэх</p>
+          
         </div>
       </div>
       <MobileMenu />
