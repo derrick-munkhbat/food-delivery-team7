@@ -21,9 +21,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
+<<<<<<< Updated upstream
         {/* {children} */}
         {/* <Footer /> */}
 >>>>>>> b1e8e56 (admin)
+=======
+        {children}
+        <Footer />
+>>>>>>> Stashed changes
       </body>
     </html>
   );

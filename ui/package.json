@@ -13,8 +13,13 @@
     "node-modules": "^1.0.1",
     "react": "^18",
     "react-dom": "^18",
+<<<<<<< Updated upstream
     "react-icons": "^5.0.1",
     "react-icons-kit": "^2.0.0",
+=======
+    "react-icon": "^1.0.0",
+    "react-icons": "^5.0.1",
+>>>>>>> Stashed changes
     "tailwind": "^4.0.0"
   },
   "devDependencies": {
