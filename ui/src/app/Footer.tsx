@@ -11,8 +11,14 @@ export function Footer() {
         <LogoMain />
         <div className="flex lg:justify-between md:flex-col md:gap-2 lg:flex-row w-full">
           {menuItems.map((item) => (
-                <a key={item.id} href={item.link} className="text-white font-semibold decoration-1 decoration-solid underline-offset-1">{item.name}</a>
-            ))}
+            <a
+              key={item.id}
+              href={item.link}
+              className="text-white font-semibold decoration-1 decoration-solid underline-offset-1"
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
         <div className="flex gap-[18px]">
           <FacebookLogo />

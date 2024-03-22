@@ -1,7 +1,7 @@
 "use client";
-
-import { DetailIcon } from "../../../public/Icons/DetailIcon";
-import { AddIcon } from "../../../public/Icons/AddIcon";
+import React from "react";
+import { DetailIcon } from "../../components/icons/DetailIcon";
+import { AddIcon } from "../../components/icons/AddIcon";
 
 
 export default function AdminMenu() {
