@@ -1,4 +1,9 @@
+"use client"
 import { HideIcon } from "../../public/Icons/HideIcon"
+import {Icon} from 'react-icons-kit';
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import {eye} from 'react-icons-kit/feather/eye'
+import { useState } from "react";
 export function Input(){
     return <div className="p-5  bg-white md:flex-1 lg:w2/3 lg:mx-auto ">
     <h3 className="my-4 text-2xl font-semibold text-gray-700 flex justify-center">Бүртгүүлэх</h3>
@@ -44,7 +49,7 @@ export function Input(){
         <button type="button"  data-hs-toggle-password='{
         "target": "#hs-toggle-password"
         }' className="absolute top-0 end-0 flex items-center p-3.5 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-        <HideIcon/>
+          <HideIcon/>
         </button>
         </div>            
       </div>

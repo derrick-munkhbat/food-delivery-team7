@@ -9,7 +9,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 
 export function Login(){
   const [show, setShow]= useState("")
-  const [type, setType]= useState("")
+  const [type, setType]= useState("password")
   const [email, setEmail]= useState("")
   const [pass, setPass]= useState("")
   const [icon, setIcon] = useState(()=>eyeOff);
