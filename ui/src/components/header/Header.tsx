@@ -15,15 +15,19 @@ import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
 >>>>>>> Stashed changes:ui/src/app/Header.tsx
 
 export function Header() {
-  const [openModal, setOpenModal] = useState(false);
   return (
-    <div className="top-0 z-10 bg-white  h-[57px] justify-between w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[24px] ">
+    <div className="top-0 z-10 bg-white  h-[57px] justify-between w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
       <div className=" font-bold flex gap-8 justify-center items-center">
         <a href="/">
           <HeaderLogo />
         </a>
+<<<<<<< HEAD
         <div className="flex  items-center justify-center flex-1 max-sm:hidden">
           {/* <Mainmenu /> */}
+=======
+        <div className="flex items-center justify-center flex-1 max-sm:hidden">
+          <Mainmenu />
+>>>>>>> aef79e1 (2)
         </div>
       </div>
       <div className=" flex gap-5">

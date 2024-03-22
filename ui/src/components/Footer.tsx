@@ -2,6 +2,7 @@ import { LogoMain } from "../../public/LogoMain";
 import { FacebookLogo } from "../../public/Social/FacebookIcon";
 import { InstagramLogo } from "../../public/Social/InstagramIcon";
 import { TwitterLogo } from "../../public/Social/TwitterIcon";
+<<<<<<< HEAD
 <<<<<<< Updated upstream:ui/src/components/Footer.tsx
 <<<<<<< HEAD:ui/src/components/Footer.tsx
 import { menuItems } from "./header/mainMenuItems";
@@ -11,6 +12,10 @@ import { menuItems } from "@/components/header/mainMenuItems";
 =======
 // import { menuItems } from "@/components/Data/menuItems";
 >>>>>>> Stashed changes:ui/src/app/Footer.tsx
+=======
+
+import { menuItems } from "@/components/header/mainMenuItems";
+>>>>>>> aef79e1 (2)
 
 export function Footer() {
   return (
