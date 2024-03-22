@@ -76,10 +76,7 @@ function MobileMenu() {
               alt="Pinecone Academy Logo"
             />
           </div>
-          <div className="flex flex-col">
-            <MobileMenu />
-            hi
-          </div>
+          <div className="flex flex-col"></div>
         </div>
       </div>
     </>
