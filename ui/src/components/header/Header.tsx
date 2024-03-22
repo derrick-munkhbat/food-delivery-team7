@@ -7,12 +7,9 @@ import { SagsIcon } from "../../../public/SagsIcon";
 import { SearchIcon } from "../icons/SearchIcon";
 import { Menu } from "../icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
-<<<<<<< Updated upstream:ui/src/components/header/Header.tsx
 import { Mainmenu } from "@/components/header/MainMenu";
 import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
-=======
 // import { Mainmenu } from "@/components/DATA/MainMenu";
->>>>>>> Stashed changes:ui/src/app/Header.tsx
 
 export function Header() {
   return (
@@ -21,13 +18,8 @@ export function Header() {
         <a href="/">
           <HeaderLogo />
         </a>
-<<<<<<< HEAD
-        <div className="flex  items-center justify-center flex-1 max-sm:hidden">
-          {/* <Mainmenu /> */}
-=======
         <div className="flex items-center justify-center flex-1 max-sm:hidden">
           <Mainmenu />
->>>>>>> aef79e1 (2)
         </div>
       </div>
       <div className=" flex gap-5">
