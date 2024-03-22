@@ -1,19 +1,10 @@
-<<<<<<< Updated upstream
-import { UserIcon } from "../../components/icons/UserIcon";
-import { PhoneIcon } from "../../components/icons/PhoneIcon";
-import { EmailIcon } from "../../components/icons/EmailIcon";
-import { TimeIcon } from "../../components/icons/TimeIcon";
-import { LogoutIcon } from "../../components/icons/LogoutIcon";
-import { EditIcon } from "../../components/icons/EditIcon";
-=======
-import { UserIcon } from "../../../public/Icons/UserIcon";
-import { PhoneIcon } from "../../../public/Icons/PhoneIcon";
-import { EmailIcon } from "../../../public/Icons/EmailIcon";
-import { TimeIcon } from "../../../public/Icons/TimeIcon";
-import { LogoutIcon } from "../../../public/Icons/LogoutIcon";
-import { EditIcon } from "../../../public/Icons/EditIcon";
-import { CheckIcon } from "../../../public/Icons/CheckIcon";
->>>>>>> Stashed changes
+import { UserIcon } from "@/components/icons/UserIcon";
+import { PhoneIcon } from "@/components/icons/PhoneIcon";
+import { EmailIcon } from "@/components/icons/EmailIcon";
+import { TimeIcon } from "@/components/icons/TimeIcon";
+import { LogoutIcon } from "@/components/icons/LogoutIcon";
+import { EditIcon } from "@/components/icons/EditIcon";
+import { CheckIcon } from "@/components/icons/CheckIcon";
 
 export default function UserProfile() {
   return (
@@ -25,16 +16,6 @@ export default function UserProfile() {
           <h1 className="text-green-800">Мэдээлэл амжилттай хадгалагдлаа</h1>
         </div>
 
-<<<<<<< Updated upstream
-      <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-1/3 p-5">
-        <div className="flex bg-slate-200 rounded p-2 w-full items-center">
-          <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
-            <UserIcon />
-            <div>
-              <p>Таны нэр</p>
-              <p>УгтахБаяр</p>
-            </div>
-=======
         <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-1/3 p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
@@ -59,22 +40,8 @@ export default function UserProfile() {
             <button className="p-3">
               <EditIcon />
             </button>
->>>>>>> Stashed changes
           </div>
-          <div className="p-3">
-            <EditIcon />
-          </div>
-        </div>
 
-<<<<<<< Updated upstream
-        <div className="flex bg-slate-200 rounded p-2 w-full items-center">
-          <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
-            <PhoneIcon />
-            <div>
-              <p>Утасны дугаар</p>
-              <p>88883345</p>
-            </div>
-=======
           <div className="flex bg-slate-200 rounded p-2 w-full items-center">
             <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
               <PhoneIcon />
@@ -86,30 +53,8 @@ export default function UserProfile() {
             <button className="p-3">
               <EditIcon />
             </button>
->>>>>>> Stashed changes
           </div>
-          <div className="p-3">
-            <EditIcon />
-          </div>
-        </div>
 
-<<<<<<< Updated upstream
-        <div className="flex bg-slate-200 rounded p-2 w-full items-center">
-          <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
-            <EmailIcon />
-            <div>
-              <p>Имэйл хаяг</p>
-              <p>Ugtakhbayr@gmail.com</p>
-            </div>
-          </div>
-          <div className="p-3">
-            <EditIcon />
-          </div>
-        </div>
-        <div className="flex  rounded p-2 w-full items-center gap-3">
-          <TimeIcon />
-          <p>Захиалгын түүх</p>
-=======
           <div className="flex bg-slate-200 rounded p-2 w-full items-center">
             <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
               <EmailIcon />
@@ -140,11 +85,10 @@ export default function UserProfile() {
             <LogoutIcon />
             <p>Гарах</p>
           </button>
->>>>>>> Stashed changes
         </div>
 
         {/* must be hidden; comes out when signout button clicked */}
-        <div className="relative bg-black opacity-30 h-[3000px]">
+        <div className="relativce bg-black opacity-30 h-[3000px]">
           <div className="flex flex-col border-2 rounded-2xl justify-center items-center mx-auto w-2/6 h-60">
             <h1 className="text-3xl text-center p-5 font-medium">
               Та системээс гарахдаа итгэлтэй байна уу?
