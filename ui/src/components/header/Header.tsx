@@ -8,6 +8,7 @@ import { SearchIcon } from "../icons/SearchIcon";
 import { Menu } from "../icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/header/MainMenu";
+import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
 
 export function Header() {
   const [openModal, setOpenModal] = useState(false);
@@ -33,9 +34,8 @@ export function Header() {
           <p>Сагс</p>
         </div>
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
-          <NevtrehIcon/>
+          <NevtrehIcon />
           <p>Нэвтрэх</p>
-          
         </div>
       </div>
       <MobileMenu />
@@ -76,7 +76,9 @@ function MobileMenu() {
               alt="Pinecone Academy Logo"
             />
           </div>
-          <div className="flex flex-col"></div>
+          <div className="flex flex-col">
+            <MobileHeaderMenu />
+          </div>
         </div>
       </div>
     </>
