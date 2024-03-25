@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
-import { DetailIcon } from "../../components/icons/DetailIcon";
+
 import { BigAddIcon } from "@/components/icons/BigAddIcon";
 import { AddCategory } from "./AddCategory";
 import { AddMenu } from "./Add-menu";
 import { showModal } from "./Add-menu";
+
+import { DeleteEdit } from "./DeleteEdit";
 
 export default function AdminMenu() {
   return (
@@ -17,19 +19,19 @@ export default function AdminMenu() {
           <div className="grid gap-[26px] ">
             <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
               <p className="text-lg font-medium">Breakfast</p>
-              <DetailIcon />
+              <DeleteEdit />
             </button>
             <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
               <p className="text-lg font-medium">Soup</p>
-              <DetailIcon />
+              <DeleteEdit />
             </button>
             <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
               <p className="text-lg font-medium">Breakfast</p>
-              <DetailIcon />
+              <DeleteEdit />
             </button>
             <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
               <p className="text-lg font-medium">Breakfast</p>
-              <DetailIcon />
+              <DeleteEdit />
             </button>
             <AddCategory />
           </div>
