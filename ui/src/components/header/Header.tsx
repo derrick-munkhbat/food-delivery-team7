@@ -12,6 +12,12 @@ import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
 export function Header() {
+  const [isShowModal, setIsShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setIsShowModal(!isShowModal);
+  };
+
   return (
     <div className="top-0 z-10 bg-white  h-[57px] justify-between w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
       <div className=" font-bold flex gap-8 justify-center items-center">
@@ -20,7 +26,7 @@ export function Header() {
         </a>
         <div className="flex items-center justify-center flex-1 max-sm:hidden">
           <Mainmenu />
-      </div>
+        </div>
       </div>
       <div className=" flex gap-5">
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center  ">
@@ -29,10 +35,32 @@ export function Header() {
             <input type="text" className="grow" placeholder="Хайх" />
           </label>
         </div>
-        <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
+        <button
+          onClick={toggleModal}
+          className="flex gap-3 font-bold flex-1 max-sm:hidden  items-center "
+        >
           <SagsIcon />
           <p>Сагс</p>
-        </div>
+          {/* MODAL */}
+          {isShowModal && (
+            <div className="fixed inset-0 bg-black bg-opacity-30 just">
+              <div className="flex flex-col bg-white justify-center items-center mx-auto w-[586px] h-full">
+                <div className="card w-96 bg-base-100 shadow-xl">
+                  <div className="card-body">
+                    <h2 className="card-title">Card title!</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div className="card-actions justify-end">
+                      <button className="btn btn-primary">Buy Now</button>
+                    </div>
+                  </div>
+                </div>
+                <h1 className="text-3xl text-center p-5 font-medium">
+                  View Cart
+                </h1>
+              </div>
+            </div>
+          )}
+        </button>
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
           <NevtrehIcon />
           <a href="/sign-in">Нэвтрэх</a>
