@@ -13,6 +13,7 @@ import { useState } from "react";
 export default function UserProfile() {
   const [showPopUpWindow, setShowPopUpWindow] = useState(false);
   const handleOnCancel = () => setShowPopUpWindow(false);
+
   return (
     <>
       <div>
@@ -81,14 +82,14 @@ export default function UserProfile() {
           >
             Хадгалах
           </button>
-          <button className="flex rounded p-2 w-full items-center gap-3  hover:bg-slate-300 hover:text-white">
+          <button className="flex rounded p-2 w-full items-center gap-3 ">
             <TimeIcon />
             <p>Захиалгын түүх</p>
           </button>
 
           <button
             onClick={() => setShowPopUpWindow(true)}
-            className="flex  rounded p-2 w-full items-center gap-3"
+            className="flex rounded p-2 w-full items-center gap-3"
           >
             <LogoutIcon />
             <PopUpWindow
