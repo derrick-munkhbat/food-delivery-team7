@@ -34,7 +34,7 @@ export default function PassResetByCode() {
         </div>
       </div>
       <button
-        className="btn btn-enabled w-full max-w-xs hover:bg-green-500hover:text-white"
+        className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
         aria-disabled="true"
         type="submit"
       >

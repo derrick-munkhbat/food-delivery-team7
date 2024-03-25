@@ -35,7 +35,7 @@ export function Header() {
         </div>
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
           <NevtrehIcon />
-          <p>Нэвтрэх</p>
+          <a href="/sign-in">Нэвтрэх</a>
         </div>
       </div>
       <MobileMenu />
