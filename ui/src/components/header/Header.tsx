@@ -20,7 +20,7 @@ export function Header() {
         </a>
         <div className="flex items-center justify-center flex-1 max-sm:hidden">
           <Mainmenu />
-        </div>
+      </div>
       </div>
       <div className=" flex gap-5">
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center  ">
