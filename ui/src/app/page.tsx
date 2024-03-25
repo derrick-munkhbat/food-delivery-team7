@@ -1,10 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { HomeSlider } from "./HomeSlider";
-import { Card } from "@/components/Card";
-import { OnSaleCard } from "@/components/OnSaleCard";
-import { AdminCard } from "@/components/AdminCard";
+import { HomeSlider } from "../components/HomeSlider";
+import { Card } from "@/components/cards/Card";
+import { OnSaleCard } from "@/components/cards/OnSaleCard";
+import { AdminCard } from "@/components/cards/AdminCard";
+import { DangerState } from "@/components/states/Danger";
+import { SuccessState } from "@/components/states/Success";
+import { WarningState } from "@/components/states/Warning";
+import { CategoryState } from "@/components/categoryContainer/CategoryState";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -142,6 +146,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <CategoryState />
     </>
   );
 }
