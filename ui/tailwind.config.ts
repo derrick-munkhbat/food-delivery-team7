@@ -9,7 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        "footer-texture": "url('/images/bg-image.png')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "split-background": 
+          "linear-gradient(to right,  #FFFFFF 0%,#FFFFFF 50%,#F7F7F8 50%,#F7F7F8 100%)",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
