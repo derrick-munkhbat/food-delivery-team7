@@ -23,7 +23,6 @@ export default function RootLayout({
         <Header />
         {/* {children} */}
         {/* <Footer /> */}
->>>>>>> b1e8e56 (admin)
       </body>
     </html>
   );
