@@ -9,6 +9,8 @@ import { Menu } from "../icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/header/MainMenu";
 import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
+import CartCard from "../../app/menu/cart/CartCard";
+
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
 export function Header() {
@@ -44,19 +46,9 @@ export function Header() {
           {/* MODAL */}
           {isShowModal && (
             <div className="fixed inset-0 bg-black bg-opacity-30 just">
-              <div className="flex flex-col bg-white justify-center items-center mx-auto w-[586px] h-full">
-                <div className="card w-96 bg-base-100 shadow-xl">
-                  <div className="card-body">
-                    <h2 className="card-title">Card title!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className="card-actions justify-end">
-                      <button className="btn btn-primary">Buy Now</button>
-                    </div>
-                  </div>
-                </div>
-                <h1 className="text-3xl text-center p-5 font-medium">
-                  View Cart
-                </h1>
+              <div className="fixed bg-white top-0 bottom-0 w-3/4 transition-all right-0 flex flex-col justify-start items-center pt-10 pb-10 p-5 gap-5">
+                <CartCard />
+                <CartCard />
               </div>
             </div>
           )}
