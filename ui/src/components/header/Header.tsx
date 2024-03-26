@@ -46,7 +46,7 @@ export function Header() {
           {/* MODAL */}
           {isShowModal && (
             <div className="fixed inset-0 bg-black bg-opacity-30 just">
-              <div className="fixed bg-white top-0 bottom-0 w-3/4 transition-all right-0 flex flex-col justify-start items-center pt-10 pb-10 p-5 gap-5">
+              <div className="fixed bg-white top-0 bottom-0 w-3/5-auto transition-all right-0 flex flex-col justify-start items-center pt-10 pb-10 p-5 gap-5">
                 <CartCard />
                 <CartCard />
               </div>
