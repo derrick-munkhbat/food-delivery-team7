@@ -1,9 +1,6 @@
 "use client";
 import React, { FC, useState } from "react";
-<<<<<<< HEAD
 import { CategoryState } from "@/components/categoryContainer/CategoryState";
-=======
->>>>>>> 57118a2 (second commit5)
 import { CardData } from "@/components/cards/Card";
 
 interface ModalProps {
@@ -76,44 +73,38 @@ const Menu: FC = () => {
     setIsOpen(false);
   };
 
-<<<<<<< HEAD
-  return (<div>
-    <div className="mt-10 ">
-    <CategoryState/> 
-    </div>
-   
-<div className="app-container bg-white mb-10 ">
-      <div className=" mt-20 inset-0 w-full mx-auto grid grid-cols-4  gap-5 container gap-x-32 px-5 py-5 xl:py-[8px]  xl:px-[5px]">
-=======
   return (
-    <div className="app-container bg-white">
-      <div className="justify-between mt-20 inset-0 w-full mx-auto grid grid-cols-4 gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px]">
->>>>>>> 57118a2 (second commit5)
-        {CardData.map((item) => (
-          <div key={item.id} className="flex items-center  justify-between">
-            <div className="">
-              <img
-                onClick={handleOpenModal}
-                className="cover cursor-grabbing"
-                src="../images/Image.svg"
-              />
-              <p className="ml-2 font-bold">Breakfast</p>
-              <div key={item.id} className="flex gap-4">
-                <p className="ml-2 font-semibold text-green-600">
-                  {item.price}
-                </p>
-                <p className="line-through">{item.oldPrice}</p>
+    <div>
+      <div className="mt-10 ">
+        <CategoryState />
+      </div>
+
+      <div className="app-container bg-white mb-10 ">
+        <div className=" mt-5 inset-0 w-full mx-auto grid grid-cols-4  gap-5 container gap-x-32 px-5 py-5 xl:py-[8px]  xl:px-[5px]">
+          {CardData.map((item) => (
+            <div key={item.id} className="flex items-center  justify-between">
+              <div className="">
+                <img
+                  onClick={handleOpenModal}
+                  className="cover cursor-grabbing"
+                  src="../images/Image.svg"
+                />
+                <p className="ml-2 font-bold">Breakfast</p>
+                <div key={item.id} className="flex gap-4">
+                  <p className="ml-2 font-semibold text-green-600">
+                    {item.price}
+                  </p>
+                  <p className="line-through">{item.oldPrice}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <Modal isOpen={isOpen} handleClose={handleCloseModal}>
+          <p></p>
+        </Modal>
       </div>
-      <Modal isOpen={isOpen} handleClose={handleCloseModal}>
-        <p></p>
-      </Modal>
     </div>
-  </div>
-    
   );
 };
 
