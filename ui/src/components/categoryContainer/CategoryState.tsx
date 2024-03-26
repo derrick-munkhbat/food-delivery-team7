@@ -1,6 +1,6 @@
 export function CategoryState() {
   return (
-    <div className="flex  gap-4 h-[107px] w-full border-[black] border-1 px-[120px]  py-8 bg-white  justify-between">
+    <div className="flex  gap-4 h-[107px] w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] border-[black] border-1 px-[120px]  py-8 bg-white  justify-between">
       <a
         href=""
         className=" hover:bg-[#18BA51] transition-all duration-500 border-[#D6D8DB] px-20 text-center py-2 font-medium flex items-center 	text-lg  border-[1px] rounded-xl text-black border-solid w-[280.5px] h-[43px] "
