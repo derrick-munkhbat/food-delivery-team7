@@ -1,11 +1,19 @@
 export default function CartCard() {
   return (
     <div className="card w-5/6 bg-base-100 shadow-md">
-      <div className="card-body">
-        <h2 className="card-title">Card title!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+      <div className="flex justify-center items-center w-full p-5 gap-3">
+        <div className="w-1/2">picture</div>
+        <div>
+          <div>
+            <h2 className="card-title justify-center items-center">Title</h2>
+            <p>Price</p>
+            <p>description</p>
+          </div>
+          <div className="flex gap-3 justify-center items-center">
+            <button className="btn btn-square text-5xl flex">-</button>
+            <p>x</p>
+            <button className="btn btn-square text-5xl">+</button>
+          </div>
         </div>
       </div>
     </div>
