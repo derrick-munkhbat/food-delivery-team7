@@ -13,7 +13,7 @@ export default function CartCard() {
           </div>
           <div className="flex justify-start items-center gap-3">
             <button className="btn text-3xl bg-green-500 ">-</button>
-            <p>x</p>
+            <p>1</p>
             <button className="btn text-3xl bg-green-500">+</button>
           </div>
         </div>

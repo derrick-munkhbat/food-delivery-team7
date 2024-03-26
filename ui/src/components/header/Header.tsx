@@ -9,7 +9,9 @@ import { Menu } from "../icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/header/MainMenu";
 import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
-import CartCard from "../../app/menu/cart/CartCard";
+import CartCard from "./cart-modal/CartCard";
+import { CartHeader } from "./cart-modal/CartHeader";
+import { CartFooter } from "./cart-modal/CartFooter";
 
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
@@ -45,10 +47,12 @@ export function Header() {
           <p>Сагс</p>
           {/* MODAL */}
           {isShowModal && (
-            <div className="fixed inset-0 bg-black bg-opacity-30 just">
-              <div className="fixed bg-white top-0 bottom-0 w-3/5-auto transition-all right-0 flex flex-col justify-start items-center pt-10 pb-10 p-5 gap-5">
+            <div className="fixed inset-0 bg-black bg-opacity-30 delay-1000">
+              <div className="fixed bg-white top-0 bottom-0 delay-1000 right-0 flex flex-col justify-start items-center p-5 gap-5">
+                <CartHeader />
                 <CartCard />
                 <CartCard />
+                <CartFooter />
               </div>
             </div>
           )}
