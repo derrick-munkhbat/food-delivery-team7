@@ -9,9 +9,19 @@ import { Menu } from "../icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/header/MainMenu";
 import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
+import CartCard from "./cart-modal/CartCard";
+import { CartHeader } from "./cart-modal/CartHeader";
+import { CartFooter } from "./cart-modal/CartFooter";
+
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
 export function Header() {
+  const [isShowModal, setIsShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setIsShowModal(!isShowModal);
+  };
+
   return (
     <div className="top-0 z-10 bg-white  h-[57px] justify-between w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
       <div className=" font-bold flex gap-8 justify-center items-center">
@@ -20,7 +30,7 @@ export function Header() {
         </a>
         <div className="flex items-center justify-center flex-1 max-sm:hidden">
           <Mainmenu />
-      </div>
+        </div>
       </div>
       <div className=" flex gap-5">
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center  ">
@@ -29,10 +39,24 @@ export function Header() {
             <input type="text" className="grow" placeholder="Хайх" />
           </label>
         </div>
-        <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
+        <button
+          onClick={toggleModal}
+          className="flex gap-3 font-bold flex-1 max-sm:hidden  items-center "
+        >
           <SagsIcon />
           <p>Сагс</p>
-        </div>
+          {/* MODAL */}
+          {isShowModal && (
+            <div className="fixed inset-0 bg-black bg-opacity-30 delay-1000">
+              <div className="fixed bg-white top-0 bottom-0 delay-1000 right-0 flex flex-col justify-start items-center p-5 gap-5">
+                <CartHeader />
+                <CartCard />
+                <CartCard />
+                <CartFooter />
+              </div>
+            </div>
+          )}
+        </button>
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
           <NevtrehIcon />
           <a href="/sign-in">Нэвтрэх</a>
