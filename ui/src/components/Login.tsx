@@ -75,12 +75,9 @@ export function Login() {
                 >
                   <Icon icon={icon} size={25} />
                 </button>
-                <a
-                  href="#"
-                  className="text-sm text-slate-800  hover:underline focus:text-blue-800 flex justify-end"
-                >
+                <Link href="reset-pass" className="text-sm text-slate-800  hover:underline focus:text-blue-800 flex justify-end">
                   Нууц үг сэргээх
-                </a>
+                </Link>
               </div>
             </div>
             <div className="flex items-center space-x-2"></div>
