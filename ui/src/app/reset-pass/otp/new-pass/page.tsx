@@ -1,7 +1,17 @@
+'use client'
 import { CheckIcon } from "@/components/icons/CheckIcon";
 import { HideIcon } from "../../../../../public/Icons/HideIcon";
+import { useState } from "react";
 
 export default function PassResetByNewPass() {
+  const [code, setCode] = useState("");
+
+  const getNewPass = (e) => {
+    console.log({ code });
+    e.preventDefault();
+    window.location.href = "/sign-in"
+  }
+
   return (
     <>
       <div className="flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5">
@@ -51,6 +61,7 @@ export default function PassResetByNewPass() {
             className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
             role="button"
             aria-disabled="true"
+            onClick={getNewPass}
           >
             Үргэлжлүүлэх
           </button>

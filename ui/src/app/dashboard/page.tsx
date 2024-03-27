@@ -46,7 +46,7 @@ export default function Dashboard() {
             <div className="min-w-[69px] w-[103px] py-3 px-6 text-xs"></div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center border-b-2 border-b-[#ECEDF0]">
             <div className="min-w-[229px] w-[344px] py-3 px-6 flex gap-2 text-sm">
               <div className="size-10 rounded border-2">IMG</div>
               <div>
@@ -67,14 +67,14 @@ export default function Dashboard() {
             </div>
             <div className="min-w-[229px] w-[344px] py-3 px-6">Address</div>
             <div className="min-w-[128px] w-[191px] py-3 px-6">
-            <div className="h-6 rounded-full bg-[#C1E6CF] text-[#0A4E22] px-1.5">Delivered</div>
+            <div className="h-6 rounded-full bg-[#C1E6CF] w-min text-[#0A4E22] px-1.5">Delivered</div>
             </div>
             <div className="min-w-[69px] w-[103px] py-3 px-6">
               <DetailIcon />
             </div>
           </div>
 
-          <div className="flex ">
+          <div className="flex items-center border-b-2 border-b-[#ECEDF0]">
             <div className="min-w-[229px] w-[344px] py-3 px-6 flex gap-2 text-sm">
               <div className="size-10 rounded border-2">IMG</div>
               <div>
@@ -95,14 +95,14 @@ export default function Dashboard() {
             </div>
             <div className="min-w-[229px] w-[344px] py-3 px-6">Address</div>
             <div className="min-w-[128px] w-[191px] py-3 px-6">
-            <div className="h-6 rounded-full bg-[#FDF4B6] text-[#695C08] px-1.5">Progress</div>
+            <div className="h-6 rounded-full bg-[#FDF4B6] w-min text-[#695C08] px-1.5">Progress</div>
             </div>
             <div className="min-w-[69px] w-[103px] py-3 px-6">
               <DetailIcon />
             </div>
           </div>
 
-          <div className="flex">
+          <div className="flex items-center border-b-[#ECEDF0]">
             <div className="min-w-[229px] w-[344px] py-3 px-6 flex gap-2 text-sm">
               <div className="size-10 rounded border-2">IMG</div>
               <div>
@@ -123,7 +123,7 @@ export default function Dashboard() {
             </div>
             <div className="min-w-[229px] w-[344px] py-3 px-6">Address</div>
             <div className="min-w-[128px] w-[191px] py-3 px-6">
-            <div className="h-6 rounded-full bg-[#ECEDF0] text-[#1F2126] px-1.5">Waiting</div>
+            <div className="h-6 rounded-full bg-[#ECEDF0] w-min text-[#1F2126] px-1.5">Waiting</div>
             </div>
             <div className="min-w-[69px] w-[103px] py-3 px-6">
               <DetailIcon />

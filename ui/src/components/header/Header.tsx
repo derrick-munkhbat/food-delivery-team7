@@ -47,7 +47,8 @@ export function Header() {
           <p>Сагс</p>
           {/* MODAL */}
           {isShowModal && (
-            <div className="fixed inset-0 bg-black bg-opacity-30 delay-1000">
+            
+            <div className="fixed inset-0 bg-black bg-opacity-30 delay-1000 z-10">
               <div className="fixed bg-white transition-all h-auto top-0 bottom-0 right-0 flex flex-col justify-between items-center p-5 gap-5">
                 <CartHeader />
                 <div className="flex flex-col mb-auto gap-5">
