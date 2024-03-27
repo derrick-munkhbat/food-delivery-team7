@@ -13,27 +13,32 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
   if (!isOpen) {
     return null;
   }
+  const [number , setNumber]= useState(1)
+  function MinusNumber(){
+    const number = 2;
+  }
+  
 
-  return (
-    <div className="flex items-center absolute inset-0 w-1/2 min-h-screen  justify-center  mx-auto hover:brightness-50">
-      <div className="flex flex-col overflow-hidden  rounded-xl  max md:flex-row  md:flex-1  mx-auto">
-        <div className="p-5  flex  bg-white md:flex-1 h-[500px] w-2/3 lg:mx-auto gap-5">
-          <div className="h-[500px]  w-1/2 ">
+  return (<div className="w-screen flex top-0 h-full justify-center items-center fixed z-1 bg-gray-500 bg-opacity-70">
+ <div className="flex items-center fixed z-1 absolute inset-0 w-11/12 lg:w-1/2  justify-center  mx-auto ">
+      <div className="flex flex-col overflow-hidden lg:rounded-xl  max md:flex-row  md:flex-1  mx-auto">
+        <div className="p-5  flex  bg-white md:flex-1 h-[500px] w-full rounded-xl lg:mx-auto gap-5">
+          <div className="h-[500px] hidden md:flex md:w-1/2 ">
             <img
               className="rounded-md w-[500px]  h-[460px] cover"
               src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=2048x2048&w=is&k=20&c=t9_zg20wVbrBoGn0tw__1fFq4ykeKs15TQQ3x-ehVC0="
               alt="Shoes"
             />
           </div>
-          <div className="flex flex-col w-1/2 ">
+          <div className="flex flex-col w-full  md:w-1/2 ">
             <div className="flex justify-end ">
               <button className="modal-close-button " onClick={handleClose}>
                 X
               </button>
             </div>
             <div className="mt-4 w-11/12 mx-auto">
-              <h1 className="text-3xl font-bold">Breakfast</h1>
-              <p className="font-semibold text-green-600">34,800$</p>
+              <h1 className="font-semibold lg:text-3xl lg:font-bold">Breakfast</h1>
+              <p className="lg:font-semibold text-green-600">34,800$</p>
               <p className="mt-8 font-semibold">Орц</p>
               <div className="w-11/12 p-2 bg-slate-200 rounded-lg mt-2">
                 <p className="text-gray-500">
@@ -42,10 +47,10 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
               </div>
               <p className="mt-8 font-semibold">Number</p>
               <div className="mt-4 flex justify-between">
-                <button className="py-1 px-3 bg-green-500 rounded-md text-white">
+                <button onClick={MinusNumber} className="py-1 px-3 bg-green-500 rounded-md text-white">
                   -
                 </button>
-                <p>1</p>
+                <p>{number}</p>
                 <button className="py-1 px-3 bg-green-500 rounded-md text-white">
                   +
                 </button>
@@ -59,6 +64,7 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
       </div>
       <div className="modal-content">{children}</div>
     </div>
+  </div>
   );
 };
 
@@ -74,13 +80,13 @@ const Menu: FC = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
       <div className="mt-10 ">
         <CategoryState />
       </div>
 
-      <div className="app-container bg-white mb-10 ">
-        <div className=" mt-5 inset-0 w-full mx-auto grid grid-cols-4  gap-5 container gap-x-32 px-5 py-5 xl:py-[8px]  xl:px-[5px]">
+      <div className="app-container bg-white mb-10">
+        <div className=" mt-5 inset-0 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-5 container gap-x-32 px-5 py-5 xl:py-[8px]  xl:px-[5px]">
           {CardData.map((item) => (
             <div key={item.id} className="flex items-center  justify-between">
               <div className="">
