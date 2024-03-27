@@ -8,7 +8,7 @@ export default function PassResetByEmail() {
   const getEmail = (e) => {
     console.log({ email });
     e.preventDefault();
-    window
+    window.location.href = "/reset-pass/otp"
   };
 
   return (

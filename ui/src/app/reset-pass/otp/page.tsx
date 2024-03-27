@@ -1,8 +1,16 @@
 "use client";
 
 import { HideIcon } from "../../../../public/Icons/HideIcon";
+import { useState } from "react";
 
 export default function PassResetByCode() {
+  const [code, setCode] = useState("");
+
+  const getCode = (e) => {
+    console.log({ code });
+    e.preventDefault();
+    window.location.href = "/reset-pass/otp/new-pass"
+  };
   return (
     <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto  w-[448px] h-[310px] p-5">
       <h1 className="text-2xl">Нууц үг сэргээх</h1>
@@ -37,6 +45,7 @@ export default function PassResetByCode() {
         className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
         aria-disabled="true"
         type="submit"
+        onClick={getCode}
       >
         Үргэлжлүүлэх
       </button>
