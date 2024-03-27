@@ -1,6 +1,9 @@
 "use client";
 import React, { FC, useState } from "react";
+<<<<<<< HEAD
 import { CategoryState } from "@/components/categoryContainer/CategoryState";
+=======
+>>>>>>> 57118a2 (second commit5)
 import { CardData } from "@/components/cards/Card";
 
 interface ModalProps {
@@ -73,6 +76,7 @@ const Menu: FC = () => {
     setIsOpen(false);
   };
 
+<<<<<<< HEAD
   return (<div>
     <div className="mt-10 ">
     <CategoryState/> 
@@ -80,6 +84,11 @@ const Menu: FC = () => {
    
 <div className="app-container bg-white mb-10 ">
       <div className=" mt-20 inset-0 w-full mx-auto grid grid-cols-4  gap-5 container gap-x-32 px-5 py-5 xl:py-[8px]  xl:px-[5px]">
+=======
+  return (
+    <div className="app-container bg-white">
+      <div className="justify-between mt-20 inset-0 w-full mx-auto grid grid-cols-4 gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px]">
+>>>>>>> 57118a2 (second commit5)
         {CardData.map((item) => (
           <div key={item.id} className="flex items-center  justify-between">
             <div className="">
