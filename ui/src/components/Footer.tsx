@@ -11,7 +11,7 @@ export function Footer() {
       <div className="footer footer-center bg-footer-texture">
         <div className="container grid gap-10 mx-auto p-[120px]">
           <LogoMain />
-          <div className="flex lg:justify-between md:flex-col md:gap-2 sm:flex-col sm:gap-2 lg:flex-row w-full">
+          <div className="flex flex-col gap-2 lg:justify-between lg:flex-row w-full">
             {menuItems.map((item) => (
               <a
                 key={item.id}
