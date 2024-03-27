@@ -1,5 +1,5 @@
 import { CloseIcon } from "@/components/icons/CloseIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function showModal() {
   document.getElementById("menu_modal").showModal();

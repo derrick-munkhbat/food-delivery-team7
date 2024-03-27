@@ -1,3 +1,6 @@
+import { AddIcon } from "@/components/icons/AddIcon";
+import { MinusIcon } from "@/components/icons/MinusIcon";
+
 export default function CartCard() {
   return (
     <div className="card w-[538px] h-[182px] bg-base-100 border-2">
@@ -11,10 +14,14 @@ export default function CartCard() {
             <p>34,800₮</p>
             <p>Хулуу, төмс, лууван, сонгино, цөцгийн тос, самрын үр</p>
           </div>
-          <div className="flex justify-start items-center gap-3">
-            <button className="btn text-3xl bg-green-500 ">-</button>
+          <div className="flex justify-start items-center gap-6 mt-3">
+            <button>
+              <MinusIcon />
+            </button>
             <p>1</p>
-            <button className="btn text-3xl bg-green-500">+</button>
+            <button>
+              <AddIcon />
+            </button>
           </div>
         </div>
       </div>
