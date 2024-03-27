@@ -1,6 +1,10 @@
 "use client";
 import React, { FC, useState } from "react";
-import { Card } from "@/components/Card";
+<<<<<<< HEAD
+import { CategoryState } from "@/components/categoryContainer/CategoryState";
+=======
+>>>>>>> 57118a2 (second commit5)
+import { CardData } from "@/components/cards/Card";
 
 interface ModalProps {
   isOpen: boolean;
@@ -14,13 +18,13 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
   }
 
   return (
-    <div className="flex items-center absolute inset-0 w-1/3 min-h-screen lg:justify-center  mx-auto">
-      <div className="flex flex-col overflow-hidden  rounded-md  max md:flex-row md:flex-1  mx-auto">
-        <div className="p-5  flex bg-white md:flex-1  w-2/3 lg:mx-auto gap-5">
-          <div className="h-[300px]  bg-green-600">
+    <div className="flex items-center absolute inset-0 w-1/2 min-h-screen  justify-center  mx-auto hover:brightness-50">
+      <div className="flex flex-col overflow-hidden  rounded-xl  max md:flex-row  md:flex-1  mx-auto">
+        <div className="p-5  flex  bg-white md:flex-1 h-[500px] w-2/3 lg:mx-auto gap-5">
+          <div className="h-[500px]  w-1/2 ">
             <img
-              className="rounded-md w-[300px] h-100% cover"
-              src="../images/Image.svg"
+              className="rounded-md w-[500px]  h-[460px] cover"
+              src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=2048x2048&w=is&k=20&c=t9_zg20wVbrBoGn0tw__1fFq4ykeKs15TQQ3x-ehVC0="
               alt="Shoes"
             />
           </div>
@@ -30,9 +34,28 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
                 X
               </button>
             </div>
-            <div>
-              <h1>Main pizza</h1>
-              <p>34800</p>
+            <div className="mt-4 w-11/12 mx-auto">
+              <h1 className="text-3xl font-bold">Breakfast</h1>
+              <p className="font-semibold text-green-600">34,800$</p>
+              <p className="mt-8 font-semibold">Орц</p>
+              <div className="w-11/12 p-2 bg-slate-200 rounded-lg mt-2">
+                <p className="text-gray-500">
+                  Хулуу , төмс , лууван , сонгино , самрын үр , цөцгийн тос
+                </p>
+              </div>
+              <p className="mt-8 font-semibold">Number</p>
+              <div className="mt-4 flex justify-between">
+                <button className="py-1 px-3 bg-green-500 rounded-md text-white">
+                  -
+                </button>
+                <p>1</p>
+                <button className="py-1 px-3 bg-green-500 rounded-md text-white">
+                  +
+                </button>
+              </div>
+              <button className="container bg-green-500 mt-4 p-3 rounded-md text-white">
+                Сагслах
+              </button>
             </div>
           </div>
         </div>
@@ -53,15 +76,25 @@ const Menu: FC = () => {
     setIsOpen(false);
   };
 
+<<<<<<< HEAD
+  return (<div>
+    <div className="mt-10 ">
+    <CategoryState/> 
+    </div>
+   
+<div className="app-container bg-white mb-10 ">
+      <div className=" mt-20 inset-0 w-full mx-auto grid grid-cols-4  gap-5 container gap-x-32 px-5 py-5 xl:py-[8px]  xl:px-[5px]">
+=======
   return (
     <div className="app-container bg-white">
       <div className="justify-between mt-20 inset-0 w-full mx-auto grid grid-cols-4 gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px]">
-        {Card.map((item) => (
+>>>>>>> 57118a2 (second commit5)
+        {CardData.map((item) => (
           <div key={item.id} className="flex items-center  justify-between">
             <div className="">
               <img
                 onClick={handleOpenModal}
-                className="cover"
+                className="cover cursor-grabbing"
                 src="../images/Image.svg"
               />
               <p className="ml-2 font-bold">Breakfast</p>
@@ -79,6 +112,8 @@ const Menu: FC = () => {
         <p></p>
       </Modal>
     </div>
+  </div>
+    
   );
 };
 
