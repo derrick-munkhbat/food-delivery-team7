@@ -13,9 +13,17 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
   if (!isOpen) {
     return null;
   }
-  const [number , setNumber]= useState(1)
-  function MinusNumber(){
-    const number = 2;
+  let [number , setNumber]= useState(1)
+
+  function Minus(){
+    if(number>0){
+      number = number - 1;
+      setNumber(number)
+    }
+  }
+  function Plus(){
+    number = number + 1;
+    setNumber(number)
   }
   
 
@@ -47,15 +55,15 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
               </div>
               <p className="mt-8 font-semibold">Number</p>
               <div className="mt-4 flex justify-between">
-                <button onClick={MinusNumber} className="py-1 px-3 bg-green-500 rounded-md text-white">
+                <button onClick={Minus} className="py-1 px-3 bg-green-500 rounded-md text-white">
                   -
                 </button>
-                <p>{number}</p>
-                <button className="py-1 px-3 bg-green-500 rounded-md text-white">
+                <p className="font-normal">{number}</p>
+                <button onClick={Plus} className="py-1 px-3 bg-green-500 rounded-md text-white">
                   +
                 </button>
               </div>
-              <button className="container bg-green-500 mt-4 p-3 rounded-md text-white">
+              <button onClick={handleClose} className="container bg-green-500 mt-4 p-3 rounded-md text-white">
                 Сагслах
               </button>
             </div>
@@ -115,24 +123,3 @@ const Menu: FC = () => {
 };
 
 export default Menu;
-
-// import { Card } from "@/components/Card";
-
-// export default function Menu() {
-//   return (
-//     <div className="justify-between w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px]">
-//       {Card.map((item) => (
-//         <div key={item.id} className="flex items-center  justify-between">
-//           <div className="">
-//             <img onClick={handleOpenModal} className="cover" src="../images/Image.svg" />
-//             <p className="ml-2 font-bold">Breakfast</p>
-//             <div key={item.id} className="flex gap-4">
-//               <p className="ml-2 font-semibold text-green-600">{item.price}</p>
-//               <p className="line-through">{item.oldPrice}</p>
-//             </div>
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
