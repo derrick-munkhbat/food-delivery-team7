@@ -26,8 +26,8 @@ export function OnSaleCards() {
   ];
 
   return (
-    <div className="flex sm:p-8 md:p-30 xl:p-34">
-      <div className="w-fit mx-auto grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-x-[115px] mt-10 mb-5">
+    <div className=" flex sm:p-8 md:p-30">
+      <div className="w-fit mx-auto grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-items-center justify-center md:gap-x-[50px] xl:gap-[115px] mt-10 mb-5">
         {foodcards
           .slice(currentIndex, currentIndex + 4)
           .map((foodcard, index) => (
@@ -39,7 +39,7 @@ export function OnSaleCards() {
                 style={{
                   backgroundImage: `url(${foodcard.image}`,
                 }}
-                className={` shadow-md duration-500 hover:scale-105 hover:shadow-xl  h-[186px] grid justify-items-end bg-center w-[340px] rounded-xl`}
+                className={` shadow-md duration-500 hover:scale-105 hover:shadow-xl  h-[186px] grid justify-items-end bg-center max-xl:w-72 w-[340px] rounded-xl`}
               >
                 <p className="w-[69px] h-[35px] rounded-xl text-lg text-white mt-4 mr-4  font-semibold px-4 py-1 bg-[#18BA51]">
                   20%
