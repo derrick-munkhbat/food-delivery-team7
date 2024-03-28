@@ -82,12 +82,11 @@ export default function UpDateUserProfile() {
             onClick={handleSave}
           >
             Хадгалах
-          </button>{message && <div className="alert alert-success absolute bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10"><CheckIcon />
-          <h1 className="text-green-800">{message}</h1>
-          
-          
-          
-          </div>}
+          </button>{message && 
+            <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10">
+              <CheckIcon />
+              <h1 className="text-green-800">{message}</h1>
+            </div>}
         
           
         </div>
