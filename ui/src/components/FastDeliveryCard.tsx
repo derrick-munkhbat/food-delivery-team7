@@ -36,7 +36,7 @@ export function FastDeliveryCard() {
         <div className="mx-auto  gap-[47px] grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 ">
           {cards.slice(currentIndex, currentIndex + 4).map((card, index) => (
             <div
-              className="w-[350px] h-[155px] border rounded-xl shadow-xl  flex p-4 "
+              className="w-[340px] h-[155px] border rounded-xl shadow-xl  flex p-4 "
               key={index}
             >
               <div>

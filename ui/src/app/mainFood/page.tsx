@@ -4,7 +4,7 @@ import { OnSaleCards } from "@/components/cards/OnSaleCard";
 import { Star } from "@/components/icons/Star";
 import { FaChevronRight } from "react-icons/fa";
 
-export default function OnSaleFoods() {
+export default function MainFoods() {
   return (
     <div className="flex">
       <div className=" justify-between w-full mx-auto flex  container flex-col px-5 py-5 xl:py-[8px] xl:px-[5px]">
