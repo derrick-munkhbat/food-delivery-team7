@@ -5,12 +5,22 @@ import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import { useState } from "react";
 export function Input() {
-  const [show, setShow] = useState("");
+  const [show, setShow] = useState("password");
+  const [hider, setHider] = useState(() => eyeOff)
   const [type, setType] = useState("password");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
 
+  function handleToggler(){
+    if(show === "password"){
+      setHider(eye);
+      setShow("text");
+    }else{
+      setHider(eyeOff);
+      setShow("password");
+    }
+  }
   function handleToggle() {
     if (type === "password") {
       setIcon(eye);
@@ -110,20 +120,20 @@ export function Input() {
           <div className="relative flex justify-center flex-col ">
             <input
               placeholder="Нууц үг давтах"
-              type={type}
-              value={pass}
-              onChange={(e) => setPass(e.target.value)}
+              type={show}
+              // value={pass}
+              // onChange={(e) => setPass(e.target.value)}
               className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
             />
             <button
               type="button"
-              onClick={handleToggle}
+              onClick={handleToggler}
               data-hs-toggle-password='{
         "target": "#hs-toggle-password"
         }'
               className="absolute top-0 end-0 flex items-center p-3.5 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             >
-              <Icon icon={icon} size={25} />
+              <Icon icon={hider} size={25} />
             </button>
           </div>
         </div>
