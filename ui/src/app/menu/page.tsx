@@ -27,7 +27,7 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
   }
   
 
-  return (<div className="w-screen flex top-0 h-full justify-center items-center fixed z-1 bg-gray-500 bg-opacity-70">
+  return (<div className="w-screen mx-auto flex top-0 h-full justify-center items-center fixed z-1 bg-gray-500 bg-opacity-70">
  <div className="flex items-center fixed z-1 absolute inset-0 w-11/12 lg:w-1/2  justify-center  mx-auto ">
       <div className="flex flex-col overflow-hidden lg:rounded-xl  max md:flex-row  md:flex-1  mx-auto">
         <div className="p-5  flex  bg-white md:flex-1 h-[500px] w-full rounded-xl lg:mx-auto gap-5">
@@ -94,9 +94,9 @@ const Menu: FC = () => {
       </div>
 
       <div className="app-container bg-white mb-10">
-        <div className=" mt-5 inset-0 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-5 container gap-x-32 px-5 py-5 xl:py-[8px]  xl:px-[5px]">
+        <div className=" mt-5 inset-1 w-full mx-auto sm:grid flex justify-center flex-col  sm:grid-cols-2 lg:grid-cols-4  gap-5 container md:gap-x-32 md:px-5 md:py-5 xl:py-[8px]  xl:px-[5px]">
           {CardData.map((item) => (
-            <div key={item.id} className="flex items-center  justify-between">
+            <div key={item.id} className="flex items-center justify-center sm:justify-between">
               <div className="">
                 <img
                   onClick={handleOpenModal}
