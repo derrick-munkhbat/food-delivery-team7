@@ -26,34 +26,39 @@ export function OnSaleCards() {
   ];
 
   return (
-    <>
-      {foodcards
-        .slice(currentIndex, currentIndex + 4)
-        .map((foodcard, index) => (
-          <div className="flex w-[282px] h-[253px] gap-1  flex-col" key={index}>
+    <div className="flex sm:p-8 md:p-30 xl:p-34">
+      <div className="w-fit mx-auto grid grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-x-[115px] mt-10 mb-5">
+        {foodcards
+          .slice(currentIndex, currentIndex + 4)
+          .map((foodcard, index) => (
             <div
-              style={{
-                backgroundImage: `url(${foodcard.image}`,
-              }}
-              className={`transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  h-[186px] grid justify-items-end bg-center w-[340px] rounded-xl`}
+              className=" w-[282px] h-[253px] gap-1 flex flex-col"
+              key={index}
             >
-              <p className="w-[69px] h-[35px] rounded-xl text-lg text-white mt-4 mr-4  font-semibold px-4 py-1 bg-[#18BA51]">
-                20%
-              </p>
-            </div>
-            <div className="gap-1 ">
-              <p className="text-xl font-semibold text-black">
-                {foodcard.title}
-              </p>
-              <div className="flex gap-4">
-                <p className="text-lg font-semibold text-[#18BA51] ">
-                  {price}₮{" "}
+              <div
+                style={{
+                  backgroundImage: `url(${foodcard.image}`,
+                }}
+                className={` shadow-md duration-500 hover:scale-105 hover:shadow-xl  h-[186px] grid justify-items-end bg-center w-[340px] rounded-xl`}
+              >
+                <p className="w-[69px] h-[35px] rounded-xl text-lg text-white mt-4 mr-4  font-semibold px-4 py-1 bg-[#18BA51]">
+                  20%
                 </p>
-                <p className="line-through text-lg"> {sale}</p>
+              </div>
+              <div className="gap-1 ">
+                <p className="text-xl font-semibold text-black">
+                  {foodcard.title}
+                </p>
+                <div className="flex gap-4">
+                  <p className="text-lg font-semibold text-[#18BA51] ">
+                    {price}₮{" "}
+                  </p>
+                  <p className="line-through text-lg"> {sale}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-    </>
+          ))}
+      </div>
+    </div>
   );
 }
