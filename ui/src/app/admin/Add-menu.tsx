@@ -1,15 +1,25 @@
 import { CloseIcon } from "@/components/icons/CloseIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function showModal() {
   document.getElementById("menu_modal").showModal();
 }
 
 export function AddMenu() {
+  const [foodName, setFoodName] = useState("");
+  const [foodCategory, setFoodCategoy] = useState("");
+  const [foodInredients, setFoodIngredients] = useState("");
+  const [foodPrice, setFoodPrice] = useState("");
+  const [foodSales, setFoodSales] = useState("");
+  const [salesPercentage, setSalesPercentage] = useState("");
+  const [foodImg, setFoodImg] = useState("");
+
+  // toggleModal(session, menu_modal, toggle = "toggle")
+
 
   const hideModal = () => {
     document.getElementById("menu_modal").close();
-  };
+  } 
 
   // add menu
   const newMenu = () => {
@@ -43,11 +53,12 @@ export function AddMenu() {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full max-w"
+                value={foodName}
               />
             </div>
 
             <div className="grid gap-2">
-              <p className="text-sm font-medium text-[#121316]">Хоолны нэр</p>
+              <p className="text-sm font-medium text-[#121316]" >Хоолны ангилал</p>
               <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn m-1">
                   Click
@@ -78,6 +89,7 @@ export function AddMenu() {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full max-w"
+                value={foodInredients}
               />
             </div>
             <div className="grid gap-2">
@@ -86,12 +98,13 @@ export function AddMenu() {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full max-w"
+                value={foodPrice}
               />
             </div>
 
             <div className="grid gap-2">
               <div className="flex gap-2">
-                <input type="checkbox" className="toggle toggle-xs" checked />
+                <input type="checkbox" className="toggle toggle-xs" />
                 <p className="text-sm font-medium text-[#121316]">
                   Хямдралтай эсэх
                 </p>
@@ -104,7 +117,7 @@ export function AddMenu() {
             </div>
             <div className="grid gap-2">
               <p className="text-sm font-medium text-[#121316]">Хоолны зураг</p>
-              <input type="image"></input>
+              <input type="image" src="img_submit.gif" alt="Submit" width="48" height="48"></input>
             </div>
           </div>
 
