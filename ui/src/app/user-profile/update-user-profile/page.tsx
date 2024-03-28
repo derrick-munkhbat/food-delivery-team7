@@ -30,10 +30,6 @@ export default function UpDateUserProfile() {
             </button>
           </div>
 
-          {/* <div className="invisible absolute bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10">
-            <CheckIcon />
-            <h1 className="text-green-800">Мэдээлэл амжилттай хадгалагдлаа</h1>
-          </div> */}
 
           <h1 className="text-3xl font-bold">УгтахБаяр</h1>
         </div>
