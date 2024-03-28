@@ -25,7 +25,7 @@ export default function UserProfile() {
     <>
       <div>
 
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[280px] p-5">
+        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
 

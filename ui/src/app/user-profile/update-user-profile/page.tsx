@@ -14,7 +14,7 @@ export default function UserProfile() {
       <div>
         
 
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[280px] p-5">
+        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
 
@@ -22,7 +22,7 @@ export default function UserProfile() {
               <EditIcon />
             </button>
           </div>
-          <div className="absolute bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5">
+          <div className="absolute bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10">
           <CheckIcon />
           <h1 className="text-green-800">Мэдээлэл амжилттай хадгалагдлаа</h1>
         </div>
