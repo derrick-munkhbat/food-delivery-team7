@@ -5,19 +5,23 @@ import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { CheckIcon } from "@/components/icons/CheckIcon";
+import { useState } from "react";
 
-export default function UserProfile() {
-  
+export default function UpDateUserProfile() {
+  const [message, setMessage] = useState('');
+
+  const handleSave = () => {
+    // TODO: Save data to server
+
+    setMessage('Мэдээлэл амжилттай хадгалагдлаа');
+  };
 
   return (
     <>
       <div>
-        <div className="flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5">
-          <CheckIcon />
-          <h1 className="text-green-800">Мэдээлэл амжилттай хадгалагдлаа</h1>
-        </div>
+        
 
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[280px] p-5">
+        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
 
@@ -25,6 +29,7 @@ export default function UserProfile() {
               <EditIcon />
             </button>
           </div>
+
 
           <h1 className="text-3xl font-bold">УгтахБаяр</h1>
         </div>
@@ -74,10 +79,15 @@ export default function UserProfile() {
             className="btn btn-enabled w-full  hover:bg-green-500 hover:text-white"
             role="button"
             aria-disabled="true"
+            onClick={handleSave}
           >
             Хадгалах
-          </button>
-
+          </button>{message && 
+            <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10">
+              <CheckIcon />
+              <h1 className="text-green-800">{message}</h1>
+            </div>}
+        
           
         </div>
       </div>

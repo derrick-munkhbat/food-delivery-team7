@@ -16,15 +16,21 @@ export default function UserProfile() {
   };
 
 
+
+  const editPage = () => {
+    window.location.href = "/user-profile/update-user-profile"
+  };
+
   return (
     <>
       <div>
 
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[280px] p-5">
+        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
 
-            <button id="upload" className="absolute right-0 bottom-0 bg-white border-2 rounded-full p-1"
+            <button className="absolute right-0 bottom-0 bg-white border-2 rounded-full p-1"
+            onClick={editPage}
             >
               <EditIcon />
               
@@ -43,7 +49,8 @@ export default function UserProfile() {
                 <p>УгтахБаяр</p>
               </div>
             </div>
-            <button className="p-3">
+            <button className="p-3"
+            onClick={editPage}>
               <EditIcon />
             </button>
           </div>
@@ -56,7 +63,8 @@ export default function UserProfile() {
                 <p>88883345</p>
               </div>
             </div>
-            <button className="p-3">
+            <button className="p-3"
+            onClick={editPage}>
               <EditIcon />
             </button>
           </div>
@@ -69,7 +77,8 @@ export default function UserProfile() {
                 <p>Ugtakhbayr@gmail.com</p>
               </div>
             </div>
-            <button className="p-3">
+            <button className="p-3"
+            onClick={editPage}>
               <EditIcon />
             </button>
           </div>

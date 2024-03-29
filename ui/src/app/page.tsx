@@ -1,8 +1,8 @@
 "use client";
 
-import { FastDeliveryCard } from "@/components/FastDeliveryCard";
-import { HomeSlider } from "../components/HomeSlider";
-import { HomeFoodCards } from "@/components/HomeFoodCards";
+import { FastDeliveryCard } from "@/components/homePage/FastDeliveryCard";
+import { HomeSlider } from "../components/homePage/HomeSlider";
+import { HomeFoodCards } from "@/components/homePage/HomeFoodCards";
 
 export default function Home() {
   return (

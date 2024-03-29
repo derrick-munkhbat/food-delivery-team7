@@ -4,22 +4,27 @@ import { HideIcon } from "../../../../../public/Icons/HideIcon";
 import { useState } from "react";
 
 export default function PassResetByNewPass() {
-  const [code, setCode] = useState("");
+  
+  const [message, setMessage] = useState('');
 
-  const getNewPass = (e) => {
-    console.log({ code });
-    e.preventDefault();
+  const handleSave = () => {
+    // TODO: Save data to server
+
+    setMessage('Нууц үг амжилттай солигдлоо');
+  };
+
+  const getNewPass = () => {
     window.location.href = "/sign-in"
   }
 
   return (
     <>
-      <div className="flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5">
+      {/* <div className="flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5">
         <CheckIcon />
         <h1 className="text-green-600">Нууц үг амжилттай солигдлоо</h1>
-      </div>
+      </div> */}
 
-      <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[310px] p-5">
+      <div className="flex flex-col gap-5 border-2 rounded mt-28 mb-5 justify-center items-center mx-auto w-[448px] h-[310px] p-5">
         <h1 className="text-2xl">Шинэ нууц үг зохиох </h1>
         <div className="flex flex-col w-full max-w-xs gap-3">
           <div className="flex flex-col gap-2">
@@ -61,10 +66,17 @@ export default function PassResetByNewPass() {
             className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
             role="button"
             aria-disabled="true"
-            onClick={getNewPass}
+            onClick={handleSave}
+            // onClick={getNewPass}
           >
             Үргэлжлүүлэх
-          </button>
+          </button>{message &&
+              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl mt-10 justify-center items-center mx-auto w-[448px] p-5 top-10">
+                <CheckIcon />
+                <h1 className="text-green-800">{message}</h1>
+              </div>
+          }
+          
         </div>
       </div>
     </>
