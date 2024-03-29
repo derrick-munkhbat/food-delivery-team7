@@ -1,11 +1,11 @@
 import { TermsOfServiceIcon } from "@/components/icons/TersmOfservise";
 
-export default function TermsOfService() {
+export default function PrivacyPolicy() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto w-[1100px] h-[1000px]">
       <div className="flex gap-3 py-5">
-        <TermsOfServiceIcon />
-        <h1 className="font-bold text-2xl">Үйлчилгээний нөхцөл</h1>
+      <TermsOfServiceIcon />
+        <h1 className="font-bold text-2xl">Нууцлалын бодлого</h1>
       </div>
       <p className="indent-8">
         Mstars Food delivery нь Mstars Lab компанийн интернэт худалдааны албан
@@ -33,7 +33,7 @@ export default function TermsOfService() {
         үйлчлүүлэхээсээ өмнө хүлээн зөвшөөрч баталгаажуулсаны үндсэн дээр
         хэрэгжинэ.
       </p>
-      <p className="indent-10">
+      <p className="indent-10 mb-10">
         {" "}
         Энэхүү үйлчилгээний нөхцлийн хэрэгжилтэнд MStars Lab /цаашид байгууллага
         гэх/ болон хэрэглэгч /цаашид хэрэглэгч гэх/ хамтран хяналт тавина.
@@ -43,9 +43,10 @@ export default function TermsOfService() {
         үйлчлүүлэхээсээ өмнө хүлээн зөвшөөрч баталгаажуулсаны үндсэн дээр
         хэрэгжинэ.
       </p>
-      <p className="indent-10">
-        Энэхүү үйлчилгээний нөхцлийн хэрэгжилтэнд MStars Lab /цаашид байгууллага
-        гэх/ болон хэрэглэгч /цаашид хэрэглэгч гэх/ хамтран хяналт тавина.
+      <p className="indent-10 mb-10">
+        Энэхүү үйлчилгээний нөхцлийн хэрэгжилтэнд MStars Lab /цаашид
+        байгууллага гэх/ болон хэрэглэгч /цаашид хэрэглэгч гэх/ хамтран хяналт
+        тавина.
       </p>
       <p className="indent-8">
         Mstars Food delivery нь Mstars Lab компанийн интернэт худалдааны албан
@@ -73,7 +74,7 @@ export default function TermsOfService() {
         үйлчлүүлэхээсээ өмнө хүлээн зөвшөөрч баталгаажуулсаны үндсэн дээр
         хэрэгжинэ.
       </p>
-      <p className="indent-10">
+      <p className="indent-10 mb-10">
         {" "}
         Энэхүү үйлчилгээний нөхцлийн хэрэгжилтэнд MStars Lab /цаашид байгууллага
         гэх/ болон хэрэглэгч /цаашид хэрэглэгч гэх/ хамтран хяналт тавина.
