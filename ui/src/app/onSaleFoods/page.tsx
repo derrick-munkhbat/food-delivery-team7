@@ -1,5 +1,6 @@
 "use client";
 
+import { AdminCard } from "@/components/cards/AdminCard";
 import { OnSaleCards } from "@/components/cards/OnSaleCard";
 import { Star } from "@/components/icons/Star";
 import { FaChevronRight } from "react-icons/fa";
@@ -19,6 +20,7 @@ export default function OnSaleFoods() {
           </div>
         </div>
         <OnSaleCards />
+        <AdminCard />
       </div>
     </div>
   );
