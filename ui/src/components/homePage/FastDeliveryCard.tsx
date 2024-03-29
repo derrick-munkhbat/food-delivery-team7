@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { Book } from "./icons/Book";
-import { Clock } from "./icons/Clock";
-import { Food } from "./icons/Food";
+import { Book } from "../icons/Book";
+import { Clock } from "../icons/Clock";
+import { Food } from "../icons/Food";
 import React from "react";
 
 export function FastDeliveryCard() {
@@ -33,7 +32,7 @@ export function FastDeliveryCard() {
   {
     return (
       <div className="flex sm:p-8 md:p-25 xl:p-32">
-        <div className="mx-auto  gap-[47px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 ">
+        <div className="mx-auto  gap-[47px] grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 ">
           {cards.slice(currentIndex, currentIndex + 4).map((card, index) => (
             <div
               className="max-xl:w-72 w-[340px] h-[155px] border rounded-xl shadow-xl  flex p-4 "

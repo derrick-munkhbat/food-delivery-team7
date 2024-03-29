@@ -1,6 +1,6 @@
 import React from "react";
-import { OnSaleCards } from "./cards/OnSaleCard";
-import { Star } from "./icons/Star";
+import { OnSaleCards } from "../cards/OnSaleCard";
+import { Star } from "../icons/Star";
 import { FaChevronRight } from "react-icons/fa";
 
 export function HomeFoodCards() {
@@ -26,8 +26,8 @@ export function HomeFoodCards() {
   ];
 
   return (
-    <>
-      <div className="justify-between w-full mx-auto flex gap-10 container flex-col pr-14 pl-5  py-5 xl:py-[8px]  xl:px-[5px]">
+    <div className="flex sm:p-8 md:p-25 xl:p-32">
+      <div className=" flex-col mx-auto  gap-[47px] grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-1">
         {MainMenuFoods.slice(currentIndex, currentIndex + 4).map(
           (MainMenuFoods, index) => (
             <div>
@@ -48,6 +48,6 @@ export function HomeFoodCards() {
           )
         )}
       </div>
-    </>
+    </div>
   );
 }

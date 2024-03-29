@@ -27,7 +27,7 @@ export function OnSaleCards() {
 
   return (
     <div className=" flex sm:p-8 md:p-30">
-      <div className="w-fit mx-auto grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-items-center justify-center md:gap-x-[50px] xl:gap-[115px≈] mt-10 mb-5">
+      <div className="w-fit mx-auto grid grid-cols-1 xl:grid-cols-4 sm:grid-cols-2 justify-items-center justify-center sm:gap-x-[50px] xl:gap-[115px] mt-10 mb-5">
         {foodcards
           .slice(currentIndex, currentIndex + 4)
           .map((foodcard, index) => (
