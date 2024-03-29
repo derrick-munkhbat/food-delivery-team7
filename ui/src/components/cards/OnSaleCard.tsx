@@ -37,9 +37,9 @@ export function OnSaleCards() {
             >
               <div
                 style={{
-                  backgroundImage: `url(${foodcard.image}`,
+                  backgroundImage: `url(${foodcard.image} `,
                 }}
-                className={` shadow-md duration-500 hover:scale-105 hover:shadow-xl  h-[186px] grid justify-items-end bg-center max-xl:w-72 w-[340px] rounded-xl`}
+                className="shadow-md duration-500 hover:scale-105 hover:shadow-xl object-cover h-[186px] grid justify-items-end bg-center max-xl:w-72 w-[340px] rounded-xl"
               >
                 <p className="w-[69px] h-[35px] rounded-xl text-lg text-white mt-4 mr-4  font-semibold px-4 py-1 bg-[#18BA51]">
                   20%
