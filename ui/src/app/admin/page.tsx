@@ -3,9 +3,8 @@ import React from "react";
 
 import { BigAddIcon } from "@/components/icons/BigAddIcon";
 import { AddCategory } from "./AddCategory";
-import { AddMenu } from "./Add-menu";
-import { showModal } from "./Add-menu";
-
+import { AddMenu } from "./AddMenu";
+import { showModal } from "./AddMenu";
 import { DeleteEdit } from "./DeleteEdit";
 
 export default function AdminMenu() {

@@ -9,6 +9,7 @@ export function showModal() {
 }
 
 export function AddMenu() {
+
   interface Menu {
     foodName: string;
     foodCategory: string;
@@ -18,11 +19,6 @@ export function AddMenu() {
     foodImg: string;
   }
 
-  interface Options {
-    value: string;
-    label: string;
-  }
-
   const [foodName, setFoodName] = useState("");
   const [foodCategory, setFoodCategory] = useState("");
   const [foodIngredients, setFoodIngredients] = useState("");
@@ -30,33 +26,35 @@ export function AddMenu() {
   const [foodSales, setFoodSales] = useState("");
   const [salesPercentage, setSalesPercentage] = useState("");
   const [foodImg, setFoodImg] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState<any>(null);
 
   const hideModal = () => {
     document.getElementById("menu_modal").close();
   };
   // add menu
   const newMenu = async () => {
-    if (
-      !foodName ||
-      !foodCategory ||
-      !foodIngredients ||
-      !foodPrice ||
-      !salesPercentage ||
-      !foodImg
-    ) {
-      // show alert screen
-      return;
-    }
+    // if (
+    //   !foodName ||
+    //   !foodCategory ||
+    //   !foodIngredients ||
+    //   !foodPrice ||
+    //   !salesPercentage ||
+    //   !foodImg
+    // ) {
+    //   // show alert screen
+    //   return;
+    // }
 
-    const newMenu = {
+    const newMenu: Menu = {
       foodName,
-      foodCategory: selectedCategory.value,
+      foodCategory: selectedCategory ? selectedCategory.value : '',
       foodIngredients,
       foodPrice,
       salesPercentage,
       foodImg,
     };
+
+    console.log(newMenu);
 
     await axios
       .post("http://localhost:3000/menu/create", { ...newMenu })
@@ -76,7 +74,7 @@ export function AddMenu() {
     setFoodImg("");
   };
 
-  const handleFoodName = (event) => {
+  const handleFoodName = (event ) => {
     setFoodName(event?.target.value);
   };
 
@@ -184,7 +182,7 @@ export function AddMenu() {
                 placeholder="Type here"
                 className="input input-bordered w-full max-w"
                 onChange={handleSalesPercentage}
-                value={foodSales}
+                value={salesPercentage}
               />
             </div>
             <div className="grid gap-2">
