@@ -26,7 +26,7 @@ export function HomeFoodCards() {
   ];
 
   return (
-    <div className="flex sm:p-8 md:p-25 xl:p-32">
+    <div className="flex sm:p-8 md:p-25 xl:p-25 2xl:p-32">
       <div className=" flex-col mx-auto  gap-[47px] grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-1">
         {MainMenuFoods.slice(currentIndex, currentIndex + 4).map(
           (MainMenuFoods, index) => (
