@@ -5,7 +5,7 @@ import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { CheckIcon } from "@/components/icons/CheckIcon";
-import { use, useState } from "react";
+import { useState } from "react";
 
 export default function UpDateUserProfile() {
   const [message, setMessage] = useState("");
@@ -40,7 +40,7 @@ export default function UpDateUserProfile() {
   return (
     <>
       <div>
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 items-center mx-auto w-[448px] h-[224px] p-5">
+        <div className="flex flex-col gap-5 mt-20 mb-5 items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
 
@@ -52,7 +52,7 @@ export default function UpDateUserProfile() {
           <h1 className="text-3xl font-bold">УгтахБаяр</h1>
         </div>
 
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5">
+        <div className="flex flex-col gap-5 mt-5 mb-20 justify-center items-center mx-auto w-[448px] p-5">
           <div className="flex bg-slate-200 rounded p-2 w-full items-center">
             <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
               <UserIcon />
@@ -102,7 +102,7 @@ export default function UpDateUserProfile() {
             Хадгалах
           </button>
           {message && (
-            <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10">
+            <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl mt-20 mb-5 justify-center items-center mx-auto w-[370px] p-5 top-10">
               <CheckIcon />
               <h1 className="text-green-800">{message}</h1>
             </div>

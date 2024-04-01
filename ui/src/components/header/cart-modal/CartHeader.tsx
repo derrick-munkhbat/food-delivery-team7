@@ -6,7 +6,7 @@ export function CartHeader() {
     <div className="flex w-full h-18 items-center self-start border-b-2">
       <button
         className="flex p-3"
-        //   onClick={() => setIsShowModal(false)}
+        
       >
         <ArrowIcon />
       </button>

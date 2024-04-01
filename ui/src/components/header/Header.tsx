@@ -10,8 +10,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/header/MainMenu";
 import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
 import CartCard from "./cart-modal/CartCard";
-import { CartHeader } from "./cart-modal/CartHeader";
-import { CartFooter } from "./cart-modal/CartFooter";
+import { ArrowIcon } from "@/components/icons/ArrowIcon";
 
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
@@ -50,19 +49,6 @@ export function Header() {
         >
           <SagsIcon />
           <p>Сагс</p>
-          {/* MODAL */}
-          {/* <div className="fixed inset-0 bg-black bg-opacity-30 delay-1000 z-10">
-              <div className="fixed bg-white transition-all h-auto top-0 bottom-0 right-0 flex flex-col justify-between items-center p-5 gap-5">
-                <CartHeader />
-                <div className="flex flex-col mb-auto gap-5">
-                  <CartCard />
-                  <CartCard />
-                  <CartCard />
-                  <CartCard />
-                </div>
-                <CartFooter />
-              </div>
-            </div> */}
         </button>
         {visible && <div className="fixed bg-slate-400/70 inset-0"></div>}
         <div
@@ -70,11 +56,18 @@ export function Header() {
             visible ? "right-0" : "-right-full"
           }`}
         >
-          <div>
-            <CartHeader />
+          <div className="flex flex-col justify-between">
+            {/* CART HEADERT */}
+            <div className="flex w-full h-18 items-center border-b-2 mb-3">
+              <button className="flex p-3" onClick={closeCart}>
+                <ArrowIcon />
+              </button>
+              <p className="flex w-full items-center justify-center text-2xl p-3">
+                Таны сагс
+              </p>
+            </div>
 
-            <button onClick={closeCart}>close</button>
-            <div className="flex flex-col gap-5 scroll-auto">
+            <div className="flex flex-col gap-3 h-[800px] overflow-scroll ">
               <CartCard />
               <CartCard />
               <CartCard />
@@ -83,7 +76,16 @@ export function Header() {
               <CartCard />
             </div>
 
-            <CartFooter />
+            {/* CART FOOTER */}
+            <div className="flex items-center w-full h-[172px] border-t-2 mt-3">
+              <div className="flex flex-col w-1/2 items-center">
+                <p className="font-normal text-slate-600">Нийт төлөх дүн</p>
+                <p>34,800₮</p>
+              </div>
+              <div className="btn btn-enabled w-1/2 max-w-xs hover:bg-green-500">
+                <button>Захиалах</button>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -30,7 +30,7 @@ export default function UserProfile() {
   return (
     <>
       <div>
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[224px] p-5">
+        <div className="flex flex-col gap-5 border-2 rounded mt-20 mb-5 justify-center items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
 
@@ -45,7 +45,7 @@ export default function UserProfile() {
           <h1 className="text-3xl font-bold">УгтахБаяр</h1>
         </div>
 
-        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5">
+        <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-20 justify-center items-center mx-auto w-[448px] p-5">
           <div className="flex bg-slate-200 rounded p-2 w-full items-center">
             <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
               <UserIcon />
