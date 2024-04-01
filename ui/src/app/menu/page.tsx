@@ -100,8 +100,8 @@ const Menu: FC = () => {
               <div className="">
                 <img
                   onClick={handleOpenModal}
-                  className="cover cursor-grabbing"
-                  src="../images/Image.svg"
+                  className="cover cursor-grabbing ease-in duration-300"
+                  src={item.image}
                 />
                 <p className="ml-2 font-bold">Breakfast</p>
                 <div key={item.id} className="flex gap-4">

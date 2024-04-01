@@ -1,12 +1,12 @@
 export const CardData = [
-  { id: "1", name: "Breakfast", price: 12800, oldPrice: 16800 },
-  { id: "2", name: "Breakfast", price: 12800, oldPrice: 16800 },
-  { id: "3", name: "Breakfast", price: 12800, oldPrice: 16800 },
-  { id: "4", name: "Breakfast", price: 12800, oldPrice: 16800 },
-  { id: "5", name: "Breakfast", price: 12800, oldPrice: 16800 },
-  { id: "6", name: "Breakfast", price: 12800, oldPrice: 16800 },
-  { id: "7", name: "Breakfast", price: 12800, oldPrice: 16800 },
-  { id: "8", name: "Breakfast", price: 12800, oldPrice: 16800 },
+  { id: "1", name: "Өглөөний хоол", price: 12800, oldPrice: 16800 ,  image: "../images/Image.svg"},
+  { id: "2", name: "Зайрмаг", price: 12800, oldPrice: 16800, image: "../images/Icecream.svg",},
+  { id: "3", name: "Өглөөний хоол", price: 12800, oldPrice: 16800, image: "../images/Icecream.svg", },
+  { id: "4", name: "Breakfast", price: 12800, oldPrice: 16800 ,  image: "../images/Image.svg" },
+  { id: "5", name: "Breakfast", price: 12800, oldPrice: 16800 ,  image: "../images/Image.svg" },
+  { id: "6", name: "Breakfast", price: 12800, oldPrice: 16800 ,  image: "../images/Image.svg" },
+  { id: "7", name: "Breakfast", price: 12800, oldPrice: 16800 ,  image: "../images/Image.svg" },
+  { id: "8", name: "Breakfast", price: 12800, oldPrice: 16800 ,  image: "../images/Image.svg"},
 ];
 export function Card() {
   const price = 4800;
