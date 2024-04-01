@@ -34,7 +34,7 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
             <div className="h-[500px] hidden md:flex md:w-1/2 ">
               <img
                 className="rounded-md w-[500px]  h-[460px] cover"
-                src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=2048x2048&w=is&k=20&c=t9_zg20wVbrBoGn0tw__1fFq4ykeKs15TQQ3x-ehVC0="
+                src="../images/pizza.svg"
                 alt="Shoes"
               />
             </div>
@@ -46,7 +46,7 @@ const Modal: FC<ModalProps> = ({ isOpen, handleClose, children }) => {
               </div>
               <div className="mt-4 w-11/12 mx-auto">
                 <h1 className="font-semibold lg:text-3xl lg:font-bold">
-                  Breakfast
+                  Main Pizza
                 </h1>
                 <p className="lg:font-semibold text-green-600">34,800$</p>
                 <p className="mt-8 font-semibold">Орц</p>
@@ -114,10 +114,10 @@ const Menu: FC = () => {
               <div className="">
                 <img
                   onClick={handleOpenModal}
-                  className="cover cursor-grabbing"
-                  src="../images/Image.svg"
+                  className="cover cursor-grabbing ease-in duration-300"
+                  src={item.image}
                 />
-                <p className="ml-2 font-bold">Breakfast</p>
+                <p className="ml-2 font-bold">{item.name}</p>
                 <div key={item.id} className="flex gap-4">
                   <p className="ml-2 font-semibold text-green-600">
                     {item.price}

@@ -5,11 +5,18 @@ export default function OrderDetails() {
         <div>
           <h1 className="font-normal text-xl">Захиалгын дэлгэрэнгүй</h1>
         </div>
-        <div className="flex  mt-5 p-4 gap-5">
+        <div className="flex mt-5 p-4 gap-5 justify-between">
           <div className="flex">
             <p>Main pizza</p>
-            <p>(1)</p>
           </div>
+          <p>(1)</p>
+        </div>
+        <div className="divider m-0"></div>
+        <div className="flex mt-5 p-4 gap-5 justify-between">
+          <div className="flex">
+            <p>Хулууны зутан шөл</p>
+          </div>
+          <p>(1)</p>
         </div>
         <div className="divider m-0"></div>
       </div>

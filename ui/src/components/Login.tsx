@@ -13,6 +13,7 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
+  // const [cursor , handleCursor] = useState("not-allowed")
 
   function handleToggle() {
     if (type === "password") {
@@ -84,7 +85,8 @@ export function Login() {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center mx-auto px-4 py-4 text-lg  text-gray-400 transition-colors duration-300 bg-gray-200 rounded-md shadow hover:bg-green-600 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
+                className="w-full flex justify-center  mx-auto px-4 py-4 text-lg  text-gray-400 transition-colors duration-300 bg-gray-200 rounded-md shadow hover:bg-green-600 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
+                // style={{cursor:cursor}}
               >
                 Нэвтрэх
               </button>
@@ -99,6 +101,7 @@ export function Login() {
                 <button
                   type="submit"
                   className="w-full flex justify-center mx-auto px-4 py-4 text-lg   transition-colors duration-300 border border-green-400 text-black rounded-md shadow hover:bg-green-400 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
+
                 >
                   Бүртгүүлэх
                 </button>
