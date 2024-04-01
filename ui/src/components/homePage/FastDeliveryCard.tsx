@@ -1,3 +1,4 @@
+"use client"
 import { Book } from "../icons/Book";
 import { Clock } from "../icons/Clock";
 import { Food } from "../icons/Food";
