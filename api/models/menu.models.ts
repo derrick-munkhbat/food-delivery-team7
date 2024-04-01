@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const { Schema } = mongoose;
 
 const menuSchema = new Schema({
@@ -8,6 +9,6 @@ const menuSchema = new Schema({
   foodPrice: Number,
   foodSale: Number,
   foodImg: String,
-  });
+});
 
 export const MenuModel = mongoose.model("Menu", menuSchema);
