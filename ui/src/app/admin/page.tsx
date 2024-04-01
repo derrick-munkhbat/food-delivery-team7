@@ -26,11 +26,11 @@ export default function AdminMenu() {
               <DeleteEdit />
             </button>
             <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
-              <p className="text-lg font-medium">Breakfast</p>
+              <p className="text-lg font-medium">Main Course</p>
               <DeleteEdit />
             </button>
             <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
-              <p className="text-lg font-medium">Breakfast</p>
+              <p className="text-lg font-medium">Desserts</p>
               <DeleteEdit />
             </button>
             <AddCategory />

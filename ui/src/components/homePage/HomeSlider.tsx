@@ -2,7 +2,7 @@ import { Card } from "@/components/cards/Card";
 
 export function HomeSlider() {
   return (
-    <div className="w-full h-[788px] flex justify-between items-center bg-[url('/images/bg-image.png')] bg-[#18BA51] relative overflow-hidden">
+    <div className="w-full h-[788px] flex justify-between items-center bg-[url('/images/bg-image.png')] bg-[#18BA51] overflow-hidden">
       <div className="container flex justify-between mx-auto  items-center">
         <div className="w-[384px] gap-10 ">
           <h1 className="text-[55px] text-balance font-semibold mb-[23px]	 text-white">

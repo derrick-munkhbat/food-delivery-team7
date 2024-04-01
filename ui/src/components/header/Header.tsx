@@ -16,19 +16,24 @@ import { CartFooter } from "./cart-modal/CartFooter";
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
 export function Header() {
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [visible, setVisible] = useState(false);
+  function openCart() {
+    // open=true;
+    setVisible(true);
+  }
 
-  const toggleModal = () => {
-    setIsShowModal(!isShowModal);
-  };
+  function closeCart() {
+    // open=false;
+    setVisible(false);
+  }
 
   return (
-    <div className="top-0 z-10 bg-white  h-[57px] justify-between  w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
+    <div className="top-0 z-10  h-[57px] justify-between  w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
       <div className=" font-bold flex gap-8 justify-center items-center">
         <a href="/">
           <HeaderLogo />
         </a>
-        <div className="flex items-center justify-center flex-1 max-sm:hidden">
+        <div className="flex items-center justify-center flex-1 max-lg:hidden">
           <Mainmenu />
         </div>
       </div>
@@ -40,15 +45,13 @@ export function Header() {
           </label>
         </div>
         <button
-          onClick={toggleModal}
+          onClick={openCart}
           className="flex gap-3 font-bold flex-1 max-sm:hidden  items-center "
         >
           <SagsIcon />
           <p>Сагс</p>
           {/* MODAL */}
-          {isShowModal && (
-            
-            <div className="fixed inset-0 bg-black bg-opacity-30 delay-1000 z-10">
+          {/* <div className="fixed inset-0 bg-black bg-opacity-30 delay-1000 z-10">
               <div className="fixed bg-white transition-all h-auto top-0 bottom-0 right-0 flex flex-col justify-between items-center p-5 gap-5">
                 <CartHeader />
                 <div className="flex flex-col mb-auto gap-5">
@@ -59,9 +62,31 @@ export function Header() {
                 </div>
                 <CartFooter />
               </div>
-            </div>
-          )}
+            </div> */}
         </button>
+        {visible && <div className="fixed bg-slate-400/70 inset-0"></div>}
+        <div
+          className={`z-10 fixed top-0 bottom-0 w-[586] transition-all bg-white flex pl-5 pr-5 ${
+            visible ? "right-0" : "-right-full"
+          }`}
+        >
+          <div>
+            <CartHeader />
+
+            <button onClick={closeCart}>close</button>
+            <div className="flex flex-col gap-5 scroll-auto">
+              <CartCard />
+              <CartCard />
+              <CartCard />
+              <CartCard />
+              <CartCard />
+              <CartCard />
+            </div>
+
+            <CartFooter />
+          </div>
+        </div>
+
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
           <NevtrehIcon />
           <a href="/sign-in">Нэвтрэх</a>

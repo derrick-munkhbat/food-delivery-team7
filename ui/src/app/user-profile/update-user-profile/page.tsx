@@ -5,22 +5,41 @@ import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { CheckIcon } from "@/components/icons/CheckIcon";
-import { useState } from "react";
+import { use, useState } from "react";
 
 export default function UpDateUserProfile() {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSave = () => {
-    // TODO: Save data to server
+    setMessage("Мэдээлэл амжилттай хадгалагдлаа");
+    // need await function to go back to user profile page after few secods
+    // window.location.href = "/user-profile/update-user-profile";
+  };
 
-    setMessage('Мэдээлэл амжилттай хадгалагдлаа');
+  const handleEditName = () => {
+    const enteredName = prompt("Please enter your new name");
+    setName(enteredName);
+    console.log(name);
+  };
+
+  const handleEditPhoneNumber = () => {
+    const enteredPhoneNumber = prompt("Please enter your new phone number");
+    setPhoneNumber(enteredPhoneNumber);
+    console.log(phoneNumber);
+  };
+
+  const handleEditEmail = () => {
+    const enteredEmail = prompt("Please enter your new email");
+    setEmail(enteredEmail);
+    console.log(email);
   };
 
   return (
     <>
       <div>
-        
-
         <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
@@ -29,11 +48,6 @@ export default function UpDateUserProfile() {
               <EditIcon />
             </button>
           </div>
-
-          {/* <div className="invisible absolute bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10">
-            <CheckIcon />
-            <h1 className="text-green-800">Мэдээлэл амжилттай хадгалагдлаа</h1>
-          </div> */}
 
           <h1 className="text-3xl font-bold">УгтахБаяр</h1>
         </div>
@@ -47,7 +61,7 @@ export default function UpDateUserProfile() {
                 <p>УгтахБаяр</p>
               </div>
             </div>
-            <button className="p-3">
+            <button className="p-3" onClick={handleEditName}>
               <EditIcon />
             </button>
           </div>
@@ -60,7 +74,7 @@ export default function UpDateUserProfile() {
                 <p>88883345</p>
               </div>
             </div>
-            <button className="p-3">
+            <button className="p-3" onClick={handleEditPhoneNumber}>
               <EditIcon />
             </button>
           </div>
@@ -73,7 +87,7 @@ export default function UpDateUserProfile() {
                 <p>Ugtakhbayr@gmail.com</p>
               </div>
             </div>
-            <button className="p-3">
+            <button className="p-3" onClick={handleEditEmail}>
               <EditIcon />
             </button>
           </div>
@@ -86,14 +100,13 @@ export default function UpDateUserProfile() {
             onClick={handleSave}
           >
             Хадгалах
-          </button>{message && <div className="alert alert-success absolute bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10"><CheckIcon />
-          <h1 className="text-green-800">{message}</h1>
-          
-          
-          
-          </div>}
-        
-          
+          </button>
+          {message && (
+            <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl mt-5 mb-5 justify-center items-center mx-auto w-[448px] p-5 top-10">
+              <CheckIcon />
+              <h1 className="text-green-800">{message}</h1>
+            </div>
+          )}
         </div>
       </div>
     </>

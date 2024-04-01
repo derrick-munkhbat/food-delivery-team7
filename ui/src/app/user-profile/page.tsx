@@ -10,30 +10,35 @@ import { useState } from "react";
 
 export default function UserProfile() {
   const [isShowModal, setIsShowModal] = useState(false);
-  
+
   const toggleModal = () => {
     setIsShowModal(!isShowModal);
   };
 
-
-
   const editPage = () => {
-    window.location.href = "/user-profile/update-user-profile"
+    window.location.href = "/user-profile/update-user-profile";
+  };
+
+  const logOut = () => {
+    window.location.href = "/";
+  };
+
+  const jumpToOrderDetails = () => {
+    window.location.href = "/orderDetails";
   };
 
   return (
     <>
       <div>
-
         <div className="flex flex-col gap-5 border-2 rounded mt-5 mb-5 justify-center items-center mx-auto w-[448px] h-[224px] p-5">
           <div className="relative">
             <img src="/images/user-photo.jpg" alt="profile picture" />
 
-            <button className="absolute right-0 bottom-0 bg-white border-2 rounded-full p-1"
-            onClick={editPage}
+            <button
+              className="absolute right-0 bottom-0 bg-white border-2 rounded-full p-1"
+              onClick={editPage}
             >
               <EditIcon />
-              
             </button>
           </div>
 
@@ -49,8 +54,7 @@ export default function UserProfile() {
                 <p>УгтахБаяр</p>
               </div>
             </div>
-            <button className="p-3"
-            onClick={editPage}>
+            <button className="p-3" onClick={editPage}>
               <EditIcon />
             </button>
           </div>
@@ -63,8 +67,7 @@ export default function UserProfile() {
                 <p>88883345</p>
               </div>
             </div>
-            <button className="p-3"
-            onClick={editPage}>
+            <button className="p-3" onClick={editPage}>
               <EditIcon />
             </button>
           </div>
@@ -77,14 +80,15 @@ export default function UserProfile() {
                 <p>Ugtakhbayr@gmail.com</p>
               </div>
             </div>
-            <button className="p-3"
-            onClick={editPage}>
+            <button className="p-3" onClick={editPage}>
               <EditIcon />
             </button>
           </div>
 
-          
-          <button className="flex rounded p-2 w-full items-center gap-3 border-2">
+          <button
+            className="flex rounded p-2 w-full items-center gap-3 border-2"
+            onClick={jumpToOrderDetails}
+          >
             <TimeIcon />
             <p>Захиалгын түүх</p>
           </button>
@@ -103,7 +107,10 @@ export default function UserProfile() {
                     Та системээс гарахдаа итгэлтэй байна уу?
                   </h1>
                   <div className="flex bg-green-200 justify-around w-full h-full text-2xl rounded-b-xl">
-                    <button className="hover:bg-green-500 font-bold w-1/2 rounded-b-xl">
+                    <button
+                      className="hover:bg-green-500 font-bold w-1/2 rounded-b-xl"
+                      onClick={logOut}
+                    >
                       Тийм
                     </button>
                     <button
