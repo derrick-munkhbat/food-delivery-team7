@@ -32,7 +32,7 @@ export default function UpDateUserProfile() {
   };
 
   const handleEditEmail = () => {
-    const enteredEmail = prompt("Please enter your new name");
+    const enteredEmail = prompt("Please enter your new email");
     setEmail(enteredEmail);
     console.log(email);
   };
