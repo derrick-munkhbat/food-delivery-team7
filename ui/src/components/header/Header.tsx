@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HeaderLogo } from "../../../public/Headerlogo";
 import { NevtrehIcon } from "../../../public/Nevtrehicon";
 import { SagsIcon } from "../../../public/SagsIcon";
@@ -16,15 +16,27 @@ import { ArrowIcon } from "@/components/icons/ArrowIcon";
 
 export function Header() {
   const [visible, setVisible] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   function openCart() {
     // open=true;
     setVisible(true);
+    setDrawerOpen(true);
   }
 
   function closeCart() {
     // open=false;
     setVisible(false);
+    setDrawerOpen(false);
   }
+
+  useEffect(() => {
+    if (drawerOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [drawerOpen]);
 
   return (
     <div className="top-0 z-10  h-[57px] justify-between  w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
