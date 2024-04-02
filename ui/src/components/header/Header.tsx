@@ -50,9 +50,9 @@ export function Header() {
           <SagsIcon />
           <p>Сагс</p>
         </button>
-        {visible && <div className="fixed bg-slate-400/70 inset-0"></div>}
+        {visible && <div className="z-10 fixed bg-slate-400/70 inset-0"></div>}
         <div
-          className={`z-10 fixed top-0 bottom-0 w-[586] transition-all bg-white flex pl-5 pr-5 ${
+          className={`z-10 fixed top-0 bottom-0 w-[586px] transition-all bg-white flex pl-5 pr-5 max-sm:hidden ${
             visible ? "right-0" : "-right-full"
           }`}
         >
