@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <div className="bg-[#18BA51]">
       <div className="footer footer-center bg-footer-texture">
-        <div className="container grid gap-10 mx-auto p-[120px]">
+        <div className="container grid gap-10 mx-auto py-[120px]">
           <LogoMain />
           <div className="flex flex-col gap-2 lg:justify-between lg:flex-row w-full">
             {menuItems.map((item) => (

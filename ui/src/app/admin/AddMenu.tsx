@@ -10,7 +10,7 @@ export function showModal() {
 
 export function AddMenu() {
 
-  interface Menu {
+  type Menu = {
     foodName: string;
     foodCategory: string;
     foodIngredients: string;
@@ -20,7 +20,6 @@ export function AddMenu() {
   }
 
   const [foodName, setFoodName] = useState("");
-  const [foodCategory, setFoodCategory] = useState("");
   const [foodIngredients, setFoodIngredients] = useState("");
   const [foodPrice, setFoodPrice] = useState("");
   const [foodSales, setFoodSales] = useState("");
@@ -66,7 +65,6 @@ export function AddMenu() {
 
   const handleClear = () => {
     setFoodName("");
-    setFoodCategory("");
     setFoodIngredients("");
     setFoodPrice("");
     setFoodSales("");
