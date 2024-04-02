@@ -9,7 +9,7 @@ import { Menu } from "../icons/Menuicon";
 import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/header/MainMenu";
 import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
-import CartCard from "./cart-modal/CartCard";
+import CartCard from "./cart-drawer/CartCard";
 import { ArrowIcon } from "@/components/icons/ArrowIcon";
 
 // import { Mainmenu } from "@/components/DATA/MainMenu";
