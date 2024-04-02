@@ -10,7 +10,7 @@ export default function PassResetByCode() {
   const [code, setCode] = useState("");
   const [hider, setHider] = useState(() => eyeOff);
 
-  const getCode = (e) => {
+  const getCode = () => {
     window.location.href = "/reset-pass/otp/new-pass";
   };
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function PassResetByEmail() {
   const [email, setEmail] = useState("");
 
-  const getEmail = (e) => {
+  const getEmail = () => {
     window.location.href = "/reset-pass/otp";
   };
 
