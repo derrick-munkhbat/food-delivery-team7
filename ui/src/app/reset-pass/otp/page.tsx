@@ -6,7 +6,7 @@ import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 
 export default function PassResetByCode() {
-  const [show, setShow] = useState("password");
+  const [show, setShow] = useState("");
   const [code, setCode] = useState("");
   const [hider, setHider] = useState(() => eyeOff);
 
@@ -37,7 +37,7 @@ export default function PassResetByCode() {
         <div className="flex flex-col gap-2">
           <p className="text-sm">Нууц үг сэргээх код</p>
 
-          <div className="relative flex justify-center flex-col ">
+          <div className="relative flex justify-center flex-col">
             <input
               placeholder=""
               type={show}
@@ -51,9 +51,9 @@ export default function PassResetByCode() {
               data-hs-toggle-password='{
         "target": "#hs-toggle-password"
         }'
-              className="absolute top-0 end-0 flex items-center p-3.5 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             >
-              <Icon icon={hider} size={25} />
+              <Icon icon={hider} size={17} />
             </button>
           </div>
         </div>

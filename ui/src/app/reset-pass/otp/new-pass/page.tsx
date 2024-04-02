@@ -58,9 +58,9 @@ export default function PassResetByNewPass() {
                 data-hs-toggle-password='{
         "target": "#hs-toggle-password"
         }'
-                className="absolute top-0 end-0 flex items-center p-3.5 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
               >
-                <Icon icon={hider} size={25} />
+                <Icon icon={hider} size={17} />
               </button>
             </div>
 
@@ -76,9 +76,9 @@ export default function PassResetByNewPass() {
                 data-hs-toggle-password='{
         "target": "#hs-toggle-password"
         }'
-                className="absolute top-0 end-0 flex items-center p-3.5 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
               >
-                <Icon icon={hider} size={25} />
+                <Icon icon={hider} size={17} />
               </button>
             </div>
           </div>
