@@ -9,9 +9,18 @@ import { useState } from "react";
 
 export default function UpDateUserProfile() {
   const [message, setMessage] = useState("");
+
   const [name, setName] = useState("");
+  const [nameEditing, setNameEditing] = useState(false);
+  const [tempName, setTempName] = useState("");
+
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumberEditing, setPhoneNumberEditing] = useState(false);
+  const [tempPhoneNumber, setTempPhoneNumber] = useState("");
+
   const [email, setEmail] = useState("");
+  const [emailEditing, setEmailEditing] = useState(false);
+  const [tempEmail, setTempEmail] = useState("");
 
   const handleSave = () => {
     setMessage("Мэдээлэл амжилттай хадгалагдлаа");
@@ -20,21 +29,33 @@ export default function UpDateUserProfile() {
   };
 
   const handleEditName = () => {
-    const enteredName = prompt("Please enter your new name");
-    setName(enteredName);
-    console.log(name);
+    setNameEditing(true);
+    setTempName(name);
+  };
+
+  const handleSaveName = () => {
+    setNameEditing(false);
+    setName(tempName);
   };
 
   const handleEditPhoneNumber = () => {
-    const enteredPhoneNumber = prompt("Please enter your new phone number");
-    setPhoneNumber(enteredPhoneNumber);
-    console.log(phoneNumber);
+    setPhoneNumberEditing(true);
+    setTempPhoneNumber(phoneNumber);
+  };
+
+  const handleSavePhoneNumber = () => {
+    setPhoneNumberEditing(false);
+    setPhoneNumber(tempPhoneNumber);
   };
 
   const handleEditEmail = () => {
-    const enteredEmail = prompt("Please enter your new email");
-    setEmail(enteredEmail);
-    console.log(email);
+    setEmailEditing(true);
+    setTempEmail(email);
+  };
+
+  const handleSaveEmail = () => {
+    setEmailEditing(false);
+    setEmail(tempEmail);
   };
 
   return (
@@ -49,7 +70,7 @@ export default function UpDateUserProfile() {
             </button>
           </div>
 
-          <h1 className="text-3xl font-bold">УгтахБаяр</h1>
+          <h1 className="text-3xl font-bold">{name}</h1>
         </div>
 
         <div className="flex flex-col gap-5 mt-5 mb-20 justify-center items-center mx-auto w-[448px] p-5">
@@ -57,12 +78,27 @@ export default function UpDateUserProfile() {
             <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
               <UserIcon />
               <div>
-                <p className="text-slate-400">Таны нэр</p>
-                <p>УгтахБаяр</p>
+                {nameEditing ? (
+                  <input
+                    placeholder="Нэр..."
+                    type="text"
+                    value={tempName}
+                    onChange={(e) => setTempName(e.target.value)}
+                    className="bg-slate-200 rounded p-2 w-full items-center"
+                  />
+                ) : (
+                  <>
+                    <p className="text-slate-400">Нэр</p>
+                    <p>{name}</p>
+                  </>
+                )}
               </div>
             </div>
-            <button className="p-3" onClick={handleEditName}>
-              <EditIcon />
+            <button
+              className="p-3"
+              onClick={nameEditing ? handleSaveName : handleEditName}
+            >
+              {nameEditing ? <CheckIcon /> : <EditIcon />}
             </button>
           </div>
 
@@ -70,12 +106,31 @@ export default function UpDateUserProfile() {
             <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
               <PhoneIcon />
               <div>
-                <p className="text-slate-400">Утасны дугаар</p>
-                <p>88883345</p>
+                {phoneNumberEditing ? (
+                  <input
+                    placeholder="Утасны дугаар..."
+                    type="text"
+                    value={tempPhoneNumber}
+                    onChange={(e) => setTempPhoneNumber(e.target.value)}
+                    className="bg-slate-200 rounded p-2 w-full items-center"
+                  />
+                ) : (
+                  <>
+                    <p className="text-slate-400">Утасны дугаар</p>
+                    <p>{phoneNumber}</p>
+                  </>
+                )}
               </div>
             </div>
-            <button className="p-3" onClick={handleEditPhoneNumber}>
-              <EditIcon />
+            <button
+              className="p-3"
+              onClick={
+                phoneNumberEditing
+                  ? handleSavePhoneNumber
+                  : handleEditPhoneNumber
+              }
+            >
+              {phoneNumberEditing ? <CheckIcon /> : <EditIcon />}
             </button>
           </div>
 
@@ -83,12 +138,27 @@ export default function UpDateUserProfile() {
             <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
               <EmailIcon />
               <div>
-                <p className="text-slate-400">Имэйл хаяг</p>
-                <p>Ugtakhbayr@gmail.com</p>
+                {emailEditing ? (
+                  <input
+                    placeholder="Имэйл хаяг..."
+                    type="text"
+                    value={tempEmail}
+                    onChange={(e) => setTempEmail(e.target.value)}
+                    className="bg-slate-200 rounded p-2 w-full items-center"
+                  />
+                ) : (
+                  <>
+                    <p className="text-slate-400">Имэйл хаяг</p>
+                    <p>{email}</p>
+                  </>
+                )}
               </div>
             </div>
-            <button className="p-3" onClick={handleEditEmail}>
-              <EditIcon />
+            <button
+              className="p-3"
+              onClick={emailEditing ? handleSaveEmail : handleEditEmail}
+            >
+              {emailEditing ? <CheckIcon /> : <EditIcon />}
             </button>
           </div>
 
