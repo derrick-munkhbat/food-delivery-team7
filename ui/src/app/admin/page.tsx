@@ -1,13 +1,28 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { BigAddIcon } from "@/components/icons/BigAddIcon";
 import { AddCategory } from "./AddCategory";
 import { AddMenu } from "./AddMenu";
 import { showModal } from "./AddMenu";
 import { DeleteEdit } from "./DeleteEdit";
+import { fetcher } from "../util";
+import { CategoryComp } from "./CategoryComp";
 
 export default function AdminMenu() {
+  type Category = {
+    name: string;
+    _id: string;
+  };
+
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    fetcher("category").then((data) => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <div className="bg-split-background">
       <div className="flex container mx-auto w-full">
@@ -16,22 +31,7 @@ export default function AdminMenu() {
             Food menu
           </h1>
           <div className="grid gap-[26px] ">
-            <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
-              <p className="text-lg font-medium">Breakfast</p>
-              <DeleteEdit />
-            </button>
-            <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
-              <p className="text-lg font-medium">Soup</p>
-              <DeleteEdit />
-            </button>
-            <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
-              <p className="text-lg font-medium">Main Course</p>
-              <DeleteEdit />
-            </button>
-            <button className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between">
-              <p className="text-lg font-medium">Desserts</p>
-              <DeleteEdit />
-            </button>
+            <CategoryComp />
             <AddCategory />
           </div>
         </div>

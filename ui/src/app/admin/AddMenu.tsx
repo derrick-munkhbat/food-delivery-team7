@@ -9,8 +9,12 @@ export function showModal() {
 }
 
 export function AddMenu() {
+<<<<<<< HEAD
 
   type Menu = {
+=======
+  interface Menu {
+>>>>>>> 2cc4bf8 (category crud)
     foodName: string;
     foodCategory: string;
     foodIngredients: string;
@@ -46,7 +50,7 @@ export function AddMenu() {
 
     const newMenu: Menu = {
       foodName,
-      foodCategory: selectedCategory ? selectedCategory.value : '',
+      foodCategory: selectedCategory ? selectedCategory.value : "",
       foodIngredients,
       foodPrice,
       salesPercentage,
@@ -72,7 +76,7 @@ export function AddMenu() {
     setFoodImg("");
   };
 
-  const handleFoodName = (event ) => {
+  const handleFoodName = (event) => {
     setFoodName(event?.target.value);
   };
 

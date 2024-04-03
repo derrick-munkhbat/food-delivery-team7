@@ -5,7 +5,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 import { AdminDashboard } from "./OrderData";
 export default function Dashboard() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentIndex, _setCurrentIndex] = React.useState(0);
 
   return (
     <div className="bg-[#F7F7F8] py-10">

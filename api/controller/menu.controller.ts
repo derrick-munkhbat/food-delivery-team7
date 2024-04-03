@@ -14,6 +14,7 @@ export async function createMenu(req: Request, res: Response) {
     foodSales,
     foodImg,
   } = req.body;
+
   const menu = await MenuModel.create({
     foodName,
     foodCategory,
