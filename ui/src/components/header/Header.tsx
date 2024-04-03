@@ -39,7 +39,7 @@ export function Header() {
   }, [drawerOpen]);
 
   return (
-    <div className="top-0 z-10  h-[57px] justify-between  w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
+    <div className="top-0 z-30  h-[57px] justify-between  w-full mx-auto flex gap-5 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
       <div className=" font-bold flex gap-8 justify-center items-center">
         <a href="/">
           <HeaderLogo />
