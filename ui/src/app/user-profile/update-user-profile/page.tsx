@@ -10,15 +10,17 @@ import { useState } from "react";
 export default function UpDateUserProfile() {
   const [message, setMessage] = useState("");
 
-  const [name, setName] = useState("");
+  const [profilePic, setProfilePic] = useState(null);
+
+  const [name, setName] = useState("Derrick Munkhbat");
   const [nameEditing, setNameEditing] = useState(false);
   const [tempName, setTempName] = useState("");
 
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("88181074");
   const [phoneNumberEditing, setPhoneNumberEditing] = useState(false);
   const [tempPhoneNumber, setTempPhoneNumber] = useState("");
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("derrick.munkhbat@gmail.com");
   const [emailEditing, setEmailEditing] = useState(false);
   const [tempEmail, setTempEmail] = useState("");
 
@@ -26,6 +28,18 @@ export default function UpDateUserProfile() {
     setMessage("Мэдээлэл амжилттай хадгалагдлаа");
     // need await function to go back to user profile page after few secods
     // window.location.href = "/user-profile/update-user-profile";
+  };
+
+  const handleChangeProfilePic = (event) => {
+    setProfilePic(event.target.files[0]);
+  };
+
+  const handleUploadProfilePic = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = handleChangeProfilePic;
+    input.click();
   };
 
   const handleEditName = () => {
@@ -62,10 +76,21 @@ export default function UpDateUserProfile() {
     <>
       <div>
         <div className="flex flex-col gap-5 mt-20 mb-5 items-center mx-auto w-[448px] h-[224px] p-5">
-          <div className="relative">
-            <img src="/images/user-photo.jpg" alt="profile picture" />
+          <div className="relative flex justify-center items-center">
+            <img
+              className="w-[120px] h-[120px] rounded-full border-2 flex justify-center items-center"
+              src={
+                profilePic
+                  ? URL.createObjectURL(profilePic)
+                  : "path_to_default_image"
+              }
+              alt="profile image"
+            />
 
-            <button className="absolute right-0 bottom-0 bg-white border-2 rounded-full p-1">
+            <button
+              onClick={handleUploadProfilePic}
+              className="absolute right-0 bottom-0 bg-white border-2 rounded-full p-1"
+            >
               <EditIcon />
             </button>
           </div>
@@ -172,7 +197,7 @@ export default function UpDateUserProfile() {
             Хадгалах
           </button>
           {message && (
-            <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl mt-20 mb-5 justify-center items-center mx-auto w-[370px] p-5 top-10">
+            <div className="alert alert-success absolute bg-white flex gap-5 border-2 rounded-2xl mt-20 mb-5 justify-center items-center mx-auto w-[370px] p-5 top-10">
               <CheckIcon />
               <h1 className="text-green-800">{message}</h1>
             </div>
