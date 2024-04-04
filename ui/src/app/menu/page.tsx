@@ -99,7 +99,7 @@ const Menu: FC = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="">
       <div className="mt-10 ">
         <CategoryState />
       </div>
@@ -114,13 +114,13 @@ const Menu: FC = () => {
               <div className="">
                 <img
                   onClick={handleOpenModal}
-                  className="cover cursor-grabbing ease-in duration-300"
+                  className="cover cursor-grabbing"
                   src={item.image}
                 />
                 <p className="ml-2 font-bold">{item.name}</p>
                 <div key={item.id} className="flex gap-4">
                   <p className="ml-2 font-semibold text-green-600">
-                    {item.price}
+                    {item.price}₮
                   </p>
                   <p className="line-through">{item.oldPrice}</p>
                 </div>
