@@ -9,12 +9,8 @@ export function showModal() {
 }
 
 export function AddMenu() {
-<<<<<<< HEAD
 
   type Menu = {
-=======
-  interface Menu {
->>>>>>> 2cc4bf8 (category crud)
     foodName: string;
     foodCategory: string;
     foodIngredients: string;
@@ -189,14 +185,22 @@ export function AddMenu() {
             </div>
             <div className="grid gap-2">
               <p className="text-sm font-medium text-[#121316]">Хоолны зураг</p>
-              <input
-                type="image"
-                src="img_submit.gif"
-                alt="Submit"
-                width="48"
-                height="48"
-                onChange={handleFoodImg}
-              ></input>
+
+              <div className="w-[284px] h-[122px] bg-[#BABCC4]/[12%] border-[1px] border-dashed border-[#D6D7DC] text-[#525252] rounded-lg">
+                <div className="flex flex-col gap-2 items-center mt-6">
+                  <h3>Add image for the food</h3>
+                  <label htmlFor="file" className="cursor-pointer">
+                    <div className="bg-[#393939] px-2 py-1 flex border rounded-lg text-white">
+                      <span>Add image</span>
+                    </div>
+                    <input
+                      id="file"
+                      type="file"
+                      className="hidden"
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
 
