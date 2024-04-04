@@ -2,23 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { AddCategory } from "./AddCategory";
 import { fetcher } from "../util";
+<<<<<<< HEAD
 import { CategoryComp } from "./CategoryComp";
 import { MenuComp } from "./MenuComp";
+=======
+>>>>>>> eec24e1 (category crud)
 
 export default function AdminMenu() {
-  type Category = {
-    name: string;
-    _id: string;
-  };
-
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  useEffect(() => {
-    fetcher("category").then((data) => {
-      console.log(data);
-    });
-  }, []);
-
   return (
     <div className="bg-split-background">
       <div className="flex container mx-auto w-full">
@@ -27,7 +17,6 @@ export default function AdminMenu() {
             Food menu
           </h1>
           <div className="grid gap-[26px] ">
-            <CategoryComp />
             <AddCategory />
           </div>
         </div>

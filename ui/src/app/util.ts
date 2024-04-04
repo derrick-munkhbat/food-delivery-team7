@@ -9,3 +9,13 @@ export async function fetcher(path: string) {
 
   return response.data;
 }
+
+export async function mutator(path: string) {
+  const response: any = await axios.post(`http://localhost:8000/${path}`, {
+    headers: {
+      accessToken: "dummyAccessToken",
+    },
+  });
+
+  return response.data;
+}
