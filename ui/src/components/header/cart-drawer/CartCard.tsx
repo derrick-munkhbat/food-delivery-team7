@@ -7,17 +7,17 @@ export default function CartCard() {
   let [number, setNumber] = useState(1);
   const [entree, setEntree] = useState([]);
 
-  function loadTasks() {
-    // axios.get(
-    //   // "http://localhost:3000/entree"
-    //   ).then((response) => {
-    //   setEntree(response.data);
-    // });
-  }
+  // function loadTasks() {
+  //   // axios.get(
+  //   //   // "http://localhost:3000/entree"
+  //   //   ).then((response) => {
+  //   //   setEntree(response.data);
+  //   // });
+  // }
 
-  useEffect(() => {
-    loadTasks();
-  }, []);
+  // useEffect(() => {
+  //   loadTasks();
+  // }, []);
 
   function deleteTask() {
     // if (confirm("Delete?")) {
