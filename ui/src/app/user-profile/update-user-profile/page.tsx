@@ -99,8 +99,8 @@ export default function UpDateUserProfile() {
         </div>
 
         <div className="flex flex-col gap-5 mt-5 mb-20 justify-center items-center mx-auto w-[448px] p-5">
-          <div className="flex bg-slate-200 rounded p-2 w-full items-center">
-            <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
+          <div className="flex bg-slate-100 rounded p-2 w-full items-center">
+            <div className="flex rounded p-2 w-full items-center gap-3">
               <UserIcon />
               <div>
                 {nameEditing ? (
@@ -127,8 +127,8 @@ export default function UpDateUserProfile() {
             </button>
           </div>
 
-          <div className="flex bg-slate-200 rounded p-2 w-full items-center">
-            <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
+          <div className="flex bg-slate-100 rounded p-2 w-full items-center">
+            <div className="flex rounded p-2 w-full items-center gap-3">
               <PhoneIcon />
               <div>
                 {phoneNumberEditing ? (
@@ -159,8 +159,8 @@ export default function UpDateUserProfile() {
             </button>
           </div>
 
-          <div className="flex bg-slate-200 rounded p-2 w-full items-center">
-            <div className="flex bg-slate-200 rounded p-2 w-full items-center gap-3">
+          <div className="flex bg-slate-100 rounded p-2 w-full items-center">
+            <div className="flex  rounded p-2 w-full items-center gap-3">
               <EmailIcon />
               <div>
                 {emailEditing ? (
