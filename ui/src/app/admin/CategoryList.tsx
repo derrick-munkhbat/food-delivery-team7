@@ -18,7 +18,7 @@ const closeModal = () => {
   return document.getElementById("my_modal_3").close();
 };
 
-export function AddCategory() {
+export function CategoryList() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
@@ -36,7 +36,6 @@ export function AddCategory() {
       alert("Enter name");
       return;
     }
-
     axios
       .post("http://localhost:8000/category", {
         name: name,
@@ -60,14 +59,6 @@ export function AddCategory() {
 
   console.log({ categories });
 
-  function deleteCategory(id: string) {
-    if (confirm("Delete?")) {
-      axios.delete(`http://localhost:8000/category/${id}`).then(() => {
-        loadCategory();
-      });
-    }
-  }
-
   function deleteAll() {
     setName("");
     return;
@@ -79,13 +70,13 @@ export function AddCategory() {
     <div className="grid gap-[26px]">
       {categories.map((category) => {
         return (
-          <button
+          <div
             key={category._id}
             className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
           >
             <p className="text-lg font-medium">{category.name}</p>
-            <DeleteEdit />
-          </button>
+            <DeleteEdit categoryId={category._id} onChange={loadCategory} />
+          </div>
         );
       })}
       <div>

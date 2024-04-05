@@ -1,6 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { AddCategory } from "./AddCategory";
+=======
+import { CategoryList } from "./CategoryList";
+
+>>>>>>> e30fd8f (category delete done)
 import { MenuComp } from "./MenuComp";
 
 export default function AdminMenu() {
@@ -12,7 +17,7 @@ export default function AdminMenu() {
             Food menu
           </h1>
           <div className="grid gap-[26px] ">
-            <AddCategory />
+            <CategoryList />
           </div>
         </div>
         <MenuComp />
