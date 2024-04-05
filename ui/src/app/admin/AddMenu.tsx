@@ -192,11 +192,7 @@ export function AddMenu() {
                     <div className="bg-[#393939] px-2 py-1 flex border rounded-lg text-white">
                       <span>Add image</span>
                     </div>
-                    <input
-                      id="file"
-                      type="file"
-                      className="hidden"
-                    />
+                    <input id="file" type="file" className="hidden" />
                   </label>
                 </div>
               </div>
