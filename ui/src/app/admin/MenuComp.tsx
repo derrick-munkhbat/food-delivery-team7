@@ -1,5 +1,3 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import { BigAddIcon } from "@/components/icons/BigAddIcon";
 import { AddMenu } from "./AddMenu";
 import { showModal } from "./AddMenu";
