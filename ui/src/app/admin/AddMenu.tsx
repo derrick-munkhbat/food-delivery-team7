@@ -9,10 +9,6 @@ export function showModal() {
 }
 
 export function AddMenu() {
-<<<<<<< HEAD
-
-=======
->>>>>>> eec24e1 (category crud)
   type Menu = {
     foodName: string;
     foodCategory: string;
@@ -196,11 +192,7 @@ export function AddMenu() {
                     <div className="bg-[#393939] px-2 py-1 flex border rounded-lg text-white">
                       <span>Add image</span>
                     </div>
-                    <input
-                      id="file"
-                      type="file"
-                      className="hidden"
-                    />
+                    <input id="file" type="file" className="hidden" />
                   </label>
                 </div>
               </div>

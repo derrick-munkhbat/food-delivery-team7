@@ -1,10 +1,9 @@
 import { AddIcon } from "@/components/icons/AddIcon";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetcher } from "../util";
 import { DeleteEdit } from "./DeleteEdit";
 import { Loading } from "@/components/Loading";
-import { clear } from "console";
 
 type Category = {
   name: string;

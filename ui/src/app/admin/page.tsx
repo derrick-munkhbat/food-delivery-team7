@@ -1,12 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { AddCategory } from "./AddCategory";
-import { fetcher } from "../util";
-<<<<<<< HEAD
-import { CategoryComp } from "./CategoryComp";
+
 import { MenuComp } from "./MenuComp";
-=======
->>>>>>> eec24e1 (category crud)
 
 export default function AdminMenu() {
   return (
