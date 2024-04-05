@@ -1,8 +1,8 @@
 import { CloseIcon } from "@/components/icons/CloseIcon";
 import { useState, useEffect } from "react";
-import { categories } from "@/components/CategoryData";
 import axios from "axios";
 import Select from "react-select";
+import { fetcher } from "../util";
 
 export function showModal() {
   document.getElementById("menu_modal").showModal();
@@ -25,10 +25,24 @@ export function AddMenu() {
   const [salesPercentage, setSalesPercentage] = useState("");
   const [foodImg, setFoodImg] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
+  const [categories, setCategories] = useState([]);
+
+
 
   const hideModal = () => {
     document.getElementById("menu_modal").close();
   };
+
+  useEffect(() => {
+    fecthCategories();
+  }, []);
+
+  const fecthCategories = () => {
+    fetch("http://localhost:8000/category")
+    .then((res) => res.json())
+    .then((data) => setCategories(data));
+  };
+
   // add menu
   const newMenu = async () => {
     // if (
@@ -52,10 +66,9 @@ export function AddMenu() {
       foodImg,
     };
 
-    console.log(newMenu);
 
     await axios
-      .post("http://localhost:3000/menu/create", { ...newMenu })
+      .post("http://localhost:8000/menu/create", { ...newMenu })
       .then(() => {
         handleClear;
         hideModal;
@@ -93,7 +106,7 @@ export function AddMenu() {
 
   const options = categories.map((category) => {
     return {
-      value: category.name,
+      value: category._id,
       label: category.name,
     };
   });

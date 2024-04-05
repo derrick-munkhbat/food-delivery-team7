@@ -25,3 +25,4 @@ export async function createMenu(req: Request, res: Response) {
   });
   res.json(menu);
 }
+
