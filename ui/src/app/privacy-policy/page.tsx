@@ -2,7 +2,7 @@ import { TermsOfServiceIcon } from "@/components/icons/TersmOfservise";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="container mx-auto w-[1100px]   ">
+    <div className="container mx-auto w-[1100px] w-full">
       <div className="flex gap-3 py-5">
         <TermsOfServiceIcon />
         <h1 className="font-bold text-2xl">Нууцлалын бодлого</h1>

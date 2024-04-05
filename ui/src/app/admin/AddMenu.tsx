@@ -9,19 +9,14 @@ export function showModal() {
 }
 
 export function AddMenu() {
-<<<<<<< HEAD
-
   type Menu = {
-=======
-  interface Menu {
->>>>>>> 2cc4bf8 (category crud)
     foodName: string;
     foodCategory: string;
     foodIngredients: string;
     foodPrice: number;
     salesPercentage: number;
     foodImg: string;
-  }
+  };
 
   const [foodName, setFoodName] = useState("");
   const [foodIngredients, setFoodIngredients] = useState("");
