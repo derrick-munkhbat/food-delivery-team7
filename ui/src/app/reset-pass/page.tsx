@@ -18,6 +18,10 @@ export default function Home() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [step, setStep] = useState("EMAIL"); //email, otp, password
 
+  const getEmailInputValue = () => {
+    console.log({ email });
+  };
+
   function handleToggler1() {
     if (show1 === "password") {
       setHider1(eye);
@@ -35,21 +39,6 @@ export default function Home() {
     } else {
       setHider2(eyeOff);
       setShow2("password");
-    }
-  }
-
-  function handleSave(event) {
-    event.preventDefault();
-
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-
-    if (password === confirmPassword) {
-      message.textContent = "Passwords match. Saved successfully.";
-      message.style.color = "green";
-    } else {
-      message.textContent = "Passwords do not match. Please try again.";
-      message.style.color = "red";
     }
   }
 
@@ -76,7 +65,11 @@ export default function Home() {
             />
           </div>
           <button
-            onClick={() => setStep("OTP")}
+            onClick={() => {
+              getEmailInputValue();
+              setStep("OTP");
+            }}
+            // onClick={() => setStep("OTP")}
             className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
             aria-disabled="true"
           >
@@ -115,7 +108,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  <Icon icon={hider1} size={17} />
+                  {/* <Icon icon={hider1} size={25} /> */}
                 </button>
               </div>
             </div>
@@ -157,7 +150,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  <Icon icon={hider1} size={17} />
+                  {/* <Icon icon={hider1} size={25} /> */}
                 </button>
               </div>
 
@@ -178,7 +171,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  <Icon icon={hider2} size={17} />
+                  <Icon icon={hider2} size={25} />
                 </button>
               </div>
             </div>
@@ -186,7 +179,7 @@ export default function Home() {
               className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
               role="button"
               aria-disabled="true"
-              onClick={handleSave}
+              // onClick={handleSave}
             >
               Үргэлжлүүлэх
             </button>
