@@ -9,10 +9,6 @@ export function showModal() {
 }
 
 export function AddMenu() {
-<<<<<<< HEAD
-
-=======
->>>>>>> eec24e1 (category crud)
   type Menu = {
     foodName: string;
     foodCategory: string;

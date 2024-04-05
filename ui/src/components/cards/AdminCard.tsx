@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetcher } from "@/app/util";
 
-type Menu = [{
-  foodName: string;
-  foodCategory: string;
-  foodIngredients: string;
-  foodPrice: number;
-  salesPercentage: number;
-  foodImg: string;
-}];
-
 export function AdminCard() {
   const [menus, setMenus] = useState([]);
 
@@ -23,15 +14,13 @@ export function AdminCard() {
       .then((data) => setMenus(data));
   };
 
-  console.log(menus);
-
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 sm:gap-x-[50px] xl:gap-[115px] mt-10 mb-5">
+    <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 justify-items-center gap-[60px] mt-10 mb-5">
       {menus.map((menu) => (
-        <div>
-          <div className="grid grid-cols-3 w-[282px] h-[253px] hover:scale-105">
+        <div className="grid gap-[14px]">
+          <div className="w-[282px] hover:scale-105">
             <div className="bg-[url('/images/menuZurag.jpg')] grid items-center justify-items-center group-hover:opacity-60 h-[186px]  duration-300  rounded-2xl ease-in-out  bg-center w-[282px]">
-              <button className="animate-bounce z-20 w-[166px] h-[40px] rounded-xl text-lg text-black mt-4 mr-4  font-semibold px-4 py-1 bg-white opacity-0 hover:opacity-90 transition-all">
+              <button className="z-20 w-[166px] h-[40px] rounded-xl text-lg text-black font-semibold px-4 py-1 bg-white opacity-0 hover:opacity-90 transition-all">
                 EDIT
               </button>
             </div>
@@ -45,22 +34,3 @@ export function AdminCard() {
     </div>
   );
 }
-
-const Test = () => {
-  const [isHover, setIsHover] = useState(false);
-
-  const scale = isHover ? "100" : "110";
-  const handleHover = () => {
-    setIsHover(!isHover);
-  };
-  return (
-    <div
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHover}
-      className={`hover:scale:${scale}`}
-    >
-      <div className={`hover:scale:${scale}`}>title</div>
-      <div className={`hover:scale:${scale}`}>title</div>
-    </div>
-  );
-};

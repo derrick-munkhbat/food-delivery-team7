@@ -4,7 +4,7 @@ import menuRouter  from "./routes/menu.router";
 
 const app = express();
 var cors = require('cors');
-const port = 3000;
+const port = 8000;
 
 connectDB()
 
