@@ -50,7 +50,8 @@ export default function Home() {
 
   const handleSave = () => {
     if (password !== confirmPassword) {
-      return setMessage("Нууц үг ижил биш байна!");
+      return alert("Нууц үгээ дахин шалгана уу");
+      // setMessage("Нууц үг ижил биш байна!");
     }
     setIsLoading(true);
     const getNewPasswordInputValue = () => {
