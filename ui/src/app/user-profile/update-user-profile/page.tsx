@@ -71,8 +71,9 @@ export default function UpDateUserProfile() {
   const handleSave = () => {
     setIsLoading(true);
     const getNewPasswordInputValue = () => {
-      // console.log({ password });
+      console.log({ password });
       setIsLoading(false);
+      setMessage("Таны мэдээлэл амжилттай солигдлоо!");
       setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
     };
   };
