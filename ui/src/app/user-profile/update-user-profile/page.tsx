@@ -6,9 +6,11 @@ import { EmailIcon } from "@/components/icons/EmailIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { CheckIcon } from "@/components/icons/CheckIcon";
 import { useState } from "react";
+import { Loading } from "@/components/Loading";
 
 export default function UpDateUserProfile() {
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [profilePic, setProfilePic] = useState(null);
 
@@ -23,12 +25,6 @@ export default function UpDateUserProfile() {
   const [email, setEmail] = useState("derrick.munkhbat@gmail.com");
   const [emailEditing, setEmailEditing] = useState(false);
   const [tempEmail, setTempEmail] = useState("");
-
-  const handleSave = () => {
-    setMessage("Мэдээлэл амжилттай хадгалагдлаа");
-    // need await function to go back to user profile page after few secods
-    // window.location.href = "/user-profile/update-user-profile";
-  };
 
   const handleChangeProfilePic = (event) => {
     setProfilePic(event.target.files[0]);
@@ -72,6 +68,15 @@ export default function UpDateUserProfile() {
     setEmail(tempEmail);
   };
 
+  const handleSave = () => {
+    setIsLoading(true);
+    const getNewPasswordInputValue = () => {
+      // console.log({ password });
+      setIsLoading(false);
+      setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+    };
+  };
+
   return (
     <>
       <div>
@@ -102,7 +107,7 @@ export default function UpDateUserProfile() {
           <div className="flex bg-slate-100 rounded p-2 w-full items-center">
             <div className="flex rounded p-2 w-full items-center gap-3">
               <UserIcon />
-              <div>
+              <div className="w-full">
                 {nameEditing ? (
                   <input
                     placeholder="Нэр..."
@@ -130,7 +135,7 @@ export default function UpDateUserProfile() {
           <div className="flex bg-slate-100 rounded p-2 w-full items-center">
             <div className="flex rounded p-2 w-full items-center gap-3">
               <PhoneIcon />
-              <div>
+              <div className="w-full">
                 {phoneNumberEditing ? (
                   <input
                     placeholder="Утасны дугаар..."
@@ -162,7 +167,7 @@ export default function UpDateUserProfile() {
           <div className="flex bg-slate-100 rounded p-2 w-full items-center">
             <div className="flex  rounded p-2 w-full items-center gap-3">
               <EmailIcon />
-              <div>
+              <div className="w-full">
                 {emailEditing ? (
                   <input
                     placeholder="Имэйл хаяг..."
@@ -196,11 +201,17 @@ export default function UpDateUserProfile() {
           >
             Хадгалах
           </button>
-          {message && (
-            <div className="alert alert-success absolute bg-white flex gap-5 border-2 rounded-2xl mt-20 mb-5 justify-center items-center mx-auto w-[370px] p-5 top-10">
-              <CheckIcon />
-              <h1 className="text-green-800">{message}</h1>
+          {isLoading ? (
+            <div className="mt-5">
+              <Loading />
             </div>
+          ) : (
+            message && (
+              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-[328px] p-5 mt-12 top-10">
+                <CheckIcon />
+                <h1 className="text-green-800">{message}</h1>
+              </div>
+            )
           )}
         </div>
       </div>
