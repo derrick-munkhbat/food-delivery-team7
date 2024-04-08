@@ -75,7 +75,11 @@ export function CategoryList() {
             className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
           >
             <p className="text-lg font-medium">{category.name}</p>
-            <DeleteEdit categoryId={category._id} onChange={loadCategory} />
+            <DeleteEdit
+              categoryName={category.name}
+              categoryId={category._id}
+              onChange={loadCategory}
+            />
           </div>
         );
       })}
