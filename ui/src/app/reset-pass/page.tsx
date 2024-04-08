@@ -66,8 +66,8 @@ export default function Home() {
       console.log({ password });
       setIsLoading(false);
       setMessage("Нууц үг амжилттай солигдлоо!");
-      setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
-      window.location.href = "/menu";
+      // setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+      // window.location.href = "/menu";
     };
     setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
   };

@@ -69,13 +69,15 @@ export default function UpDateUserProfile() {
   };
 
   const handleSave = () => {
+    console.log({ name, phoneNumber, email });
     setIsLoading(true);
-    const getNewPasswordInputValue = () => {
-      console.log({ password });
+    const getNewUserValue = () => {
       setIsLoading(false);
       setMessage("Таны мэдээлэл амжилттай солигдлоо!");
-      setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+      // setTimeout(getNewUserValue, 6000); // Delay the execution of getNewUserValue for 3 seconds
+      // window.location.href = "/user-profile";
     };
+    setTimeout(getNewUserValue, 3000); // Delay the execution of getNewUserValue for 3 seconds
   };
 
   return (
@@ -208,7 +210,7 @@ export default function UpDateUserProfile() {
             </div>
           ) : (
             message && (
-              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-[328px] p-5 mt-12 top-10">
+              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-auto p-5 mt-20 top-10">
                 <CheckIcon />
                 <h1 className="text-green-800">{message}</h1>
               </div>
