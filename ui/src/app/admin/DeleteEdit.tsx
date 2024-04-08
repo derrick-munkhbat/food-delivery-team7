@@ -2,20 +2,15 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { DetailIcon } from "../../components/icons/DetailIcon";
 import axios from "axios";
-import { ChangeEventHandler, PropsWithChildren, useState } from "react";
+import { useState } from "react";
 
 type DeleteEditProps = {
-  categoryName: string;
   categoryId: string;
   onChange: () => void;
 };
 
-export function DeleteEdit({
-  categoryName,
-  categoryId,
-  onChange,
-}: DeleteEditProps) {
-  const [name, setName] = useState(categoryName);
+export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
+  const [name, setName] = useState("");
 
   // ----DELETE CATEGORY----//
   async function handleDeleteCategory(id: string) {
@@ -32,18 +27,14 @@ export function DeleteEdit({
   }
   // ----UPDATE CATEGORY----//
   async function handleEditCategory(id: string) {
-    document.getElementById(id).showModal();
-    console.log(name);
-    // try {
-    //   await axios.put(`http://localhost:8000/category/${id}`).then(() => {});
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    if (window.prompt("Edit", name)) {
+      try {
+        await axios.put(`http://localhost:8000/category/${id}`).then(() => {});
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
-
-  const handleEditName: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setName(event.target.value);
-  };
 
   return (
     <div className="dropdown dropdown-right dropdown-end">
@@ -57,7 +48,7 @@ export function DeleteEdit({
         <li onClick={() => handleEditCategory(categoryId)}>
           <div>
             <MdModeEdit />
-            <p>Edit name</p>
+            <a>Edit name</a>
           </div>
         </li>
 
@@ -68,45 +59,6 @@ export function DeleteEdit({
           </div>
         </li>
       </ul>
-      <CategoryListEditModal categoryId={categoryId}>
-        <input
-          className="input mb-5 input-bordered w-full max-w-xs"
-          type="text"
-          value={name}
-          onChange={handleEditName}
-        />
-      </CategoryListEditModal>
     </div>
   );
 }
-
-type CategoryListEditModalProps = PropsWithChildren & {
-  categoryId: string;
-};
-const CategoryListEditModal = ({
-  categoryId,
-  children,
-}: CategoryListEditModalProps) => {
-  return (
-    <dialog id={categoryId} className="modal">
-      <div className="modal-box">
-        <form method="dialog">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-            ✕
-          </button>
-        </form>
-        <h3 className="font-bold mb-5 text-lg justify-center flex items-center">
-          Create new category
-        </h3>
-        {children}
-        <div className="divider m-0"></div>
-        <div className="flex items-center gap-5 ml-[65%]">
-          <button>Clear</button>
-          <button className="w-[109px] h-[40px] border px-[16px] py-[10px] rounded bg-[#393939] flex items-center text-white">
-            Continue
-          </button>
-        </div>
-      </div>
-    </dialog>
-  );
-};
