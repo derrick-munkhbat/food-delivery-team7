@@ -18,7 +18,7 @@ export default function PassResetByNewPass() {
   };
 
   function handleToggler() {
-    if (show === "password") {
+    if (show === "password" || show === "" && ) {
       setHider(eye);
       setShow("text");
     } else {

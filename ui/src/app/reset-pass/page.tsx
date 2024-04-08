@@ -49,10 +49,18 @@ export default function Home() {
   }
 
   const handleSave = () => {
-    if (password !== confirmPassword) {
-      return alert("Нууц үгээ дахин шалгана уу");
-      // setMessage("Нууц үг ижил биш байна!");
+    if (password.trim() === "") {
+      return alert("Нууц үгээ дахин шалгана уу!");
     }
+
+    if (confirmPassword.trim() === "") {
+      return alert("Нууц үгээ дахин шалгана уу!");
+    }
+
+    if (password !== confirmPassword) {
+      return alert("Нууц үгээ дахин шалгана уу!");
+    }
+
     setIsLoading(true);
     const getNewPasswordInputValue = () => {
       console.log({ password });
