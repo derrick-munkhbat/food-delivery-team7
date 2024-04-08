@@ -70,7 +70,7 @@ export function DeleteEdit({
       </ul>
       <CategoryListEditModal categoryId={categoryId}>
         <input
-          className="input input-bordered w-full max-w-xs"
+          className="input mb-5 input-bordered w-full max-w-xs"
           type="text"
           value={name}
           onChange={handleEditName}
@@ -90,24 +90,16 @@ const CategoryListEditModal = ({
   return (
     <dialog id={categoryId} className="modal">
       <div className="modal-box">
-        {children}
         <form method="dialog">
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
             ✕
           </button>
         </form>
-        <h3 className="font-bold text-lg justify-center flex items-center">
+        <h3 className="font-bold mb-5 text-lg justify-center flex items-center">
           Create new category
         </h3>
+        {children}
         <div className="divider m-0"></div>
-        <div className="">
-          <p className="py-4">Category name</p>
-          <input
-            type="text"
-            placeholder="Type here"
-            className="input w-[100%] input-bordered max-w-xs"
-          />
-        </div>
         <div className="flex items-center gap-5 ml-[65%]">
           <button>Clear</button>
           <button className="w-[109px] h-[40px] border px-[16px] py-[10px] rounded bg-[#393939] flex items-center text-white">
