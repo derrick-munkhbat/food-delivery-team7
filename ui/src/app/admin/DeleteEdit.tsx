@@ -11,6 +11,7 @@ type DeleteEditProps = {
 
 export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
   const [name, setName] = useState("");
+
   // ----DELETE CATEGORY----//
   async function handleDeleteCategory(id: string) {
     if (window.confirm("Are you sure to delete this category?")) {
@@ -26,14 +27,9 @@ export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
   }
   // ----UPDATE CATEGORY----//
   async function handleEditCategory(id: string) {
-    if (window.prompt("Edit", "hi")) {
+    if (window.prompt("Edit", name)) {
       try {
-        await axios.put(`http://localhost:8000/category/${id}`).then(() => {
-          // if (name === null) return;
-          // if (name === "") {
-          //   alert("Utga oruulna uuu");
-          // }
-        });
+        await axios.put(`http://localhost:8000/category/${id}`).then(() => {});
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +38,7 @@ export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
 
   return (
     <div className="dropdown dropdown-right dropdown-end">
-      <div tabIndex={0} className=" m-1">
+      <div tabIndex={0} className="m-1  p-2">
         <DetailIcon />
       </div>
       <ul
