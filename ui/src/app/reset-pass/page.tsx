@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   const getCodeInputValue = () => {
-    console.log({ email });
+    console.log({ code });
   };
 
   function handleToggler1() {
@@ -49,8 +49,18 @@ export default function Home() {
   }
 
   const handleSave = () => {
+<<<<<<< HEAD
     if (password.trim() === "") {
       return alert("Нууц үгээ дахин шалгана уу!");
+=======
+    if (password.trim() === "" || confirmPassword.trim() === "") {
+      return alert("Нууц үг хоосон байна!");
+    }
+
+    if (password !== confirmPassword) {
+      return alert("Нууц үгээ дахин шалгана уу!");
+      // setMessage("Нууц үг ижил биш байна!");
+>>>>>>> 058cd09ee27952ba3702c5af02c94ac3cff305fd
     }
 
     if (confirmPassword.trim() === "") {
@@ -130,7 +140,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  {/* <Icon icon={hider1} size={25} /> */}
+                  <Icon icon={hider1} size={25} />
                 </button>
               </div>
             </div>
@@ -175,7 +185,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  {/* <Icon icon={hider1} size={25} /> */}
+                  <Icon icon={hider1} size={25} />
                 </button>
               </div>
 

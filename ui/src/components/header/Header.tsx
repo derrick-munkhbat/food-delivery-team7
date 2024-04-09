@@ -69,7 +69,7 @@ export function Header() {
           }`}
         >
           <div className="flex flex-col justify-between">
-            {/* CART HEADERT */}
+            {/* CART HEADER */}
             <div className="flex w-full h-18 items-center border-b-2 mb-3">
               <button className="flex p-3" onClick={closeCart}>
                 <ArrowIcon />
@@ -101,9 +101,18 @@ export function Header() {
           </div>
         </div>
 
-        <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
+        {/* <div className=" flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
           <NevtrehIcon />
           <a href="/sign-in">Нэвтрэх</a>
+        </div> */}
+
+        <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
+          <div className="fill-green-600">
+            <NevtrehIcon />
+          </div>
+          <a href="/user-profile" className="text-green-600">
+            Хэрэглэгч
+          </a>
         </div>
       </div>
       <MobileMenu />

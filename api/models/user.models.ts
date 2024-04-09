@@ -6,6 +6,6 @@ const userSchema = new Schema({
   userEmail: String,
   userPassword: String,
   userNumber: Number,
-  });
+});
 
 export const UserModel = mongoose.model("User", userSchema);
