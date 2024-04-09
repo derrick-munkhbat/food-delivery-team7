@@ -11,6 +11,14 @@ type DeleteEditProps = {
 
 export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
   const [name, setName] = useState("");
+  const [open, setOpen] = useState(false);
+
+  function openModal() {
+    return setOpen(true);
+  }
+  function closeModal() {
+    return setOpen(false);
+  }
 
   // ----DELETE CATEGORY----//
   async function handleDeleteCategory(id: string) {
