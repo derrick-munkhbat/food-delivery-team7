@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   const getCodeInputValue = () => {
-    console.log({ email });
+    console.log({ code });
   };
 
   function handleToggler1() {
@@ -49,8 +49,12 @@ export default function Home() {
   }
 
   const handleSave = () => {
+    if (password.trim() === "" || confirmPassword.trim() === "") {
+      return alert("Нууц үг хоосон байна!");
+    }
+
     if (password !== confirmPassword) {
-      return alert("Нууц үгээ дахин шалгана уу");
+      return alert("Нууц үгээ дахин шалгана уу!");
       // setMessage("Нууц үг ижил биш байна!");
     }
     setIsLoading(true);
