@@ -71,15 +71,7 @@ export default function UpDateUserProfile() {
   const handleSave = () => {
     console.log({ name, phoneNumber, email });
     setIsLoading(true);
-<<<<<<< HEAD
-    const getNewUserValue = () => {
-      setIsLoading(false);
-      setMessage("Таны мэдээлэл амжилттай солигдлоо!");
-      // setTimeout(getNewUserValue, 6000); // Delay the execution of getNewUserValue for 3 seconds
-      // window.location.href = "/user-profile";
-    };
-    setTimeout(getNewUserValue, 3000); // Delay the execution of getNewUserValue for 3 seconds
-=======
+
     const getNewInputValue = () => {
       console.log({ name, phoneNumber, email });
       setIsLoading(false);
@@ -87,7 +79,6 @@ export default function UpDateUserProfile() {
       // window.location.href = "/menu";
     };
     setTimeout(getNewInputValue, 3000); // Delay the execution of getNewInputValue for 3 seconds
->>>>>>> 058cd09ee27952ba3702c5af02c94ac3cff305fd
   };
 
   return (
