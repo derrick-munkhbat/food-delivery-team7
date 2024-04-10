@@ -80,6 +80,7 @@ export default function UpDateUserProfile() {
     };
     setTimeout(getNewInputValue, 3000); // Delay the execution of getNewInputValue for 3 seconds
   };
+  
 
   return (
     <>
