@@ -5,6 +5,7 @@ import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import { CheckIcon } from "@/components/icons/CheckIcon";
+import { Loading } from "@/components/Loading";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -16,10 +17,15 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState("EMAIL"); //email, otp, password
 
   const getEmailInputValue = () => {
     console.log({ email });
+  };
+
+  const getCodeInputValue = () => {
+    console.log({ code });
   };
 
   function handleToggler1() {
@@ -42,12 +48,34 @@ export default function Home() {
     }
   }
 
-  // const handleSave = () => {
-  //   if (password1 !=== password2)
-  //   return setMessage("Passwords do not match!");
+  const handleSave = () => {
+    if (password.trim() === "" || confirmPassword.trim() === "") {
+      return alert("Нууц үг хоосон байна!");
+    }
 
-  //   setMessage("Нууц үг амжилттай солигдлоо");
-  // };
+    if (password !== confirmPassword) {
+      return alert("Нууц үгээ дахин шалгана уу!");
+      // setMessage("Нууц үг ижил биш байна!");
+    }
+
+    if (confirmPassword.trim() === "") {
+      return alert("Нууц үгээ дахин шалгана уу!");
+    }
+
+    if (password !== confirmPassword) {
+      return alert("Нууц үгээ дахин шалгана уу!");
+    }
+
+    setIsLoading(true);
+    const getNewPasswordInputValue = () => {
+      console.log({ password });
+      setIsLoading(false);
+      setMessage("Нууц үг амжилттай солигдлоо!");
+      // setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+      // window.location.href = "/menu";
+    };
+    setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+  };
 
   switch (step) {
     case "EMAIL":
@@ -69,7 +97,6 @@ export default function Home() {
               getEmailInputValue();
               setStep("OTP");
             }}
-            // onClick={() => setStep("OTP")}
             className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
             aria-disabled="true"
           >
@@ -114,7 +141,10 @@ export default function Home() {
             </div>
           </div>
           <button
-            onClick={() => setStep("PASSWORD")}
+            onClick={() => {
+              getCodeInputValue();
+              setStep("PASSWORD");
+            }}
             className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
             aria-disabled="true"
             type="submit"
@@ -161,6 +191,7 @@ export default function Home() {
                   placeholder="Нууц үг давтах"
                   type={show2}
                   value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   className="input input-bordered w-full max-w-xs"
                 />
                 <button
@@ -171,7 +202,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  <Icon icon={hider2} size={25} />
+                  {/* <Icon icon={hider2} size={25} /> */}
                 </button>
               </div>
             </div>
@@ -179,15 +210,22 @@ export default function Home() {
               className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
               role="button"
               aria-disabled="true"
-              // onClick={handleSave}
+              onClick={handleSave}
             >
               Үргэлжлүүлэх
             </button>
-            {message && (
-              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-[328px] p-5 mt-12 top-10">
-                <CheckIcon />
-                <h1 className="text-green-800">{message}</h1>
+
+            {isLoading ? (
+              <div className="mt-5">
+                <Loading />
               </div>
+            ) : (
+              message && (
+                <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-[328px] p-5 mt-12 top-10">
+                  <CheckIcon />
+                  <h1 className="text-green-800">{message}</h1>
+                </div>
+              )
             )}
           </div>
         </div>

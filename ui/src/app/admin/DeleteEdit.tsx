@@ -2,15 +2,21 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { DetailIcon } from "../../components/icons/DetailIcon";
 import axios from "axios";
-import { useState } from "react";
+import { ChangeEventHandler, PropsWithChildren, useState } from "react";
 
 type DeleteEditProps = {
+  categoryName: string;
   categoryId: string;
   onChange: () => void;
 };
 
-export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
-  const [name, setName] = useState("");
+export function DeleteEdit({
+  categoryName,
+  categoryId,
+  onChange,
+}: DeleteEditProps) {
+  const [name, setName] = useState(categoryName);
+
   // ----DELETE CATEGORY----//
   async function handleDeleteCategory(id: string) {
     if (window.confirm("Are you sure to delete this category?")) {
@@ -25,34 +31,54 @@ export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
     }
   }
   // ----UPDATE CATEGORY----//
+  async function showModal(id: string) {
+    document?.getElementById(id)?.showModal();
+    console.log(id);
+  }
+
+  async function closeModal(id: string) {
+    document?.getElementById(id)?.close();
+    console.log(id);
+  }
+
   async function handleEditCategory(id: string) {
-    if (window.prompt("Edit", "hi")) {
-      try {
-        await axios.put(`http://localhost:8000/category/${id}`).then(() => {
-          // if (name === null) return;
-          // if (name === "") {
-          //   alert("Utga oruulna uuu");
-          // }
+    if (!name) return;
+
+    try {
+      await axios
+        .put(`http://localhost:8000/category/${id}`, { name })
+        .then(() => {
+          onChange();
         });
-      } catch (error) {
-        console.log(error);
-      }
+    } catch (error) {
+      console.log(error);
     }
+
+    closeModal(id);
+  }
+
+  const handleEditName: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setName(event.target.value);
+  };
+
+  function deleteAll() {
+    setName("");
+    return;
   }
 
   return (
     <div className="dropdown dropdown-right dropdown-end">
-      <div tabIndex={0} className=" m-1">
+      <div tabIndex={0} className="m-1  p-2">
         <DetailIcon />
       </div>
       <ul
         tabIndex={0}
         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
       >
-        <li onClick={() => handleEditCategory(categoryId)}>
+        <li onClick={() => showModal(categoryId)}>
           <div>
             <MdModeEdit />
-            <a>Edit name</a>
+            <p>Edit name</p>
           </div>
         </li>
 
@@ -63,6 +89,51 @@ export function DeleteEdit({ categoryId, onChange }: DeleteEditProps) {
           </div>
         </li>
       </ul>
+      <CategoryListEditModal categoryId={categoryId}>
+        <div>
+          <input
+            className="input flex justify-start input-bordered w-full max-w-xs"
+            type="text"
+            value={name}
+            onChange={handleEditName}
+          />
+          <div className="flex items-center gap-5 ml-[65%] mt-3">
+            <button onClick={deleteAll}>Clear</button>
+            <button
+              onClick={() => handleEditCategory(categoryId)}
+              className="w-[109px] h-[40px] border px-[16px] py-[10px] rounded bg-[#393939] flex items-center text-white"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </CategoryListEditModal>
     </div>
   );
 }
+
+type CategoryListEditModalProps = PropsWithChildren & {
+  categoryId: string;
+};
+const CategoryListEditModal = ({
+  categoryId,
+  children,
+}: CategoryListEditModalProps) => {
+  return (
+    <dialog id={categoryId} className="modal z-10">
+      <div className="modal-box">
+        <form method="dialog">
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
+        </form>
+        <h3 className="font-bold text-lg justify-center flex items-center">
+          Create new category
+        </h3>
+        <div className="divider m-0"></div>
+        <p className="py-4 flex justify-start">Category name</p>
+        {children}
+      </div>
+    </dialog>
+  );
+};

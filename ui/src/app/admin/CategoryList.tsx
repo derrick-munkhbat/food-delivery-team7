@@ -10,18 +10,11 @@ type Category = {
   _id: string;
 };
 
-const showModal = () => {
-  return document.getElementById("my_modal_3").showModal();
-};
-
-const closeModal = () => {
-  return document.getElementById("my_modal_3").close();
-};
-
 export function CategoryList() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
 
   function loadCategory() {
     setLoading(true);
@@ -64,6 +57,13 @@ export function CategoryList() {
     return;
   }
 
+  function openModal() {
+    return setOpen(true);
+  }
+  function closeModal() {
+    return setOpen(false);
+  }
+
   if (loading) return <Loading />;
 
   return (
@@ -75,13 +75,17 @@ export function CategoryList() {
             className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
           >
             <p className="text-lg font-medium">{category.name}</p>
-            <DeleteEdit categoryId={category._id} onChange={loadCategory} />
+            <DeleteEdit
+              categoryName={category.name}
+              categoryId={category._id}
+              onChange={loadCategory}
+            />
           </div>
         );
       })}
       <div>
         <button
-          onClick={showModal}
+          onClick={openModal}
           className="btn flex bg-white hover:bg-[#18BA51] btn-block "
         >
           <AddIcon />
@@ -89,11 +93,14 @@ export function CategoryList() {
             Create New Category
           </p>
         </button>
-        <dialog id="my_modal_3" className="modal">
+        <dialog className={`modal ${open ? "modal-open" : ""}`}>
           <div className="modal-box">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              <button
+                onClick={closeModal}
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              >
                 ✕
               </button>
             </form>
@@ -123,6 +130,8 @@ export function CategoryList() {
           </div>
         </dialog>
       </div>
+
+      {/* {editing && <ModalEdit category={editing} />} */}
     </div>
   );
 }

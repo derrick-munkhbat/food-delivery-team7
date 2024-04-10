@@ -26,3 +26,10 @@ export async function createMenu(req: Request, res: Response) {
   res.json(menu);
 }
 
+export async function deleteMenu(req: any, res: any) {
+  const { _id } = req.params;
+
+  await MenuModel.deleteOne({ _id });
+  res.sendStatus(204);
+}
+

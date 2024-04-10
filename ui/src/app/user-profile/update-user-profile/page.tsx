@@ -5,30 +5,27 @@ import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { CheckIcon } from "@/components/icons/CheckIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Loading } from "@/components/Loading";
+import axios from "axios";
 
 export default function UpDateUserProfile() {
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [profilePic, setProfilePic] = useState(null);
 
-  const [name, setName] = useState("Derrick Munkhbat");
+  const [name, setName] = useState("");
   const [nameEditing, setNameEditing] = useState(false);
   const [tempName, setTempName] = useState("");
 
-  const [phoneNumber, setPhoneNumber] = useState("88181074");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberEditing, setPhoneNumberEditing] = useState(false);
   const [tempPhoneNumber, setTempPhoneNumber] = useState("");
 
-  const [email, setEmail] = useState("derrick.munkhbat@gmail.com");
+  const [email, setEmail] = useState("");
   const [emailEditing, setEmailEditing] = useState(false);
   const [tempEmail, setTempEmail] = useState("");
-
-  const handleSave = () => {
-    setMessage("Мэдээлэл амжилттай хадгалагдлаа");
-    // need await function to go back to user profile page after few secods
-    // window.location.href = "/user-profile/update-user-profile";
-  };
 
   const handleChangeProfilePic = (event) => {
     setProfilePic(event.target.files[0]);
@@ -72,6 +69,49 @@ export default function UpDateUserProfile() {
     setEmail(tempEmail);
   };
 
+  const handleSave = () => {
+    setIsLoading(true);
+    const getNewInputValue = () => {
+      console.log({ name, phoneNumber, email });
+      setIsLoading(false);
+      setMessage("Таны мэдээлэл амжилттай солигдлоо!");
+    };
+    setTimeout(getNewInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+  };
+
+  // function loadTask() {
+  //   axios.get("/users").then((response) => {
+  //     setTransactions(response.data);
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   loadTask();
+  // }, []);
+
+  // const handleSave = () => {
+  //   setIsLoading(true);
+  //   const getNewInputValue = () => {
+  //     console.log({ name, phoneNumber, email });
+  //     axios.post("/user", {
+  //       name: userName,
+  //       phoneNumber: userNumber,
+  //       email: userEmail,
+  //     })
+  //     .then(() => {
+  //       alert("success!");
+  //       loadTask();
+  //     })
+  //     .catch(() => alert("error!"));
+  //     }
+
+  //     setIsLoading(false);
+  //     setMessage("Таны мэдээлэл амжилттай солигдлоо!");
+  //     // window.location.href = "/menu";
+  //   };
+  //   setTimeout(getNewInputValue, 3000); // Delay the execution of getNewInputValue for 3 seconds
+  // };
+
   return (
     <>
       <div>
@@ -102,7 +142,7 @@ export default function UpDateUserProfile() {
           <div className="flex bg-slate-100 rounded p-2 w-full items-center">
             <div className="flex rounded p-2 w-full items-center gap-3">
               <UserIcon />
-              <div>
+              <div className="w-full">
                 {nameEditing ? (
                   <input
                     placeholder="Нэр..."
@@ -130,7 +170,7 @@ export default function UpDateUserProfile() {
           <div className="flex bg-slate-100 rounded p-2 w-full items-center">
             <div className="flex rounded p-2 w-full items-center gap-3">
               <PhoneIcon />
-              <div>
+              <div className="w-full">
                 {phoneNumberEditing ? (
                   <input
                     placeholder="Утасны дугаар..."
@@ -162,7 +202,7 @@ export default function UpDateUserProfile() {
           <div className="flex bg-slate-100 rounded p-2 w-full items-center">
             <div className="flex  rounded p-2 w-full items-center gap-3">
               <EmailIcon />
-              <div>
+              <div className="w-full">
                 {emailEditing ? (
                   <input
                     placeholder="Имэйл хаяг..."
@@ -196,11 +236,17 @@ export default function UpDateUserProfile() {
           >
             Хадгалах
           </button>
-          {message && (
-            <div className="alert alert-success absolute bg-white flex gap-5 border-2 rounded-2xl mt-20 mb-5 justify-center items-center mx-auto w-[370px] p-5 top-10">
-              <CheckIcon />
-              <h1 className="text-green-800">{message}</h1>
+          {isLoading ? (
+            <div className="mt-5">
+              <Loading />
             </div>
+          ) : (
+            message && (
+              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-auto p-5 mt-20 top-10">
+                <CheckIcon />
+                <h1 className="text-green-800">{message}</h1>
+              </div>
+            )
           )}
         </div>
       </div>
