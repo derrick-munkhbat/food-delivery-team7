@@ -130,6 +130,8 @@ export function CategoryList() {
           </div>
         </dialog>
       </div>
+
+      {/* {editing && <ModalEdit category={editing} />} */}
     </div>
   );
 }
