@@ -13,13 +13,15 @@ export function Input() {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
+  const[ pass , setPass]= useState("")
   const submit = async()=>{
     console.log({userName, userEmail, userPassword})
-    if (!userName){
-      alert("Please enter name")
+    if (pass!==userPassword && userPassword.length>8){
+      alert("Please check your password")
       return;
     }
     try{
+      console.log({userEmail, userName, userPassword, pass})
       await axios.post("http://localhost:8000/user/create",{
         userName,
         userEmail,
@@ -148,8 +150,8 @@ export function Input() {
             <input
               placeholder="Нууц үг давтах"
               type={show}
-              // value={pass}
-              // onChange={(e) => setPass(e.target.value)}
+              value={pass}
+              onChange={(e) => setPass(e.target.value)}
               className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
             />
             <button

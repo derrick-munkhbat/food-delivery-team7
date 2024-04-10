@@ -1,19 +1,28 @@
 import Link from "next/link";
 import { useState } from "react";
-import { HideIcon } from "../../public/Icons/HideIcon";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { mutator } from "@/app/util";
 
 export function Login() {
   const [show, setShow] = useState("");
   const [type, setType] = useState("password");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
   // const [cursor , handleCursor] = useState("not-allowed")
+  async function login() {
+    const data = await mutator("login", { userEmail, userPassword });
+    alert("success")
+    window.location.href = "/homepage";
+    const { accessToken } = data;
+    console.log( accessToken )
+
+    localStorage.setItem("accessToken", accessToken);
+  }
 
   function handleToggle() {
     if (type === "password") {
@@ -44,8 +53,8 @@ export function Login() {
                 type="email"
                 id="email"
                 autoFocus
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
                 className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
               />
             </div>
@@ -62,8 +71,8 @@ export function Login() {
                 <input
                   placeholder="Нууц үг"
                   type={type}
-                  value={pass}
-                  onChange={(e) => setPass(e.target.value)}
+                  value={userPassword}
+                  onChange={(e) => setUserPassword(e.target.value)}
                   className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
                 />
                 <button
@@ -87,6 +96,7 @@ export function Login() {
                 type="submit"
                 className="w-full flex justify-center  mx-auto px-4 py-4 text-lg  text-gray-400 transition-colors duration-300 bg-gray-200 rounded-md shadow hover:bg-green-600 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
                 // style={{cursor:cursor}}
+                onClick={login}
               >
                 Нэвтрэх
               </button>
@@ -101,6 +111,7 @@ export function Login() {
                 <button
                   type="submit"
                   className="w-full flex justify-center mx-auto px-4 py-4 text-lg   transition-colors duration-300 border border-green-400 text-black rounded-md shadow hover:bg-green-400 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
+                  
 
                 >
                   Бүртгүүлэх

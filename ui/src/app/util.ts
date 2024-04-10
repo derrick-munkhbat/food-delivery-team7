@@ -13,9 +13,18 @@ export async function fetcher(path: string) {
 }
 export function fetchUsers(){
   const [users, setUsers] = useState([])
-  fetch("http://localhost:3000/user/create")
+  fetch("http://localhost:8000/user/create")
     .then((res) => res.json())
     .then((data) => setUsers(data)).catch((error)=> {
       console.log("aldaa garlaa");
     });
+}
+export async function mutator(path: string, postData: {}) {
+  const response: any = await axios.post(`http://localhost:8000/user/login`, postData, {
+    headers: {
+      "access-token": localStorage.getItem("accessToken") || "",
+    },
+  });
+
+  return response.data;
 }
