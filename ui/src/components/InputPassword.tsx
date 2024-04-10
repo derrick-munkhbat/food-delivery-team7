@@ -1,7 +1,7 @@
-import React from "react";
-
-const Input = () => {
-    return <div></div>
-}
-
-export default Input;
+export const InputPass = () => {
+    return (
+    <div>
+        <p>Hello World</p>
+        <input type="text"/>
+    </div>
+)}

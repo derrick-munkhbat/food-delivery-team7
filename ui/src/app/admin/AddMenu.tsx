@@ -9,7 +9,7 @@ export function showModal() {
    // working on
 }
 
-export function AddMenu() {
+export function AddMenu({_id}) {
   type Menu = {
     foodName: string;
     foodCategory: string;
