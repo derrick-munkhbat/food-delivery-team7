@@ -17,12 +17,12 @@ export async function createCategory(req: any, res: any) {
 
 export async function updateCategory(req: any, res: any) {
   const { _id } = req.params;
-  const { value } = req.body;
+  const { name } = req.body;
   const categories = await CategoryModel.findByIdAndUpdate(_id, {
-    name: value,
+    name: name,
   });
   res.json(categories);
-  console.log(value);
+  console.log(name);
 }
 
 export async function deleteCategory(req: any, res: any) {
