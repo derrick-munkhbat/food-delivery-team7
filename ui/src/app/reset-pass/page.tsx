@@ -135,7 +135,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  <Icon icon={hider1} size={25} />
+                  {/* <Icon icon={hider1} size={25} /> */}
                 </button>
               </div>
             </div>
@@ -180,7 +180,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  <Icon icon={hider1} size={25} />
+                  {/* <Icon icon={hider1} size={25} /> */}
                 </button>
               </div>
 
