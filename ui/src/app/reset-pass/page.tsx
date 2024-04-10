@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   const getCodeInputValue = () => {
-    console.log({ email });
+    console.log({ code });
   };
 
   function handleToggler1() {
@@ -49,15 +49,30 @@ export default function Home() {
   }
 
   const handleSave = () => {
+    if (password.trim() === "" || confirmPassword.trim() === "") {
+      return alert("Нууц үг хоосон байна!");
+    }
+
     if (password !== confirmPassword) {
-      return alert("Нууц үгээ дахин шалгана уу");
+      return alert("Нууц үгээ дахин шалгана уу!");
       // setMessage("Нууц үг ижил биш байна!");
     }
+
+    if (confirmPassword.trim() === "") {
+      return alert("Нууц үгээ дахин шалгана уу!");
+    }
+
+    if (password !== confirmPassword) {
+      return alert("Нууц үгээ дахин шалгана уу!");
+    }
+
     setIsLoading(true);
     const getNewPasswordInputValue = () => {
       console.log({ password });
       setIsLoading(false);
       setMessage("Нууц үг амжилттай солигдлоо!");
+      // setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+      // window.location.href = "/menu";
     };
     setTimeout(getNewPasswordInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
   };
