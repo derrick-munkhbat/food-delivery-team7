@@ -5,8 +5,9 @@ import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { CheckIcon } from "@/components/icons/CheckIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loading } from "@/components/Loading";
+import axios from "axios";
 
 export default function UpDateUserProfile() {
   const [message, setMessage] = useState("");
@@ -14,15 +15,15 @@ export default function UpDateUserProfile() {
 
   const [profilePic, setProfilePic] = useState(null);
 
-  const [name, setName] = useState("Derrick Munkhbat");
+  const [name, setName] = useState("");
   const [nameEditing, setNameEditing] = useState(false);
   const [tempName, setTempName] = useState("");
 
-  const [phoneNumber, setPhoneNumber] = useState("88181074");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberEditing, setPhoneNumberEditing] = useState(false);
   const [tempPhoneNumber, setTempPhoneNumber] = useState("");
 
-  const [email, setEmail] = useState("derrick.munkhbat@gmail.com");
+  const [email, setEmail] = useState("");
   const [emailEditing, setEmailEditing] = useState(false);
   const [tempEmail, setTempEmail] = useState("");
 
@@ -69,16 +70,47 @@ export default function UpDateUserProfile() {
   };
 
   const handleSave = () => {
-    console.log({ name, phoneNumber, email });
     setIsLoading(true);
-
     const getNewInputValue = () => {
+      console.log({ name, phoneNumber, email });
       setIsLoading(false);
       setMessage("Таны мэдээлэл амжилттай солигдлоо!");
-      // window.location.href = "/menu";
     };
-    setTimeout(getNewInputValue, 3000); // Delay the execution of getNewInputValue for 3 seconds
+    setTimeout(getNewInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
   };
+
+  // function loadTask() {
+  //   axios.get("/users").then((response) => {
+  //     setTransactions(response.data);
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   loadTask();
+  // }, []);
+
+  // const handleSave = () => {
+  //   setIsLoading(true);
+  //   const getNewInputValue = () => {
+  //     console.log({ name, phoneNumber, email });
+  //     axios.post("/user", {
+  //       name: userName,
+  //       phoneNumber: userNumber,
+  //       email: userEmail,
+  //     })
+  //     .then(() => {
+  //       alert("success!");
+  //       loadTask();
+  //     })
+  //     .catch(() => alert("error!"));
+  //     }
+
+  //     setIsLoading(false);
+  //     setMessage("Таны мэдээлэл амжилттай солигдлоо!");
+  //     // window.location.href = "/menu";
+  //   };
+  //   setTimeout(getNewInputValue, 3000); // Delay the execution of getNewInputValue for 3 seconds
+  // };
 
   return (
     <>
