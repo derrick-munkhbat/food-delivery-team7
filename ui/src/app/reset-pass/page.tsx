@@ -49,10 +49,6 @@ export default function Home() {
   }
 
   const handleSave = () => {
-<<<<<<< HEAD
-    if (password.trim() === "") {
-      return alert("Нууц үгээ дахин шалгана уу!");
-=======
     if (password.trim() === "" || confirmPassword.trim() === "") {
       return alert("Нууц үг хоосон байна!");
     }
@@ -60,7 +56,6 @@ export default function Home() {
     if (password !== confirmPassword) {
       return alert("Нууц үгээ дахин шалгана уу!");
       // setMessage("Нууц үг ижил биш байна!");
->>>>>>> 058cd09ee27952ba3702c5af02c94ac3cff305fd
     }
 
     if (confirmPassword.trim() === "") {
