@@ -5,11 +5,8 @@ import Select from "react-select";
 import { fetcher } from "../util";
 import { Modal } from "@/components/Modal";
 
-export function showModal() {
 
-}
-
-export function AddMenu() {
+export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) {
   type Menu = {
     foodName: string;
     foodCategory: string;
@@ -27,8 +24,6 @@ export function AddMenu() {
   const [foodImg, setFoodImg] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [categories, setCategories] = useState([]);
-
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     fecthCategories();
@@ -110,17 +105,10 @@ export function AddMenu() {
 
   return (
     <div>
-      <button
-        className="btn sm:btn-sm md:btn-md bg-[#18BA51] text-white no-animation"
-        onClick={() => setOpen(true) }
-      >
-        Add new food
-      </button>
-
       <Modal open={open}>
           <div className="border-1 rounded-2xl bg-white w-[587px]">
             <div className="px-4 py-6 flex justify-between align-center items-center">
-              <div className="p-1.5" onClick={() => setOpen(false)}>
+              <div className="p-1.5" onClick={() => onClose()}>
                 <CloseIcon />
               </div>
               <h1 className="text-[#161616] text-2xl font-bold text-center">
