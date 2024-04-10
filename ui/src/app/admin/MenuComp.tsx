@@ -3,6 +3,8 @@ import { AddMenu } from "./AddMenu";
 import { showModal } from "./AddMenu";
 import { AdminCard } from "@/components/cards/AdminCard";
 
+
+
 export function MenuComp() {
     return (
         <div className="w-3/4 bg-[#F7F7F8] pl-6 py-6">
@@ -11,7 +13,7 @@ export function MenuComp() {
                 <AddMenu />
             </div>
             <div className="flex flex-col items-center gap-[30px] mt-10">
-                <button onClick={showModal}>
+                <button onClick={(showModal)}>
                     <BigAddIcon />
                 </button>
                 <p className="text-[#808080]">Уучлаарай, Таны меню хоосон байна.</p>

@@ -30,7 +30,7 @@ export function AdminCard() {
           <div className="w-[282px] hover:scale-105">
             <div className="bg-[url('/images/menuZurag.jpg')] grid items-center justify-items-center group-hover:opacity-60 h-[186px]  duration-300  rounded-2xl ease-in-out  bg-center w-[282px]">
               <div className="flex gap-2 opacity-0 hover:opacity-90 transition-all">
-                <button className="z-20 w-[166px] h-[40px] rounded-xl text-lg text-black font-semibold px-4 py-1 bg-white ">
+                <button className="z-20 w-[166px] h-[40px] rounded-xl text-lg text-black font-semibold px-4 py-1 bg-white">
                   EDIT
                 </button>
                 <button className="z-20 s-10 rounded-xl px-4 py-1 bg-white" onClick={() => deleteMenu(menu._id)}>
