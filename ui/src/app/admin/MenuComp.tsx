@@ -23,7 +23,8 @@ export function MenuComp() {
                 </button>
                 <p className="text-[#808080]">Уучлаарай, Таны меню хоосон байна.</p>
             </div>
-            <AdminCard />
+            
+            <AdminCard onOpen={() => setOpen(true)} onClose={() => setOpen(false)} />
 
             <AddMenu open={open} onClose={() => setOpen(false)}/>
         </div>
