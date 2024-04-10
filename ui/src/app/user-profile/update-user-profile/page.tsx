@@ -73,14 +73,12 @@ export default function UpDateUserProfile() {
     setIsLoading(true);
 
     const getNewInputValue = () => {
-      console.log({ name, phoneNumber, email });
       setIsLoading(false);
       setMessage("Таны мэдээлэл амжилттай солигдлоо!");
       // window.location.href = "/menu";
     };
     setTimeout(getNewInputValue, 3000); // Delay the execution of getNewInputValue for 3 seconds
   };
-  
 
   return (
     <>
