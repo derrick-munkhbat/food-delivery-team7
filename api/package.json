@@ -6,7 +6,7 @@
     "dev": "bun --watch run ./main.ts"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.12",
+    "@types/bun": "latest",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/mongoose": "^5.11.97"

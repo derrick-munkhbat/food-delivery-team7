@@ -1,6 +1,10 @@
 const express = require("express");
 
-const { getMenu, createMenu, deleteMenu } = require("../controller/menu.controller");
+const {
+  getMenu,
+  createMenu,
+  deleteMenu,
+} = require("../controller/menu.controller");
 
 const menuRouter = express.Router();
 
