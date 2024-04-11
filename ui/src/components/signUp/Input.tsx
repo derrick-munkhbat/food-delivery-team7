@@ -16,26 +16,30 @@ export function Input() {
   const[ pass , setPass]= useState("")
   const submit = async()=>{
     console.log({userName, userEmail, userPassword})
-    if (pass!==userPassword && userPassword.length>8){
+    if (pass!==userPassword){
       alert("Please check your password")
       return;
     }
     try{
-      console.log({userEmail, userName, userPassword, pass})
+      console.log({userEmail, userName, userPassword})
       await axios.post("http://localhost:8000/user/create",{
         userName,
         userEmail,
         userPassword,
+
       });
+      alert("success")
+      window.location.href = "/sign-in";
       setUserName(""),
       setUserEmail(""),
       setUserPassword(""),
-
+     
       fetchUsers()
+      alert("success")
     }catch (error){
       console.error("Error:", error);
-      alert("hh")
     }
+
   }
   function handleToggler(){
     if(show === "password"){
