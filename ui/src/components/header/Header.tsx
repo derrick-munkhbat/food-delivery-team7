@@ -101,10 +101,10 @@ export function Header() {
           </div>
         </div>
 
-        {/* <div className=" flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
+        <div className=" flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
           <NevtrehIcon />
           <a href="/sign-in">Нэвтрэх</a>
-        </div> */}
+        </div>
 
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
           <div className="text-green-600">
