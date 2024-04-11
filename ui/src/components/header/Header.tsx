@@ -107,7 +107,7 @@ export function Header() {
         </div> */}
 
         <div className="flex gap-3 font-bold  justify-center flex-1 max-sm:hidden  items-center ">
-          <div className="fill-green-600">
+          <div className="text-green-600">
             <NevtrehIcon />
           </div>
           <a href="/user-profile" className="text-green-600">

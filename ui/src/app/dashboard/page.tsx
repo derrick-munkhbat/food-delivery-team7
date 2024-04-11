@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
 import { DetailIcon } from "../../components/icons/DetailIcon";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaRegTrashAlt } from "react-icons/fa";
 
 import { AdminDashboard } from "./OrderData";
+import { Pagination } from "@mui/material";
+import { MdModeEdit } from "react-icons/md";
 export default function Dashboard() {
   const [currentIndex, _setCurrentIndex] = React.useState(0);
 
@@ -91,7 +93,29 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="min-w-[69px] w-[103px] py-3 px-6">
-                    <DetailIcon />
+                    <div className="dropdown dropdown-right">
+                      <div tabIndex={0} role="button" className="p-3 m-1">
+                        <DetailIcon />
+                      </div>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                      >
+                        <li>
+                          <div>
+                            <MdModeEdit />
+                            <p>Edit name</p>
+                          </div>
+                        </li>
+
+                        <li>
+                          <div className="text-[#DF1F29]">
+                            <FaRegTrashAlt />
+                            <a className="text-[#DF1F29]">Delete Category </a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </>
@@ -99,10 +123,25 @@ export default function Dashboard() {
           )}
         </div>
         <div className="divider mt-10 "></div>
-        <button className="flex items-center gap-2 font-semibold bg-white border-2 p-2 rounded-lg">
-          <FaArrowLeft />
-          Previous
-        </button>
+        <div className="flex justify-between">
+          <button className="flex items-center gap-2 font-semibold bg-white border-2 p-2 rounded-lg">
+            <FaArrowLeft />
+            Previous
+          </button>
+          <div className="join">
+            <button className="join-item btn">1</button>
+            <button className="join-item btn">2</button>
+            <button className="join-item btn">3</button>
+            <button className="join-item btn btn-disabled">...</button>
+            <button className="join-item btn">8</button>
+            <button className="join-item btn">9</button>
+            <button className="join-item btn">10</button>
+          </div>
+          <button className="flex items-center gap-2 font-semibold bg-white border-2 p-2 rounded-lg">
+            <FaArrowRight />
+            next
+          </button>
+        </div>
       </div>
     </div>
   );
