@@ -1,14 +1,15 @@
+import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const menuSchema = new Schema({
+const foodSchema = new Schema({
   foodName: String,
-  foodCategory: Schema.Types.ObjectId,
+  foodCategory: ObjectId,
   foodIngredients: String,
   foodPrice: Number,
   foodSale: Number,
   foodImg: String,
 });
 
-export const MenuModel = mongoose.model("Menu", menuSchema);
+export const FoodModel = mongoose.model("Food", foodSchema);

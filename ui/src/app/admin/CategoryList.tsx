@@ -15,6 +15,7 @@ export function CategoryList() {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   function loadCategory() {
     setLoading(true);
@@ -49,8 +50,6 @@ export function CategoryList() {
   useEffect(() => {
     loadCategory();
   }, []);
-
-  console.log({ categories });
 
   function deleteAll() {
     setName("");
