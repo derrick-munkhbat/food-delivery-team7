@@ -62,6 +62,9 @@ export function CategoryList() {
   function closeModal() {
     return setOpen(false);
   }
+  // function getCategoryId() {
+  //   return console.log();
+  // }
 
   if (loading) return <Loading />;
 
@@ -129,8 +132,6 @@ export function CategoryList() {
           </div>
         </dialog>
       </div>
-
-      {/* {editing && <ModalEdit category={editing} />} */}
     </div>
   );
 }

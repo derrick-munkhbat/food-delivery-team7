@@ -1,4 +1,4 @@
-export function SagsIcon() {
+export function BasketIcon() {
   return (
     <svg
       width="22"

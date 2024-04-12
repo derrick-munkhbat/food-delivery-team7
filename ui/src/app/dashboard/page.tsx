@@ -132,7 +132,7 @@ export default function Dashboard() {
             <button className="join-item btn">1</button>
             <button className="join-item btn">2</button>
             <button className="join-item btn">3</button>
-            <button className="join-item btn btn-disabled">....</button>
+            <button className="join-item btn btn-disabled">.....</button>
             <button className="join-item btn">8</button>
             <button className="join-item btn">9</button>
             <button className="join-item btn">10</button>

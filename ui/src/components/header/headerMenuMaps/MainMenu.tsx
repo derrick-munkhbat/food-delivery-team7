@@ -1,5 +1,5 @@
 "use client";
-import { mainMenuitems } from "./mainMenuItems";
+import { mainMenuitems } from "../mainMenuItems";
 import { usePathname } from "next/navigation";
 
 export function Mainmenu() {
@@ -7,7 +7,7 @@ export function Mainmenu() {
 
   return (
     <>
-      <div className="flex  p-2 md:flex items-center justify-center flex-1 gap-10 ">
+      <div className="flex p-2 md:flex items-center justify-center flex-1 gap-10  ">
         {mainMenuitems.map((item) => (
           <a
             key={item.id}
