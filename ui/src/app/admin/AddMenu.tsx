@@ -93,8 +93,18 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
   };
 
   const handleFoodImg = (event) => {
+    const file = event.target.file;
+    setFileToBase(file);
     setFoodImg(event?.target.value);
   };
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setFoodImg(reader.result);
+    }
+  }
 
   const options = categories.map((category) => {
     return {

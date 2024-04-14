@@ -8,7 +8,16 @@ const menuSchema = new Schema({
   foodIngredients: String,
   foodPrice: Number,
   foodSale: Number,
-  foodImg: String,
+  foodImg: {
+    public_id: {
+      type: String,
+      require: true
+    },
+    url: {
+      type: String,
+      require: true
+    }
+  },
 });
 
 export const MenuModel = mongoose.model("Menu", menuSchema);
