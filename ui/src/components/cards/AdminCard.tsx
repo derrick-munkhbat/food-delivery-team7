@@ -5,7 +5,7 @@ import axios from "axios";
 import { AddMenu } from "@/app/admin/AddMenu";
 import { EditorMenu } from "@/app/admin/EditorMenu";
 
-export function AdminCard() {
+export function AdminCard({category} : {category: string}) {
   const [menus, setMenus] = useState([]);
   const [open, setOpen] = useState(false);
 
@@ -13,8 +13,8 @@ export function AdminCard() {
     fetchMenu();
   }, []);
 
-  const fetchMenu = () => {
-    fetch("http://localhost:8000/menu")
+  const fetchMenu = async () => {
+    fetch(`http://localhost:8000/menu`)
       .then((res) => res.json())
       .then((data) => setMenus(data));
   };
@@ -24,6 +24,8 @@ export function AdminCard() {
       fetchMenu();
     });
   };
+
+  console.log(category);
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 justify-items-center gap-[60px] mt-10 mb-5">
