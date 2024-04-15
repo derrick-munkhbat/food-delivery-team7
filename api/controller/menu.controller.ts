@@ -1,8 +1,11 @@
 import { MenuModel } from "../models/menu.models";
-import cloudinary from "../database/cloudinary";
 
 export async function getMenu(req: Request, res: Response) {
-  const menus = await MenuModel.find();
+  const {categoryId} = req.query;
+
+  const menus = await MenuModel.find({
+    foodCategory: categoryId
+  });
   res.json(menus);
 }
 
@@ -20,6 +23,7 @@ export async function createMenu(req: Request, res: Response) {
     const result = await cloudinary.uploader.upload(foodImg, {
       folder: "FoodPicture"
     });
+
     const menu = await MenuModel.create({
       foodName,
       foodCategory,

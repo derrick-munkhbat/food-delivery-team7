@@ -6,7 +6,7 @@ import { fetcher } from "../util";
 import { Modal } from "@/components/Modal";
 
 
-export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: object.id, onClose: () => void }) {
+export function EditorMenu() {
     type Menu = {
         foodName: string;
         foodCategory: string;
@@ -25,6 +25,8 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
     const [selectedCategory, setSelectedCategory] = useState<any>(null);
     const [categories, setCategories] = useState([]);
     const [menu, setMenu] = useState([]);
+
+    const [openEditor, setOpenEditor] = useState(false);
 
     useEffect(() => {
         fecthCategories();
@@ -92,7 +94,7 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
         setSalesPercentage(event?.target.value);
     };
 
-    const handleFoodImg = (event) => {
+    const handleFoodImg = (event: React.FormEvent<HTMLFormElement>) => {
         setFoodImg(event?.target.value);
     };
 
@@ -107,14 +109,15 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
         <div>
             <button
                 className="z-20 w-[166px] h-[40px] rounded-xl text-lg text-black font-semibold px-4 py-1 bg-white"
-                onClick={() => onOpen()}>
+                onClick={() => setOpenEditor(true)}>
                 EDIT
             </button>
 
-            <Modal open={open}>
+
+            <div className={`modal ${openEditor ? "modal-open" : ""}`}>
                 <div className="border-1 rounded-2xl bg-white w-[587px]">
                     <div className="px-4 py-6 flex justify-between align-center items-center">
-                        <div className="p-1.5" onClick={() => onClose()}>
+                        <div className="p-1.5" onClick={() => setOpenEditor(false)}>
                             <CloseIcon />
                         </div>
                         <h1 className="text-[#161616] text-2xl font-bold text-center">
@@ -213,7 +216,7 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
                         </button>
                     </div>
                 </div>
-            </Modal>
+            </div>
         </div>
     );
 }
