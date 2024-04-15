@@ -7,26 +7,13 @@ import { IoChevronBack } from "react-icons/io5";
 import { Mainmenu } from "@/components/header/headerMenuMaps/MainMenu";
 import { MobileHeaderMenu } from "./mobileHeader/MobileHeaderMenu";
 
-import { UserHeader } from "@/app/basket/page";
+// import { UserHeader } from "@/app/basket/page";
 import { UserMenu } from "./headerMenuMaps/userMenu";
 
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
 export function Header() {
-  const [visible, setVisible] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  function openCart() {
-    // open=true;
-    setVisible(true);
-    setDrawerOpen(true);
-  }
-
-  function closeCart() {
-    // open=false;
-    setVisible(false);
-    setDrawerOpen(false);
-  }
 
   useEffect(() => {
     if (drawerOpen) {
