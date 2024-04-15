@@ -13,15 +13,7 @@ import { UserMenu } from "./headerMenuMaps/userMenu";
 // import { Mainmenu } from "@/components/DATA/MainMenu";
 
 export function Header() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  useEffect(() => {
-    if (drawerOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-  }, [drawerOpen]);
+  
 
   return (
     <div className="top-0 z-30  h-[57px] justify-between  w-full mx-auto flex gap-6 container  px-5 py-5 xl:py-[8px]  xl:px-[5px] ">
