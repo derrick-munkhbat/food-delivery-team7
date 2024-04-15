@@ -3,7 +3,7 @@ import { AddMenu } from "./AddMenu";
 import { AdminCard } from "@/components/cards/AdminCard";
 import { useState } from "react";
 
-export function MenuComp() {
+export function MenuComp({category} : {category: string}) {
     const [open, setOpen] = useState(false)
 
     return (
@@ -24,7 +24,7 @@ export function MenuComp() {
                 <p className="text-[#808080]">Уучлаарай, Таны меню хоосон байна.</p>
             </div>
             
-            <AdminCard onOpen={() => setOpen(true)} onClose={() => setOpen(false)} />
+            <AdminCard category={category}/>
 
             <AddMenu open={open} onClose={() => setOpen(false)}/>
         </div>

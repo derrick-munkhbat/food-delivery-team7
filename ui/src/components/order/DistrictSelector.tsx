@@ -6,7 +6,6 @@ import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { useState } from "react";
 import { FormControl, MenuItem, InputLabel, Select } from "@mui/material";
-import LocationCity from "@mui/icons-material/LocationCity";
 import { TbArrowWaveRightDown } from "react-icons/tb";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";

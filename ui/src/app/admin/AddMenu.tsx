@@ -63,7 +63,7 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
       .post("http://localhost:8000/menu/create", { ...newMenu })
       .then(() => {
         handleClear;
-        setOpen(false);
+        onClose();
       });
   };
 
@@ -83,7 +83,7 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
   const handleFoodIngredients = (event) => {
     setFoodIngredients(event?.target.value);
   };
-
+  
   const handleFoodPrice = (event) => {
     setFoodPrice(event?.target.value);
   };
@@ -93,8 +93,18 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
   };
 
   const handleFoodImg = (event) => {
+    const file = event.target.file;
+    setFileToBase(file);
     setFoodImg(event?.target.value);
   };
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setFoodImg(reader.result);
+    }
+  }
 
   const options = categories.map((category) => {
     return {

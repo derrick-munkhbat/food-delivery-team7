@@ -10,11 +10,14 @@ type Category = {
   _id: string;
 };
 
-export function CategoryList() {
+export function CategoryList({selectCategory}) {
   const [categories, setCategories] = useState<Category[]>([]);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+
 
   function loadCategory() {
     setLoading(true);
@@ -50,8 +53,6 @@ export function CategoryList() {
     loadCategory();
   }, []);
 
-  console.log({ categories });
-
   function deleteAll() {
     setName("");
     return;
@@ -64,6 +65,11 @@ export function CategoryList() {
     return setOpen(false);
   }
 
+  const handleCategory = (_id : string) => {
+    setSelectedCategory(_id);
+    selectCategory(selectedCategory);
+  }
+
   if (loading) return <Loading />;
 
   return (
@@ -73,6 +79,7 @@ export function CategoryList() {
           <div
             key={category._id}
             className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
+            onClick={() => {handleCategory(category._id)}}
           >
             <p className="text-lg font-medium">{category.name}</p>
             <DeleteEdit
@@ -130,8 +137,6 @@ export function CategoryList() {
           </div>
         </dialog>
       </div>
-
-      {/* {editing && <ModalEdit category={editing} />} */}
     </div>
   );
 }

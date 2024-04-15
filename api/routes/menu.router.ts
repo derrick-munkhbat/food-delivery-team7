@@ -10,6 +10,6 @@ const menuRouter = express.Router();
 
 menuRouter.get("/", getMenu);
 menuRouter.post("/create", createMenu);
-// menuRouter.delete("/delete/:_id", deleteMenu);
+menuRouter.delete("/delete/:_id", deleteMenu);
 
 export default menuRouter;

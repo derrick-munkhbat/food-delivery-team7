@@ -4,11 +4,20 @@ const { Schema } = mongoose;
 
 const menuSchema = new Schema({
   foodName: String,
-  foodCategory: String,
+  foodCategory: Schema.Types.ObjectId,
   foodIngredients: String,
   foodPrice: Number,
   foodSale: Number,
-  foodImg: String,
+  foodImg: {
+    public_id: {
+      type: String,
+      require: true
+    },
+    url: {
+      type: String,
+      require: true
+    }
+  },
 });
 
 export const MenuModel = mongoose.model("Menu", menuSchema);
