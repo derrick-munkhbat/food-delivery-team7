@@ -6,6 +6,7 @@ import { eye } from "react-icons-kit/feather/eye";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { mutator } from "@/app/util";
+import axios from "axios";
 
 export function Login() {
   const [show, setShow] = useState("");
@@ -13,13 +14,12 @@ export function Login() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
-  // const [cursor , handleCursor] = useState("not-allowed")
+  
   async function login() {
     const data = await mutator("login", { userEmail, userPassword });
     alert("success")
     window.location.href = "/homepage";
     const { accessToken } = data;
-    console.log( accessToken )
 
     localStorage.setItem("accessToken", accessToken);
   }
@@ -40,7 +40,7 @@ export function Login() {
           <h3 className="my-4 text-2xl font-semibold text-gray-700 flex justify-center">
             Нэвтрэх
           </h3>
-          <form action="#" className="flex flex-col space-y-5">
+          <div className="flex flex-col space-y-5">
             <div className="flex flex-col space-y-1">
               <label
                 htmlFor="email"
@@ -93,7 +93,7 @@ export function Login() {
             <div className="flex items-center space-x-2"></div>
             <div>
               <button
-                type="submit"
+                type="button"
                 className="w-full flex justify-center  mx-auto px-4 py-4 text-lg  text-gray-400 transition-colors duration-300 bg-gray-200 rounded-md shadow hover:bg-green-600 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
                 // style={{cursor:cursor}}
                 onClick={login}
@@ -109,7 +109,7 @@ export function Login() {
               </span>
               <Link href="sign-up">
                 <button
-                  type="submit"
+                  type="button"
                   className="w-full flex justify-center mx-auto px-4 py-4 text-lg   transition-colors duration-300 border border-green-400 text-black rounded-md shadow hover:bg-green-400 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
                   
 
@@ -118,7 +118,7 @@ export function Login() {
                 </button>
               </Link>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

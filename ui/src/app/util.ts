@@ -23,7 +23,11 @@ export async function mutator(path: string, postData: {}) {
   const response: any = await axios.post(`http://localhost:8000/user/login`, postData, {
     headers: {
       "access-token": localStorage.getItem("accessToken") || "",
-    },
+    }
+  }).catch((e) => {
+    if (e.response.status === 401) {
+      alert("Username or password is incorrect");
+    }
   });
 
   return response.data;
