@@ -20,11 +20,18 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState("EMAIL"); //email, otp, password
 
-  const getEmailInputValue = () => {
-    console.log({ email });
-  };
+  // const getEmailInputValue = () => {
+  //   if (email.trim() === "") {
+  //     alert("Имэйл хоосон байна!");
+  //     return;
+  //   }
+  //   console.log({ email });
+  // };
 
   const getCodeInputValue = () => {
+    if (code.trim() === "") {
+      return alert("Kод хоосон байна!");
+    }
     console.log({ code });
   };
 
@@ -97,8 +104,12 @@ export default function Home() {
           </div>
           <button
             onClick={() => {
-              getEmailInputValue();
-              setStep("OTP");
+              if (email.trim() === "") {
+                alert("Имэйл хоосон байна!");
+                return;
+              } else {
+                setStep("OTP");
+              }
             }}
             className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
             aria-disabled="true"
@@ -138,7 +149,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  {/* <Icon icon={hider1} size={25} /> */}
+                  <Icon icon={hider1} size={25} />
                 </button>
               </div>
             </div>
@@ -183,7 +194,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  {/* <Icon icon={hider1} size={25} /> */}
+                  <Icon icon={hider1} size={25} />
                 </button>
               </div>
 
@@ -205,7 +216,7 @@ export default function Home() {
         }'
                   className="absolute top-0 end-0 flex items-center p-3 rounded-e-md  dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  {/* <Icon icon={hider2} size={25} /> */}
+                  <Icon icon={hider2} size={25} />
                 </button>
               </div>
             </div>
