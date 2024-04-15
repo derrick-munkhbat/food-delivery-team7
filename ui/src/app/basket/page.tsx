@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowIcon } from "@/components/icons/ArrowIcon";
-import CartCard from "@/components/header/cart-drawer/CartCard";
+import CartCard from "@/components/cart-drawer/CartCard";
 import { BasketIcon } from "../../../public/SagsIcon";
 
 // import { Mainmenu } from "@/components/DATA/MainMenu";
