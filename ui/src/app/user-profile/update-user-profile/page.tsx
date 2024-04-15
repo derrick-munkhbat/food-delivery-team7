@@ -71,13 +71,30 @@ export default function UpDateUserProfile() {
 
   const handleSave = () => {
     setIsLoading(true);
+
     const getNewInputValue = () => {
       console.log({ name, phoneNumber, email });
-      setIsLoading(false);
       setMessage("Таны мэдээлэл амжилттай солигдлоо!");
+      setIsLoading(false);
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     };
-    setTimeout(getNewInputValue, 3000); // Delay the execution of getNewPasswordInputValue for 3 seconds
+
+    setTimeout(getNewInputValue, 3000);
   };
+
+  // const handleSave = () => {
+  //   setIsLoading(true);
+
+  //   const getNewInputValue = () => {
+  //     console.log({ name, phoneNumber, email });
+  //     setMessage("Таны мэдээлэл амжилттай солигдлоо!");
+  //     setIsLoading(false);
+  //   };
+  //   setTimeout(getNewInputValue, 3000);
+  // };
 
   // function loadTask() {
   //   axios.get("/users").then((response) => {
