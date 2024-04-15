@@ -1,35 +1,39 @@
-import { useEffect, useState } from "react";
-import { fetcher } from "@/app/util";
-import { DeleteIcon } from "../icons/DeleteIcon";
 import axios from "axios";
-import { AddMenu } from "@/app/admin/AddMenu";
+import { useEffect, useState } from "react";
+import { DeleteIcon } from "../icons/DeleteIcon";
 import { EditorMenu } from "@/app/admin/EditorMenu";
+import { useCategory, useFood } from "@/app/globals";
 
-export function AdminCard({ category }: { category: string }) {
-  const [menus, setMenus] = useState([]);
+
+export function AdminCard() {
+  const { foods, setFoods } : any = useFood();
+  const { category } : any = useCategory();
 
   useEffect(() => {
-    fetchMenu();
+    fetchFood();
   }, []);
 
-  const fetchMenu = async () => {
-    fetch(`http://localhost:8000/menu?categoryId=${category}`)
-      .then((res) => res.json())
-      .then((data) => setMenus(data));
+  function fetchFood() {
+    axios.get(`http://localhost:8000/food?categoryId=${category}`)
+      .then((data) => setFoods(data));
   };
 
-  const deleteMenu = async (_id) => {
-    await axios.delete(`http://localhost:8000/menu/delete/${_id}`).then(() => {
-      fetchMenu();
+  console.log(foods)
+
+  const deleteFood = async (_id : string) => {
+    await axios.delete(`http://localhost:8000/food/delete/${_id}`).then(() => {
+      fetchFood();
     });
   };
 
-  console.log(category);
-
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 justify-items-center gap-[60px] mt-10 mb-5">
-      {menus.map((menu) => (
-        <div className="grid gap-[14px]">
+      <div>
+        Hello world
+      </div>
+
+      {/* {foods.map((food : any) => (
+        <div className="grid gap-[14px]" key={food._id}>
           <div className="w-[282px]">
             <div className="bg-[url('/images/menuZurag.jpg')] grid items-center justify-items-center group-hover:opacity-60 h-[186px]  duration-300  rounded-2xl ease-in-out  bg-center w-[282px]">
               <div className="flex gap-2 opacity-0 hover:opacity-100 transition-all">
@@ -38,10 +42,10 @@ export function AdminCard({ category }: { category: string }) {
                   onClick={() => setOpen(true)}>
                   EDIT
                 </button> */}
-                <EditorMenu />
+                {/* <EditorMenu />
                 <button
                   className="z-20 s-10 rounded-xl px-4 py-1 bg-white"
-                  onClick={() => deleteMenu(menu._id)}
+                  onClick={() => deleteFood(food._id)}
                 >
                   <DeleteIcon />
                 </button>
@@ -49,15 +53,13 @@ export function AdminCard({ category }: { category: string }) {
             </div>
           </div>
           <div className="gap-1">
-            <p className="text-xl font-semibold text-black">{menu.foodName}</p>
+            <p className="text-xl font-semibold text-black">{food.name}</p>
             <p className="text-lg font-semibold text-[#18BA51] ">
-              {menu.foodPrice}
+              {food.price}
             </p>
           </div>
-
-
         </div>
-      ))}
+      ))} */} 
     </div>
   );
 }
