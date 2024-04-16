@@ -1,9 +1,10 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-
 import { CategoryList } from "./CategoryList";
-
 import { MenuComp } from "./MenuComp";
+import { useCategory } from "../globals";
+import axios from "axios";
 
 export default function AdminMenu() {
   return (

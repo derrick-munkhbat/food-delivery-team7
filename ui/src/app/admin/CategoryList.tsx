@@ -71,15 +71,15 @@ export function CategoryList() {
   const { category, setCategory }: any = useCategory();
   const setFoods: any = useFood((state: any) => state.setFoods);
 
-  function fetchFood() {
+  function fetchFood(_id: string) {
     axios
-      .get(`http://localhost:8000/food?categoryId=${category}`)
+      .get(`http://localhost:8000/food?categoryId=${_id}`)
       .then((foods) => setFoods(foods.data));
   }
 
   const handleCategory = (_id: string) => {
     setCategory(_id);
-    fetchFood();
+    fetchFood(_id);
   };
 
   if (loading) return <Loading />;

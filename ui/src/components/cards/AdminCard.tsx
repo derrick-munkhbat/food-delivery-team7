@@ -18,8 +18,6 @@ export function AdminCard() {
       .then(foods => setFoods(foods.data));
   };
 
-  console.log(foods)
-
   const deleteFood = async (_id : string) => {
     await axios.delete(`http://localhost:8000/food/delete/${_id}`).then(() => {
       fetchFood();

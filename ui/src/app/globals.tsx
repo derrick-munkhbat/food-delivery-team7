@@ -6,6 +6,6 @@ export const useFood = create((set) => ({
 }))
 
 export const useCategory = create((set) => ({
-    category: "6615dfdf7b3a26bc39bd9e01",
+    category: "",
     setCategory: (selectedCategory: string) => set(() => ({category: selectedCategory}))
 }))
