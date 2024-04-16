@@ -71,7 +71,7 @@ export function CategoryList() {
 
   function fetchFood() {
     axios.get(`http://localhost:8000/food?categoryId=${category}`)
-      .then((data) => setFoods(data));
+      .then(foods => setFoods(foods.data));
   };
 
   const handleCategory = (_id : string) => {

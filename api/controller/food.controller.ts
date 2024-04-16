@@ -17,6 +17,14 @@ export async function getFood(req: Request, res: Response) {
   res.json(foods);
 }
 
+export async function getOneFood(req: Request, res: Response) {
+  const {foodId} = req.query;
+  const food = await FoodModel.findOne({
+    _id: foodId
+  });
+  res.json(food);
+}
+
 export async function createFood(req: Request, res: Response) {
   const {
     name,
@@ -62,9 +70,23 @@ export async function createFood(req: Request, res: Response) {
 //   console.log(error);
 // }
 
-export async function deleteFood(req: any, res: any) {
+export async function deleteFood(req: Request, res: Response) {
   const { _id } = req.params;
 
   await FoodModel.deleteOne({ _id });
+  res.sendStatus(204);
+}
+
+export async function updateFood(req: Request, res: Response) {
+  const {
+    name,
+    category,
+    ingredients,
+    price,
+    sales,
+    image,
+  } = req.body;
+
+  await FoodModel.updateOne({_id}, {name, category, ingredients, price, sales, image});
   res.sendStatus(204);
 }

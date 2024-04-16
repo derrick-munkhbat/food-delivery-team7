@@ -15,7 +15,7 @@ export function AdminCard() {
 
   function fetchFood() {
     axios.get(`http://localhost:8000/food?categoryId=${category}`)
-      .then((data) => setFoods(data));
+      .then(foods => setFoods(foods.data));
   };
 
   console.log(foods)
@@ -28,21 +28,12 @@ export function AdminCard() {
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 justify-items-center gap-[60px] mt-10 mb-5">
-      <div>
-        Hello world
-      </div>
-
-      {/* {foods.map((food : any) => (
+      {foods.map((food : any) => (
         <div className="grid gap-[14px]" key={food._id}>
           <div className="w-[282px]">
             <div className="bg-[url('/images/menuZurag.jpg')] grid items-center justify-items-center group-hover:opacity-60 h-[186px]  duration-300  rounded-2xl ease-in-out  bg-center w-[282px]">
               <div className="flex gap-2 opacity-0 hover:opacity-100 transition-all">
-                {/* <button
-                  className="z-20 w-[166px] h-[40px] rounded-xl text-lg text-black font-semibold px-4 py-1 bg-white"
-                  onClick={() => setOpen(true)}>
-                  EDIT
-                </button> */}
-                {/* <EditorMenu />
+                <EditorMenu _id = {food._id}/>
                 <button
                   className="z-20 s-10 rounded-xl px-4 py-1 bg-white"
                   onClick={() => deleteFood(food._id)}
@@ -59,13 +50,7 @@ export function AdminCard() {
             </p>
           </div>
         </div>
-      ))} */} 
+      ))}
     </div>
   );
 }
-
-
-// recoil
-// zustand *
-
-// use Global state
