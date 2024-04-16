@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 import "dotenv/config";
 
-const connectionString =
-  "mongodb+srv://derrickmunkhbat:jcTg60rEMEnq2Zws@food-delivery.ppokdxp.mongodb.net/?retryWrites=true&w=majority&appName=food-delivery";
+const connectionString = process.env.MONGO_URL || "";
 
 export const connectDB = async () => {
   try {
