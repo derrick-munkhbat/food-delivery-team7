@@ -6,7 +6,6 @@ import { CategoryList } from "./CategoryList";
 import { MenuComp } from "./MenuComp";
 
 export default function AdminMenu() {
-
   return (
     <div className="bg-split-background">
       <div className="flex container mx-auto w-full">

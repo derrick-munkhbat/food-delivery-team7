@@ -6,6 +6,7 @@ import { DeleteEdit } from "./DeleteEdit";
 import { Loading } from "@/components/Loading";
 import { useCategory } from "../globals";
 import { useFood } from "../globals";
+import { Toaster, toast } from "sonner";
 
 type Category = {
   name: string;
@@ -28,7 +29,7 @@ export function CategoryList() {
 
   function createCategory() {
     if (!name) {
-      alert("Enter name");
+      toast.warning("! Алдаа гарлаа дахин оролдно уу");
       return;
     }
     axios
@@ -45,6 +46,7 @@ export function CategoryList() {
         setLoading(false);
         setName("");
         closeModal();
+        toast.success(`"${name}" category created successfully `);
       });
   }
 
@@ -114,6 +116,7 @@ export function CategoryList() {
             Create New Category
           </p>
         </button>
+        <Toaster richColors />
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
           <div className="modal-box">
             <form method="dialog">
