@@ -6,12 +6,6 @@ import { CategoryList } from "./CategoryList";
 import { MenuComp } from "./MenuComp";
 
 export default function AdminMenu() {
-  const [category, setCategory] = useState("6615dfdf7b3a26bc39bd9e01");
-
-  function selectCategory(selectedCategory: string) {
-    setCategory(selectedCategory);
-    // console.log(category);
-  }
 
   return (
     <div className="bg-split-background">
@@ -21,10 +15,10 @@ export default function AdminMenu() {
             Food menu
           </h1>
           <div className="grid gap-[26px] ">
-            <CategoryList selectCategory={selectCategory} />
+            <CategoryList />
           </div>
         </div>
-        <MenuComp category={category}/>
+        <MenuComp />
       </div>
     </div>
   );
