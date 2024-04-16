@@ -66,18 +66,19 @@ export function CategoryList() {
 
   // for global category and menu statements
 
-  const { category, setCategory } : any = useCategory();
+  const { category, setCategory }: any = useCategory();
   const setFoods: any = useFood((state: any) => state.setFoods);
 
   function fetchFood() {
-    axios.get(`http://localhost:8000/food?categoryId=${category}`)
-      .then(foods => setFoods(foods.data));
-  };
+    axios
+      .get(`http://localhost:8000/food?categoryId=${category}`)
+      .then((foods) => setFoods(foods.data));
+  }
 
-  const handleCategory = (_id : string) => {
+  const handleCategory = (_id: string) => {
     setCategory(_id);
     fetchFood();
-  }
+  };
 
   if (loading) return <Loading />;
 
@@ -87,8 +88,12 @@ export function CategoryList() {
         return (
           <div
             key={category._id}
-            className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
-            onClick={() => {handleCategory(category._id)}}
+            className={
+              "btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
+            }
+            onClick={() => {
+              handleCategory(category._id);
+            }}
           >
             <p className="text-lg font-medium">{category.name}</p>
             <DeleteEdit
