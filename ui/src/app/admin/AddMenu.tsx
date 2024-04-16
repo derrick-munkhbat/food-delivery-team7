@@ -8,20 +8,21 @@ import { Modal } from "@/components/Modal";
 
 export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) {
   type Menu = {
-    foodName: string;
-    foodCategory: string;
-    foodIngredients: string;
-    foodPrice: number;
-    salesPercentage: number;
-    foodImg: string;
+    name: string;
+    category: string;
+    ingredients: string;
+    price: number;
+    sales: number;
+    image: string;
   };
 
-  const [foodName, setFoodName] = useState("");
-  const [foodIngredients, setFoodIngredients] = useState("");
-  const [foodPrice, setFoodPrice] = useState("");
-  const [foodSales, setFoodSales] = useState("");
-  const [salesPercentage, setSalesPercentage] = useState("");
-  const [foodImg, setFoodImg] = useState("");
+  const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [price, setPrice] = useState("");
+  const [foodSales, setFoodSales] = useState(false);
+  const [sales, setSales] = useState("");
+  const [image, setImage] = useState("");
+
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [categories, setCategories] = useState([]);
 
@@ -36,7 +37,7 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
   };
 
   // add menu
-  const newMenu = async () => {
+  const newFood = async () => {
     // if (
     //   !foodName ||
     //   !foodCategory ||
@@ -49,18 +50,18 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
     //   return;
     // }
 
-    const newMenu: Menu = {
-      foodName,
-      foodCategory: selectedCategory ? selectedCategory.value : "",
-      foodIngredients,
-      foodPrice,
-      salesPercentage,
-      foodImg,
+    const newFood: Menu = {
+      name,
+      category: selectedCategory ? selectedCategory.value : "",
+      ingredients,
+      price,
+      sales,
+      image,
     };
 
 
     await axios
-      .post("http://localhost:8000/menu/create", { ...newMenu })
+      .post("http://localhost:8000/food", { ...newFood })
       .then(() => {
         handleClear;
         onClose();
@@ -68,41 +69,40 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
   };
 
   const handleClear = () => {
-    setFoodName("");
-    setFoodIngredients("");
-    setFoodPrice("");
-    setFoodSales("");
-    setSalesPercentage("");
-    setFoodImg("");
+    setName("");
+    setIngredients("");
+    setPrice("");
+    setSales("");
+    setImage("");
   };
 
-  const handleFoodName = (event) => {
-    setFoodName(event?.target.value);
+  const handleName = (event : React.ChangeEvent<HTMLInputElement>) => {
+    setName(event?.target.value);
   };
 
-  const handleFoodIngredients = (event) => {
-    setFoodIngredients(event?.target.value);
+  const handleIngredients = (event : React.ChangeEvent<HTMLInputElement>) => {
+    setIngredients(event?.target.value);
   };
   
-  const handleFoodPrice = (event) => {
-    setFoodPrice(event?.target.value);
+  const handlePrice = (event : React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(event?.target.value);
   };
 
-  const handleSalesPercentage = (event) => {
-    setSalesPercentage(event?.target.value);
+  const handleSales = (event : React.ChangeEvent<HTMLInputElement>) => {
+    setSales(event?.target.value);
   };
 
-  const handleFoodImg = (event) => {
-    const file = event.target.file;
+  const handleFoodImg = (event : React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files;
     setFileToBase(file);
-    setFoodImg(event?.target.value);
+    setImage(event?.target.value);
   };
 
   const setFileToBase = (file) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      setFoodImg(reader.result);
+      setImage(reader.result);
     }
   }
 
@@ -136,8 +136,8 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
                   type="text"
                   placeholder="Type here"
                   className="input input-bordered w-full max-w"
-                  onChange={handleFoodName}
-                  value={foodName}
+                  onChange={handleName}
+                  value={name}
                 />
               </div>
 
@@ -160,8 +160,8 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
                   type="text"
                   placeholder="Type here"
                   className="input input-bordered w-full max-w"
-                  onChange={handleFoodIngredients}
-                  value={foodIngredients}
+                  onChange={handleIngredients}
+                  value={ingredients}
                 />
               </div>
               <div className="grid gap-2">
@@ -170,8 +170,8 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
                   type="text"
                   placeholder="Type here"
                   className="input input-bordered w-full max-w"
-                  onChange={handleFoodPrice}
-                  value={foodPrice}
+                  onChange={handlePrice}
+                  value={price}
                 />
               </div>
 
@@ -186,8 +186,8 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
                   type="text"
                   placeholder="Type here"
                   className="input input-bordered w-full max-w"
-                  onChange={handleSalesPercentage}
-                  value={salesPercentage}
+                  onChange={handleSales}
+                  value={sales}
                 />
               </div>
               <div className="grid gap-2">
@@ -212,7 +212,7 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
               <button className="btn btn-ghost" onClick={handleClear}>
                 Clear
               </button>
-              <button className="btn btn-neutral" onClick={newMenu}>
+              <button className="btn btn-neutral" onClick={newFood}>
                 Continue
               </button>
             </div>

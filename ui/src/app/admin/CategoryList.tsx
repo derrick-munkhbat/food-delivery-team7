@@ -4,20 +4,19 @@ import { useEffect, useState } from "react";
 import { fetcher } from "../util";
 import { DeleteEdit } from "./DeleteEdit";
 import { Loading } from "@/components/Loading";
+import { useCategory } from "../globals";
+import { useFood } from "../globals";
 
 type Category = {
   name: string;
   _id: string;
 };
 
-export function CategoryList({selectCategory}) {
+export function CategoryList() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-
 
   function loadCategory() {
     setLoading(true);
@@ -65,10 +64,21 @@ export function CategoryList({selectCategory}) {
     return setOpen(false);
   }
 
-  const handleCategory = (_id : string) => {
-    setSelectedCategory(_id);
-    selectCategory(selectedCategory);
+  // for global category and menu statements
+
+  const { category, setCategory }: any = useCategory();
+  const setFoods: any = useFood((state: any) => state.setFoods);
+
+  function fetchFood() {
+    axios
+      .get(`http://localhost:8000/food?categoryId=${category}`)
+      .then((foods) => setFoods(foods.data));
   }
+
+  const handleCategory = (_id: string) => {
+    setCategory(_id);
+    fetchFood();
+  };
 
   if (loading) return <Loading />;
 
@@ -78,8 +88,12 @@ export function CategoryList({selectCategory}) {
         return (
           <div
             key={category._id}
-            className="btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
-            onClick={() => {handleCategory(category._id)}}
+            className={
+              "btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
+            }
+            onClick={() => {
+              handleCategory(category._id);
+            }}
           >
             <p className="text-lg font-medium">{category.name}</p>
             <DeleteEdit

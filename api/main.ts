@@ -1,6 +1,5 @@
 import express from "express";
 import { connectDB } from "./database/connect";
-import menuRouter from "./routes/menu.router";
 import categoryRouter from "./routes/category.router";
 import userRouter from "./routes/user.router";
 import foodRouter from "./routes/food.router";
@@ -14,7 +13,7 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.use("/menu", menuRouter);
+app.use("/food", foodRouter);
 app.use("/category", categoryRouter);
 app.use("/user", userRouter);
 

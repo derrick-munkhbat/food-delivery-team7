@@ -6,7 +6,7 @@ import { fetcher } from "../util";
 import { Modal } from "@/components/Modal";
 
 
-export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: object.id, onClose: () => void }) {
+export function EditorMenu({_id} : {_id: string}) {
     type Menu = {
         foodName: string;
         foodCategory: string;
@@ -16,84 +16,92 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
         foodImg: string;
     };
 
-    const [foodName, setFoodName] = useState("");
-    const [foodIngredients, setFoodIngredients] = useState("");
-    const [foodPrice, setFoodPrice] = useState("");
-    const [foodSales, setFoodSales] = useState("");
-    const [salesPercentage, setSalesPercentage] = useState("");
-    const [foodImg, setFoodImg] = useState("");
+    const [name, setName] = useState("");
+    const [ingredients, setIngredients] = useState("");
+    const [price, setPrice] = useState("");
+    const [foodSales, setFoodSales] = useState(false);
+    const [sales, setSales] = useState("");
+    const [image, setImage] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<any>(null);
     const [categories, setCategories] = useState([]);
     const [menu, setMenu] = useState([]);
+    
+    const [food, setFood] = useState([]);
+
+    const [openEditor, setOpenEditor] = useState(false);
 
     useEffect(() => {
-        fecthCategories();
+        fetchCategories();
     }, []);
 
-    const fecthCategories = () => {
+    const fetchCategories = () => {
         fetch("http://localhost:8000/category")
             .then((res) => res.json())
             .then((data) => setCategories(data));
     };
 
     useEffect(() => {
-        fetchMenu();
+        fetchFood();
     }, [])
 
-    const fetchMenu = (_id) => {
-        fetch("http://localhost:8000/category/:_id")
+    const fetchFood = () => {
+        fetch(`http://localhost:8000/food/editor?foodId=${_id}`)
             .then((res) => res.json())
-            .then((data) => setMenu(data));
+            .then((data) => setFood(data))
     }
 
-    //   // edit menu
+      const updateFood = async () => {
+        const updateFood: Menu = {
+          name,
+          category: selectedCategory ? selectedCategory.value : "",
+          ingredients,
+          price,
+          sales,
+          image,
+        };
 
-    //   const newMenu = async () => {
-    //     const newMenu: Menu = {
-    //       foodName,
-    //       foodCategory: selectedCategory ? selectedCategory.value : "",
-    //       foodIngredients,
-    //       foodPrice,
-    //       salesPercentage,
-    //       foodImg,
-    //     };
+        await axios
+          .post(`http://localhost:8000/food/update/${_id}`, { ...updateFood })
+          .then(() => {
+            handleClear;
+            setOpenEditor(false);
+          });
+      };
 
-
-    //     await axios
-    //       .post("http://localhost:8000/menu/create", { ...newMenu })
-    //       .then(() => {
-    //         handleClear;
-    //         setOpen(false);
-    //       });
-    //   };
+    // const handleInfo = () => {
+    //     setName(food.name);
+    //     setIngredients(food.ingredients);
+    //     setPrice(food.price);
+    //     setSales(food.sales);
+    //     setImage(food.image);
+    // }
 
     const handleClear = () => {
-        setFoodName("");
-        setFoodIngredients("");
-        setFoodPrice("");
-        setFoodSales("");
-        setSalesPercentage("");
-        setFoodImg("");
+        setName("");
+        setIngredients("");
+        setPrice("");
+        setSales("");
+        setImage("");
     };
 
-    const handleFoodName = (event) => {
-        setFoodName(event?.target.value);
+    const handleName = (event: React.FormEvent<HTMLFormElement>) => {
+        setName(event?.target.value);
     };
 
-    const handleFoodIngredients = (event) => {
-        setFoodIngredients(event?.target.value);
+    const handleIngredients = (event: React.FormEvent<HTMLFormElement>) => {
+        setIngredients(event?.target.value);
     };
 
-    const handleFoodPrice = (event) => {
-        setFoodPrice(event?.target.value);
+    const handlePrice = (event: React.FormEvent<HTMLFormElement>) => {
+        setPrice(event?.target.value);
     };
 
-    const handleSalesPercentage = (event) => {
-        setSalesPercentage(event?.target.value);
+    const handleSales = (event: React.FormEvent<HTMLFormElement>) => {
+        setSales(event?.target.value);
     };
 
-    const handleFoodImg = (event) => {
-        setFoodImg(event?.target.value);
+    const handleImage = (event: React.FormEvent<HTMLFormElement>) => {
+        setImage(event?.target.value);
     };
 
     const options = categories.map((category) => {
@@ -107,14 +115,15 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
         <div>
             <button
                 className="z-20 w-[166px] h-[40px] rounded-xl text-lg text-black font-semibold px-4 py-1 bg-white"
-                onClick={() => onOpen()}>
+                onClick={() => setOpenEditor(true)}>
                 EDIT
             </button>
 
-            <Modal open={open}>
+
+            <div className={`modal ${openEditor ? "modal-open" : ""}`}>
                 <div className="border-1 rounded-2xl bg-white w-[587px]">
                     <div className="px-4 py-6 flex justify-between align-center items-center">
-                        <div className="p-1.5" onClick={() => onClose()}>
+                        <div className="p-1.5" onClick={() => setOpenEditor(false)}>
                             <CloseIcon />
                         </div>
                         <h1 className="text-[#161616] text-2xl font-bold text-center">
@@ -132,8 +141,8 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
                                 type="text"
                                 placeholder="Type here"
                                 className="input input-bordered w-full max-w"
-                                onChange={handleFoodName}
-                                value={foodName}
+                                onChange={handleName}
+                                value={food.name}
                             />
                         </div>
 
@@ -156,8 +165,8 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
                                 type="text"
                                 placeholder="Type here"
                                 className="input input-bordered w-full max-w"
-                                onChange={handleFoodIngredients}
-                                value={foodIngredients}
+                                onChange={handleIngredients}
+                                value={food.ingredients}
                             />
                         </div>
                         <div className="grid gap-2">
@@ -166,8 +175,8 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
                                 type="text"
                                 placeholder="Type here"
                                 className="input input-bordered w-full max-w"
-                                onChange={handleFoodPrice}
-                                value={foodPrice}
+                                onChange={handlePrice}
+                                value={food.price}
                             />
                         </div>
 
@@ -182,8 +191,8 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
                                 type="text"
                                 placeholder="Type here"
                                 className="input input-bordered w-full max-w"
-                                onChange={handleSalesPercentage}
-                                value={salesPercentage}
+                                onChange={handleSales}
+                                value={food.sales}
                             />
                         </div>
                         <div className="grid gap-2">
@@ -213,7 +222,7 @@ export function EditorMenu({ onOpen, _id, onClose }: {onOpen: () => void , _id: 
                         </button>
                     </div>
                 </div>
-            </Modal>
+            </div>
         </div>
     );
 }
