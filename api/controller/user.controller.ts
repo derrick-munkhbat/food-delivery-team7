@@ -34,9 +34,10 @@ export async function loginUser(req:any, res:any) {
   const user = await UserModel.findOne({userEmail });
   if(!user) return  res.sendStatus(400).send('invalid email')
   
- 
+ if(user.userPassword){
   const validPassword = await bcrypt.compare(userPassword , `${user.userPassword}`);
   if (!validPassword) return res.status(400).send('Invalid password');
+ }
 
   const loggedIn = true;
 if (loggedIn) {

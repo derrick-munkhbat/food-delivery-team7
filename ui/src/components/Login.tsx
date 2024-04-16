@@ -6,6 +6,20 @@ import { eye } from "react-icons-kit/feather/eye";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { mutator } from "@/app/util";
+import { Toaster, toast } from 'sonner'
+
+// // ...
+
+// function App() {
+//   return (
+//     <div>
+//       <Toaster />
+//       <button onClick={() => toast('My first toast')}>
+//         Give me a toast
+//       </button>
+//     </div>
+//   )
+// }
 import axios from "axios";
 
 export function Login() {
@@ -17,9 +31,10 @@ export function Login() {
   
   async function login() {
     const data = await mutator("login", { userEmail, userPassword });
-    alert("success")
-    window.location.href = "/homepage";
+    toast.success('Event has been created')
+    // alert("success")
     const { accessToken } = data;
+    window.location.href = "/";
 
     localStorage.setItem("accessToken", accessToken);
   }
@@ -35,6 +50,7 @@ export function Login() {
   }
   return (
     <div className="flex items-center w-11/12  md:w-[500px] min-h-screen   lg:justify-center  mx-auto">
+       <Toaster position="top-center" richColors />
       <div className="flex flex-col overflow-hidden  rounded-md  max md:flex-row w-11/12 md:w-[500px] md:flex-1 mx-auto ">
         <div className="p-5  bg-white w-11/12 md:flex-1 lg:w-2/3 mx-auto ">
           <h3 className="my-4 text-2xl font-semibold text-gray-700 flex justify-center">
