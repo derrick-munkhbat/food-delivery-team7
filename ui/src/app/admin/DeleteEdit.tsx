@@ -3,6 +3,7 @@ import { MdModeEdit } from "react-icons/md";
 import { DetailIcon } from "../../components/icons/DetailIcon";
 import axios from "axios";
 import { ChangeEventHandler, PropsWithChildren, useState } from "react";
+// import { Toaster, toast } from "sonner";
 
 type DeleteEditProps = {
   categoryName: string;
@@ -23,6 +24,7 @@ export function DeleteEdit({
       try {
         await axios.delete(`http://localhost:8000/category/${id}`).then(() => {
           console.log("Deleted");
+          // toast.error(`"${name}" this category is successfully deleted `);
           onChange();
         });
       } catch (error) {
@@ -105,6 +107,7 @@ export function DeleteEdit({
             >
               Continue
             </button>
+            {/* <Toaster richColors /> */}
           </div>
         </div>
       </CategoryListEditModal>
