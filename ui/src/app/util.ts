@@ -11,6 +11,7 @@ export async function fetcher(path: string) {
 
   return response.data;
 }
+
 export function fetchUsers(){
   const [users, setUsers] = useState([])
   fetch("http://localhost:8000/user/create")
@@ -19,6 +20,7 @@ export function fetchUsers(){
       console.log("aldaa garlaa");
     });
 }
+
 export async function mutator(path: string, postData: {}) {
   const response: any = await axios.post(`http://localhost:8000/user/login`, postData, {
     headers: {

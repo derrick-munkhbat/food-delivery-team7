@@ -7,9 +7,24 @@ import { TimeIcon } from "@/components/icons/TimeIcon";
 import { LogoutIcon } from "@/components/icons/LogoutIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { useState } from "react";
+import axios from "axios";
+import { mutator } from "@/app/util";
 
-export default function UserProfile() {
+export default async function UserProfile() {
   const [isShowModal, setIsShowModal] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userPhoneNumber, setUserPhoneNumber] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+
+  async function fetcher(path: string) {
+    const response: any = await axios.get(`http://localhost:8000/${path}`, {
+      headers: {
+        accessToken: "dummyAccessToken",
+      },
+    });
+
+    return response.data;
+  }
 
   const toggleModal = () => {
     setIsShowModal(!isShowModal);
@@ -51,7 +66,7 @@ export default function UserProfile() {
               <UserIcon />
               <div>
                 <p className="text-slate-400">Таны нэр</p>
-                <p>УгтахБаяр</p>
+                <p onChange={(e) => setUserName}>{userName}</p>
               </div>
             </div>
             <button className="p-3" onClick={editPage}>
@@ -64,7 +79,7 @@ export default function UserProfile() {
               <PhoneIcon />
               <div>
                 <p className="text-slate-400">Утасны дугаар</p>
-                <p>88883345</p>
+                <p onChange={(e) => setUserPhoneNumber}>{userPhoneNumber}</p>
               </div>
             </div>
             <button className="p-3" onClick={editPage}>
@@ -77,7 +92,7 @@ export default function UserProfile() {
               <EmailIcon />
               <div>
                 <p className="text-slate-400">Имэйл хаяг</p>
-                <p>Ugtakhbayr@gmail.com</p>
+                <p onChange={(e) => setUserEmail}>{userEmail}</p>
               </div>
             </div>
             <button className="p-3" onClick={editPage}>
