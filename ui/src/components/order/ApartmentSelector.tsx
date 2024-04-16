@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import {
   FormControl,
   MenuItem,
@@ -8,6 +14,7 @@ import {
   Select,
   TextField,
   Autocomplete,
+  SelectChangeEvent,
 } from "@mui/material";
 import LocationCity from "@mui/icons-material/LocationCity";
 import { TbArrowWaveRightDown } from "react-icons/tb";
@@ -15,6 +22,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import { sizing } from "@mui/system";
 import { Span } from "next/dist/trace";
+import { DeliveryInfo } from "@/app/order/page";
 
 type AddressType = {
   bairname: string;
@@ -30,7 +38,15 @@ type AddressType = {
   podcode: string;
 };
 
-export default function ApartmentSelector() {
+type ApartmentSelectorProps = {
+  values: DeliveryInfo;
+  setValues: Dispatch<SetStateAction<DeliveryInfo>>;
+};
+
+export default function ApartmentSelector({
+  values,
+  setValues,
+}: ApartmentSelectorProps) {
   const [address, setAddress] = useState("");
 
   const [suggestedAddress, setSuggestedAddresses] = useState([]);
@@ -48,11 +64,6 @@ export default function ApartmentSelector() {
     };
     getAddressByApartment();
   }, [address]);
-  console.log(suggestedAddress);
-  // console.log(
-  //   suggestedAddress,
-  //   "suggestedAddresssuggestedAddresssuggestedAddresssuggestedAddress"
-  // );
 
   return (
     <>
@@ -62,14 +73,21 @@ export default function ApartmentSelector() {
         onInputChange={(_e, value) => {
           setAddress(value);
         }}
+        onChange={(_e, value) => {
+          setValues({ ...values, apartment: value ?? "" });
+        }}
         options={
           address && suggestedAddress
             ? suggestedAddress.map((address: AddressType) => address.bairname)
             : []
         }
-        sx={{ width: 384 }}
+        sx={{ width: 384, bgcolor: address.length === 0 ? "white" : "#18BA51" }}
         renderInput={(params) => (
-          <TextField {...params} label="Байр гудамж сонгоно уу" />
+          <TextField
+            {...params}
+            name="apartment"
+            label="Байр гудамж сонгоно уу"
+          />
         )}
       />
       {/* <TextField

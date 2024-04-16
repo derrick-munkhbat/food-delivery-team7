@@ -1,28 +1,41 @@
 "use client";
 
 import { TbArcheryArrow } from "react-icons/tb";
-import React from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { useState } from "react";
-import { FormControl, MenuItem, InputLabel, Select } from "@mui/material";
+import {
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Select,
+  colors,
+  SelectChangeEvent,
+} from "@mui/material";
+import LocationCity from "@mui/icons-material/LocationCity";
 import { TbArrowWaveRightDown } from "react-icons/tb";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import { sizing } from "@mui/system";
 
-export default function DistrictSelector() {
-  const option = [
+type DistrictSelectorProps = {
+  district: string;
+  handleOnchange: (event: SelectChangeEvent<string>) => void;
+};
+
+export default function DistrictSelector({
+  handleOnchange,
+  district,
+}: DistrictSelectorProps) {
+  const options = [
     { label: "Баянзүрх дүүрэг", value: "BZD" },
     { label: "Хан-Уул дүүрэг", value: "HUD" },
     { label: "Баянгол дүүрэг", value: "BGD" },
     { label: "Сонгинохайрхан дүүрэг", value: "SHD" },
     { label: "Чингэлтэй дүүрэг", value: "CHD" },
   ];
-  const [district, setDistrict] = useState("");
-  function handleSelect(event: any) {
-    setDistrict(event.target.value);
-  }
+
   return (
     <FormControl
       sx={{
@@ -30,6 +43,7 @@ export default function DistrictSelector() {
         height: "75%",
         width: "384px",
         gap: "4px",
+        bgcolor: district.length === 0 ? "white" : "#18BA51",
       }}
 
       // fullWidth
@@ -50,9 +64,10 @@ export default function DistrictSelector() {
         labelId="Дүүрэг сонгоно уу"
         id="demo-simple-select"
         value={district}
+        name="district"
         style={{ height: 48 }}
         label="Дүүрэг сонгоно уу ?"
-        onChange={handleSelect}
+        onChange={handleOnchange}
       >
         <MenuItem
           value={0}
@@ -67,7 +82,23 @@ export default function DistrictSelector() {
           <PlaceOutlinedIcon />
           <span>Дүүрэг сонгоно уу</span>
         </MenuItem>
-        <MenuItem
+        {options.map((option, index) => (
+          <MenuItem
+            key={`district-item-${index}`}
+            value={option.value}
+            // selected
+            // disabled
+            sx={{
+              // bgcolor: "#18BA51",
+              height: "48px",
+              gap: "4px",
+            }}
+          >
+            <PlaceOutlinedIcon />
+            <span>{option.label}</span>
+          </MenuItem>
+        ))}
+        {/* <MenuItem
           value={"BZD"}
           sx={{
             height: "48px",
@@ -116,7 +147,7 @@ export default function DistrictSelector() {
         >
           <PlaceOutlinedIcon />
           <span>Чингэлтэй дүүрэг</span>
-        </MenuItem>
+        </MenuItem> */}
       </Select>
     </FormControl>
   );

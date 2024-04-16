@@ -15,7 +15,6 @@
     "@mui/material": "^5.15.15",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
-    "google-map-react": "^2.2.1",
     "next": "14.1.3",
     "react": "^18",
     "react-dom": "^18",
@@ -23,14 +22,7 @@
     "react-icons-kit": "^2.0.0",
     "react-images-uploading": "^3.1.7",
     "react-paginate": "^8.2.0",
-    "react-router-dom": "^6.22.3",
-    "react-select": "^5.8.0",
-<<<<<<< HEAD
-    "sonner": "^1.4.41"
-=======
-    "sonner": "^1.4.41",
-    "zustand": "^4.5.2"
->>>>>>> d4e6c2044d7911c66c64ecc562e937d87153ccd4
+    "react-select": "^5.8.0"
   },
   "devDependencies": {
     "@types/google-map-react": "^2.1.10",
