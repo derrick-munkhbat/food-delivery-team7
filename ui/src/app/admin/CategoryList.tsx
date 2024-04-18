@@ -7,6 +7,7 @@ import { Loading } from "@/components/Loading";
 import { useCategory } from "../globals";
 import { useFood } from "../globals";
 import { Toaster, toast } from "sonner";
+import { green } from "@mui/material/colors";
 
 type Category = {
   name: string;
@@ -90,9 +91,7 @@ export function CategoryList() {
         return (
           <div
             key={category._id}
-            className={
-              "btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
-            }
+            className={`btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between`}
             onClick={() => {
               handleCategory(category._id);
             }}
@@ -116,7 +115,7 @@ export function CategoryList() {
             Create New Category
           </p>
         </button>
-        <Toaster richColors />
+        <Toaster closeButton richColors />
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
           <div className="modal-box">
             <form method="dialog">

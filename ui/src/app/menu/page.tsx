@@ -1,7 +1,9 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { CategoryState } from "@/components/categoryContainer/CategoryState";
 import { CardData } from "@/components/cards/Card";
+import { useCategory, useFood } from "../globals";
+import axios from "axios";
 
 interface ModalProps {
   isOpen: boolean;
@@ -98,31 +100,43 @@ const Menu: FC = () => {
     setIsOpen(false);
   };
 
+  const { foods, setFoods }: any = useFood();
+  const { category }: any = useCategory();
+
+  function fetchFood() {
+    axios
+      .get(`http://localhost:8000/food?categoryId=${category}`)
+      .then((foods) => setFoods(foods.data));
+  }
+
+  useEffect(() => {
+    fetchFood();
+  }, []);
+
   return (
     <div className="">
       <div className="mt-10 ">
         <CategoryState />
       </div>
-
       <div className="app-container bg-white mb-10">
         <div className=" mt-5 inset-1 w-full mx-auto sm:grid flex justify-center flex-col  sm:grid-cols-2 lg:grid-cols-4  gap-5 container md:gap-x-32 md:px-5 md:py-5 xl:py-[8px]  xl:px-[5px]">
-          {CardData.map((item) => (
+          {foods.map((food: any) => (
             <div
-              key={item.id}
+              key={food._id}
               className="flex items-center justify-center sm:justify-between"
             >
               <div className="">
                 <img
                   onClick={handleOpenModal}
                   className="cover cursor-grabbing"
-                  src={item.image}
+                  src={food.image}
                 />
-                <p className="ml-2 font-bold">{item.name}</p>
-                <div key={item.id} className="flex gap-4">
+                <p className="ml-2 font-bold">{food.name}</p>
+                <div key={food._id} className="flex gap-4">
                   <p className="ml-2 font-semibold text-green-600">
-                    {item.price}₮
+                    {food.price}₮
                   </p>
-                  <p className="line-through">{item.oldPrice}</p>
+                  <p className="line-through">{food.oldPrice}</p>
                 </div>
               </div>
             </div>
