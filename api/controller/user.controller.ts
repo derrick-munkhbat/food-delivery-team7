@@ -40,11 +40,11 @@ export async function loginUser(req:any, res:any) {
   const validPassword = await bcrypt.compare(Password , `${user.Password}`);
   if (!validPassword) return res.status(400).send('Invalid password');
  }
- if(user){
-  // const accessToken = jwt.sign({ userEmail: userEmail }, "secret_string123");
-  // res.json({admin , accessToken });
-  res.sendStatus(202).send('admin mon baina')
- }
+//  if(user){
+//   // const accessToken = jwt.sign({ userEmail: userEmail }, "secret_string123");
+//   // res.json({admin , accessToken });
+//   res.sendStatus(202).send('admin mon baina')
+//  }
 
   const loggedIn = true;
 if (loggedIn) {
