@@ -10,30 +10,30 @@ export function Input() {
   const [show, setShow] = useState("password");
   const [hider, setHider] = useState(() => eyeOff)
   const [type, setType] = useState("password");
-  const [userEmail, setUserEmail] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Name, setName] = useState("");
+  const [Password, setPassword] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
   const[ pass , setPass]= useState("")
-  const [address , setUserAddress] = useState("")
+  const [address , setAddress] = useState("")
   const submit = async()=>{
-    console.log({userName, userEmail, userPassword})
-    if (pass!==userPassword){
+    console.log({Name, Email, Password})
+    if (pass!==Password){
       alert("Please check your password")
       return;
     }
     try{
-      console.log({userEmail, userName, userPassword})
+      console.log({Email, Name, Password})
       await axios.post("http://localhost:8000/user/create",{
-        userName,
-        userEmail,
-        userPassword,
+        Name,
+        Email,
+        Password,
 
       });
-      setUserName(""),
-      setUserEmail(""),
-      setUserPassword(""),
-      setUserAddress("")
+      setName(""),
+      setEmail(""),
+      setPassword(""),
+      setAddress("")
       setPass(""),
 
 
@@ -80,8 +80,8 @@ export function Input() {
           <input
             placeholder="Нэр"
             type="name"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={Name}
+            onChange={(e) => setName(e.target.value)}
             autoFocus
             className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
           />
@@ -97,8 +97,8 @@ export function Input() {
             placeholder="Имэйл"
             type="email"
             autoFocus
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
+            value={Email}
+            onChange={(e) => setEmail(e.target.value)}
             className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
           />
         </div>
@@ -113,7 +113,7 @@ export function Input() {
             placeholder="Хаяг"
             type="location"
             value={address}
-            onChange={(e) => setUserAddress(e.target.value)}
+            onChange={(e) => setAddress(e.target.value)}
             autoFocus
             className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
           />
@@ -131,8 +131,8 @@ export function Input() {
             <input
               placeholder="Нууц үг"
               type={type}
-              value={userPassword}
-              onChange={(e) => setUserPassword(e.target.value)}
+              value={Password}
+              onChange={(e) => setPassword(e.target.value)}
               id="password"
               className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
             />

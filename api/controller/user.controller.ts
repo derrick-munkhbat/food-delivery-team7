@@ -9,40 +9,47 @@ export async function getUser(_req: any, res: any) {
 }
 
 export async function createUser(req: any, res: any) {
-  const {userName , userEmail , userPassword} = req.body
+  const {Name , Email , Password , Role } = req.body
 
   //hereglegciin email shalgah
-  const existingUser = await UserModel.findOne({ userEmail });
+  const existingUser = await UserModel.findOne({ Email });
   if (existingUser) return res.status(400).send('Email already exists');
 
   //password 
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(userPassword, salt);
+  const hashedPassword = await bcrypt.hash(Password, salt);
 
 
   const newUser = await UserModel.create({
-    userName,
-    userEmail,
-    userPassword: hashedPassword,
+    Name,
+    Email,
+    Password: hashedPassword,
+    Role,
   });
   res.sendStatus(201).send('welcome')
   res.json(newUser);
 }
 export async function loginUser(req:any, res:any) {
-  const {userEmail , userPassword} = req.body;
+  const {Email , Password , Role} = req.body;
 
-  const user = await UserModel.findOne({userEmail });
+  const user = await UserModel.findOne({Email });
+  const userRole = await UserModel.findOne({Role });
   if(!user) return  res.sendStatus(400).send('invalid email')
   
- if(user.userPassword){
-  const validPassword = await bcrypt.compare(userPassword , `${user.userPassword}`);
+ if(user.Password){
+  const validPassword = await bcrypt.compare(Password , `${user.Password}`);
   if (!validPassword) return res.status(400).send('Invalid password');
+ }
+ if(user){
+  // const accessToken = jwt.sign({ userEmail: userEmail }, "secret_string123");
+  // res.json({admin , accessToken });
+  res.sendStatus(202).send('admin mon baina')
  }
 
   const loggedIn = true;
 if (loggedIn) {
-  const accessToken = jwt.sign({ userEmail: userEmail }, "secret_string123");
-  res.json({ accessToken });
+  const accessToken = jwt.sign({ Email: Email }, "secret_string123");
+  res.json({accessToken });
 }
 res.sendStatus(401);
 

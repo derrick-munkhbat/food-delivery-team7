@@ -3,6 +3,8 @@ import { connectDB } from "./database/connect";
 import categoryRouter from "./routes/category.router";
 import userRouter from "./routes/user.router";
 import foodRouter from "./routes/food.router";
+import { checkAdmin } from "./middleware/admin";
+
 
 const app = express();
 var cors = require("cors");
@@ -20,7 +22,6 @@ app.use("/user", userRouter);
 app.get("/", (req, res) => {
   res.send("hello team, the backend is running");
 });
-
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });

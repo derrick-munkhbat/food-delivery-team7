@@ -8,35 +8,23 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { mutator } from "@/app/util";
 import { Toaster, toast } from 'sonner'
 
-// // ...
-
-// function App() {
-//   return (
-//     <div>
-//       <Toaster />
-//       <button onClick={() => toast('My first toast')}>
-//         Give me a toast
-//       </button>
-//     </div>
-//   )
-// }
 import axios from "axios";
 
 export function Login() {
   const [show, setShow] = useState("");
   const [type, setType] = useState("password");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
   
   async function login() {
-    const data = await mutator("login", { userEmail, userPassword });
+    const data = await mutator("login", { Email, Password });
     toast.success('Event has been created')
-    // alert("success")
     const { accessToken } = data;
+
     window.location.href = "/";
 
-    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("accessToken", accessToken );
   }
 
   function handleToggle() {
@@ -69,8 +57,8 @@ export function Login() {
                 type="email"
                 id="email"
                 autoFocus
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
+                value={Email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
               />
             </div>
@@ -87,8 +75,8 @@ export function Login() {
                 <input
                   placeholder="Нууц үг"
                   type={type}
-                  value={userPassword}
-                  onChange={(e) => setUserPassword(e.target.value)}
+                  value={Password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="bg-gray-100  px-4 py-4 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
                 />
                 <button
