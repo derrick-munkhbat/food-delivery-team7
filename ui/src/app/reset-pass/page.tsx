@@ -20,13 +20,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState("EMAIL"); //email, otp, password
 
-  // const getEmailInputValue = () => {
-  //   if (email.trim() === "") {
-  //     alert("Имэйл хоосон байна!");
-  //     return;
-  //   }
-  //   console.log({ email });
-  // };
+  const getEmailInputValue = () => {
+    console.log({ email });
+  };
 
   const getCodeInputValue = () => {
     if (code.trim() === "") {
@@ -95,6 +91,8 @@ export default function Home() {
           <div className="w-full max-w-xs flex flex-col gap-2">
             <p className="text-sm">Имэйл</p>
             <input
+              required
+              id="email"
               className="input input-bordered w-full max-w-xs"
               type="email"
               placeholder="Имэйл хаягаа оруулна уу"
@@ -108,6 +106,7 @@ export default function Home() {
                 alert("Имэйл хоосон байна!");
                 return;
               } else {
+                getEmailInputValue();
                 setStep("OTP");
               }
             }}
@@ -156,8 +155,13 @@ export default function Home() {
           </div>
           <button
             onClick={() => {
-              getCodeInputValue();
-              setStep("PASSWORD");
+              if (code.trim() === "") {
+                alert("Kод хоосон байна!");
+                return;
+              } else {
+                getCodeInputValue();
+                setStep("PASSWORD");
+              }
             }}
             className="btn btn-enabled w-full max-w-xs hover:bg-green-500 hover:text-white"
             aria-disabled="true"

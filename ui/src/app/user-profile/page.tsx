@@ -16,13 +16,16 @@ export default function UserProfile() {
 
   async function fetcher(path: string) {
     try {
-      const response = await axios.get(`http://localhost:8000/${path}`, {
-        headers: {
-          accessToken: "dummyAccessToken",
-        },
-      });
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        const response = await axios.get(`http://localhost:8000/${path}`, {
+          headers: {
+            accessToken: token,
+          },
+        });
 
-      setUserData(response.data);
+        setUserData(response.data);
+      }
     } catch (error) {
       console.log(error);
     }
