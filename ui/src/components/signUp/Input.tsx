@@ -15,6 +15,7 @@ export function Input() {
   const [userPassword, setUserPassword] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
   const[ pass , setPass]= useState("")
+  const [address , setUserAddress] = useState("")
   const submit = async()=>{
     console.log({userName, userEmail, userPassword})
     if (pass!==userPassword){
@@ -29,14 +30,16 @@ export function Input() {
         userPassword,
 
       });
-      alert("success")
-      window.location.href = "/sign-in";
       setUserName(""),
       setUserEmail(""),
       setUserPassword(""),
-     
+      setUserAddress("")
+      setPass(""),
+
+
+      toast.success('Event has been created')
+      window.location.href = "/sign-in";
       fetchUsers()
-      alert("success")
     }catch (error){
       console.error("Error:", error);
     }
@@ -62,10 +65,11 @@ export function Input() {
   }
   return (
     <div className="p-5  bg-white md:flex-1 lg:w2/3 lg:mx-auto ">
+       <Toaster position="top-center" richColors />
       <h3 className="my-4 text-2xl font-semibold text-gray-700 flex justify-center">
         Бүртгүүлэх
       </h3>
-      <form action="#" className="flex flex-col space-y-5">
+      <div  className="flex flex-col space-y-5">
         <div className="flex flex-col space-y-1">
           <label
             htmlFor="email"
@@ -108,6 +112,8 @@ export function Input() {
           <input
             placeholder="Хаяг"
             type="location"
+            value={address}
+            onChange={(e) => setUserAddress(e.target.value)}
             autoFocus
             className="bg-gray-100 px-4 py-4  transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-200"
           />
@@ -182,7 +188,7 @@ export function Input() {
         </div>
         <div>
           <button
-            type="submit"
+            type="button"
             onClick={submit}
             className="w-full flex justify-center mx-auto px-4 py-4 text-lg  text-gray-400 transition-colors duration-300 bg-gray-200 rounded-md shadow hover:bg-green-600 hover:text-white focus:outline-none focus:ring-blue-200 focus:ring-4"
           >
@@ -190,7 +196,7 @@ export function Input() {
           </button>
         </div>
         <div className="flex flex-col space-y-5"></div>
-      </form>
+      </div>
     </div>
   );
 }
