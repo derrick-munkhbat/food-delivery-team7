@@ -4,6 +4,7 @@ import { CategoryState } from "@/components/categoryContainer/CategoryState";
 import { CardData } from "@/components/cards/Card";
 import { useCategory, useFood } from "../globals";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 interface ModalProps {
   isOpen: boolean;
@@ -100,32 +101,32 @@ const Menu: FC = () => {
     setIsOpen(false);
   };
 
-  const { foods, setFoods }: any = useFood();
-  const { category }: any = useCategory();
+  // const { foods, setFoods }: any = useFood();
+  // const { category }: any = useCategory();
 
-  function fetchFood() {
-    axios
-      .get(`http://localhost:8000/food?categoryId=${category}`)
-      .then((foods) => setFoods(foods.data));
-  }
+  // function fetchFood() {
+  //   axios
+  //     .get(`http://localhost:8000/food?categoryId=${category}`)
+  //     .then((foods) => setFoods(foods.data));
+  // }
 
-  useEffect(() => {
-    fetchFood();
-  }, []);
+  // useEffect(() => {
+  //   fetchFood();
+  // }, []);
 
   return (
-    <div className="">
+    <div>
       <div className="mt-10 ">
         <CategoryState />
       </div>
       <div className="app-container bg-white mb-10">
         <div className=" mt-5 inset-1 w-full mx-auto sm:grid flex justify-center flex-col  sm:grid-cols-2 lg:grid-cols-4  gap-5 container md:gap-x-32 md:px-5 md:py-5 xl:py-[8px]  xl:px-[5px]">
-          {foods.map((food: any) => (
+          {CardData.map((food: any) => (
             <div
               key={food._id}
               className="flex items-center justify-center sm:justify-between"
             >
-              <div className="">
+              <div>
                 <img
                   onClick={handleOpenModal}
                   className="cover cursor-grabbing"
