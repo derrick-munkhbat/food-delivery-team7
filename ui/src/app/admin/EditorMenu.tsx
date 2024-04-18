@@ -55,7 +55,7 @@ export function EditorMenu({
           setName(data.name);
           setIngredients(data.ingredients);
           setPrice(data.price);
-          setSales(data.Sales);
+          setSales(data.sales);
           setSelectedCategory(data.categories);
         });
     }

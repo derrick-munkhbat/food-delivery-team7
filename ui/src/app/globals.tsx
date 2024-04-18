@@ -9,3 +9,8 @@ export const useCategory = create((set) => ({
     category: "",
     setCategory: (selectedCategory: string) => set(() => ({category: selectedCategory}))
 }))
+
+export const useCategoryInfo = create((set) => ({
+    categoryInfo: [],
+    setCategoryInfo: (newList: any) => set(() => ({categoryInfo: newList}))
+}))

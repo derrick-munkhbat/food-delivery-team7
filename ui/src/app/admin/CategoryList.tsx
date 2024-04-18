@@ -1,12 +1,15 @@
+"use client"
+
 import { AddIcon } from "@/components/icons/AddIcon";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { fetcher } from "../util";
 import { DeleteEdit } from "./DeleteEdit";
 import { Loading } from "@/components/Loading";
-import { useCategory } from "../globals";
-import { useFood } from "../globals";
+import { useCategory, useCategoryInfo, useFood } from "../globals";
 import { Toaster, toast } from "sonner";
+
+import { useRouter } from "next/navigation";
 
 type Category = {
   name: string;
@@ -18,6 +21,7 @@ export function CategoryList() {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   function loadCategory() {
     setLoading(true);
@@ -69,7 +73,9 @@ export function CategoryList() {
   // for global category and menu statements
 
   const { setCategory }: any = useCategory();
+  const { categoryInfo } : any = useCategoryInfo();
   const setFoods: any = useFood((state: any) => state.setFoods);
+  const setCategoryInfo: any = useCategoryInfo((state: any) => state.setCategoryInfo);
 
   function fetchFood(_id: string) {
     axios
@@ -77,10 +83,26 @@ export function CategoryList() {
       .then((foods) => setFoods(foods.data));
   }
 
-  const handleCategory = (_id: string) => {
+  const fetchCategoryInfo = (_id: string) => {
+    axios
+      .get(`http://localhost:8000/category/${_id}`)
+      .then((category) => setCategoryInfo(category.data));
+  };
+
+  const handleCategory = (_id: string, name: string) => {
     setCategory(_id);
     fetchFood(_id);
+    fetchCategoryInfo(_id);
+
+    // dynamin routes
+    pushToCategory(name);
   };
+
+    const pushToCategory = (name: string) => {
+    router.push(`/admin/${name}`);
+  };
+
+  console.log(categoryInfo)
 
   if (loading) return <Loading />;
 
@@ -94,7 +116,7 @@ export function CategoryList() {
               "btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between"
             }
             onClick={() => {
-              handleCategory(category._id);
+              handleCategory(category._id, category.name);
             }}
           >
             <p className="text-lg font-medium">{category.name}</p>
@@ -120,7 +142,6 @@ export function CategoryList() {
         <dialog className={`modal ${open ? "modal-open" : ""}`}>
           <div className="modal-box">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
               <button
                 onClick={closeModal}
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
