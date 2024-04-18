@@ -10,30 +10,23 @@ interface IFood {
 }
 
 export async function getFood(req: Request, res: Response) {
-  const {categoryId} = req.query;
+  const { categoryId } = req.query;
   const foods = await FoodModel.find({
-    category: categoryId
-  });
+    category: categoryId,
+  }).sort({sales: -1});
   res.json(foods);
 }
 
 export async function getOneFood(req: Request, res: Response) {
-  const {foodId} = req.query;
+  const { foodId } = req.query;
   const food = await FoodModel.findOne({
-    _id: foodId
+    _id: foodId,
   });
   res.json(food);
 }
 
 export async function createFood(req: Request, res: Response) {
-  const {
-    name,
-    category,
-    ingredients,
-    price,
-    sales,
-    image,
-  } = req.body;
+  const { name, category, ingredients, price, sales, image } = req.body;
 
   try {
     const food = await FoodModel.create({
@@ -42,8 +35,8 @@ export async function createFood(req: Request, res: Response) {
       ingredients,
       price,
       sales,
-      image
-    })
+      image,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -60,7 +53,7 @@ export async function createFood(req: Request, res: Response) {
 //     ingredients,
 //     price,
 //     sales,
-//     image: 
+//     image:
 //     // {
 //     //   public_id: result.public_id,
 //     //   url: result.secure_url
@@ -78,15 +71,17 @@ export async function deleteFood(req: Request, res: Response) {
 }
 
 export async function updateFood(req: Request, res: Response) {
-  const {
-    name,
-    category,
-    ingredients,
-    price,
-    sales,
-    image,
-  } = req.body;
+  const { _id } = req.params;
 
-  await FoodModel.updateOne({_id}, {name, category, ingredients, price, sales, image});
+  const { name, category, ingredients, price, sales, image } = req.body;
+
+  await FoodModel.findByIdAndUpdate(_id, {
+    name: name,
+    category: category,
+    ingredients: ingredients,
+    price: price,
+    sales: sales,
+    image: image,
+  });
   res.sendStatus(204);
 }

@@ -68,7 +68,7 @@ export function CategoryList() {
 
   // for global category and menu statements
 
-  const { category, setCategory }: any = useCategory();
+  const { setCategory }: any = useCategory();
   const setFoods: any = useFood((state: any) => state.setFoods);
 
   function fetchFood(_id: string) {
