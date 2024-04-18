@@ -6,25 +6,34 @@ import { EmailIcon } from "@/components/icons/EmailIcon";
 import { TimeIcon } from "@/components/icons/TimeIcon";
 import { LogoutIcon } from "@/components/icons/LogoutIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { mutator } from "@/app/util";
 
-export default async function UserProfile() {
+export default function UserProfile() {
   const [isShowModal, setIsShowModal] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [userPhoneNumber, setUserPhoneNumber] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [userData, setUserData] = useState([]);
 
   async function fetcher(path: string) {
-    const response: any = await axios.get(`http://localhost:8000/${path}`, {
-      headers: {
-        accessToken: "dummyAccessToken",
-      },
-    });
+    try {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        const response = await axios.get(`http://localhost:8000/${path}`, {
+          headers: {
+            accessToken: token,
+          },
+        });
 
-    return response.data;
+        setUserData(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  useEffect(() => {
+    fetcher("user");
+  }, []);
 
   const toggleModal = () => {
     setIsShowModal(!isShowModal);
@@ -65,8 +74,11 @@ export default async function UserProfile() {
             <div className="flex  rounded p-2 w-full items-center gap-3">
               <UserIcon />
               <div>
-                <p className="text-slate-400">Таны нэр</p>
-                <p onChange={(e) => setUserName}>{userName}</p>
+                {userData.map((user) => (
+                  <p className="text-slate-400">{user.userName}</p>
+                ))}
+
+                {/* <p onChange={(e) => setUserName}>{userName}</p> */}
               </div>
             </div>
             <button className="p-3" onClick={editPage}>
@@ -79,7 +91,7 @@ export default async function UserProfile() {
               <PhoneIcon />
               <div>
                 <p className="text-slate-400">Утасны дугаар</p>
-                <p onChange={(e) => setUserPhoneNumber}>{userPhoneNumber}</p>
+                {/* <p onChange={(e) => setUserPhoneNumber}>{userPhoneNumber}</p> */}
               </div>
             </div>
             <button className="p-3" onClick={editPage}>
@@ -91,8 +103,10 @@ export default async function UserProfile() {
             <div className="flex rounded p-2 w-full items-center gap-3">
               <EmailIcon />
               <div>
-                <p className="text-slate-400">Имэйл хаяг</p>
-                <p onChange={(e) => setUserEmail}>{userEmail}</p>
+                {userData.map((user) => (
+                  <p className="text-slate-400">{user.userEmail}</p>
+                ))}
+                {/* <p onChange={(e) => setUserEmail}>{userEmail}</p> */}
               </div>
             </div>
             <button className="p-3" onClick={editPage}>
