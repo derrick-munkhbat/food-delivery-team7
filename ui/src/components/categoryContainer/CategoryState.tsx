@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useCategory } from "../../app/globals";
-import axios from "axios";
-import { useFood } from "@/app/globals";
 import { fetcher } from "@/app/util";
 import { usePathname, useRouter } from "next/navigation";
+import { useCategory, useFood } from "@/app/globals";
+import axios from "axios";
 
 export function CategoryState() {
   const [categories, setCategories] = useState([]);
