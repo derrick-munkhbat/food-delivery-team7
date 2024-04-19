@@ -1,4 +1,6 @@
+import { CategoryModel } from "../models/category.models";
 import { FoodModel } from "../models/food.models";
+import type { Request, Response } from "express";
 
 interface IFood {
   name: string;
@@ -13,7 +15,7 @@ export async function getFood(req: Request, res: Response) {
   const { categoryId } = req.query;
   const foods = await FoodModel.find({
     category: categoryId,
-  }).sort({sales: -1});
+  }).sort({ sales: -1 });
   res.json(foods);
 }
 
@@ -84,4 +86,20 @@ export async function updateFood(req: Request, res: Response) {
     image: image,
   });
   res.sendStatus(204);
+}
+
+export async function getFoodsByCategory(req: Request, res: Response) {
+  const { categoryId } = req.params;
+  console.log(categoryId);
+
+  try {
+    const foods = await FoodModel.find({
+      categoryId,
+    });
+    console.log("foods", foods);
+
+    res.json(foods);
+  } catch (error) {
+    res.json({ message: error });
+  }
 }

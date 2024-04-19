@@ -5,7 +5,8 @@ const {
   getOneFood,
   createFood,
   deleteFood,
-  updateFood
+  updateFood,
+  getFoodsByCategory,
 } = require("../controller/food.controller");
 
 const foodRouter = express.Router();
@@ -15,5 +16,6 @@ foodRouter.get("/editor", getOneFood);
 foodRouter.post("/", createFood);
 foodRouter.delete("/delete/:_id", deleteFood);
 foodRouter.put("/update/:_id", updateFood);
+foodRouter.get("/:categoryId", getFoodsByCategory);
 
 export default foodRouter;

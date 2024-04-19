@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { BigAddIcon } from "@/components/icons/BigAddIcon";
 import { AddMenu } from "./AddMenu";
