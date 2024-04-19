@@ -108,7 +108,31 @@ export default function UpDateUserProfile() {
 
   const handleSave = () => {
     setIsLoading(true);
-    
+
+    if (!userData) {
+      console.error("userData is null, cannot save user data.");
+      return;
+    }
+
+    userData.Name = name;
+    userData.Number = phoneNumber;
+    userData.Email = email;
+
+    axios
+      .put(`/:userId}`, userData)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("User data saved successfully!");
+        } else {
+          console.error("Error saving user data:", response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error("Network error:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   if (!userData) {
@@ -163,7 +187,7 @@ export default function UpDateUserProfile() {
             </button>
           </div>
 
-          <h1 className="text-3xl font-bold">{name}</h1>
+          <h1 className="text-3xl font-bold">{userData.Name}</h1>
         </div>
 
         <div className="flex flex-col gap-5 mt-5 mb-20 justify-center items-center mx-auto w-[448px] p-5">
