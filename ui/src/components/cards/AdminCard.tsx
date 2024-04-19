@@ -5,11 +5,13 @@ import { EditorMenu } from "@/app/admin/EditorMenu";
 import { useCategory, useFood } from "@/app/globals";
 import { toast } from "sonner";
 import { NumericFormat } from "react-number-format";
+import { useParams } from "next/navigation";
 
 export function AdminCard() {
   const { foods, setFoods }: any = useFood();
-  const { category }: any = useCategory();
+  // const { category }: any = useCategory();
   const [editingId, setEditingId] = useState("");
+  const { name } = useParams();
 
   useEffect(() => {
     fetchFood();
@@ -17,7 +19,7 @@ export function AdminCard() {
 
   function fetchFood() {
     axios
-      .get(`http://localhost:8000/food?categoryId=${category}`)
+      .get(`http://localhost:8000/food/${name}`)
       .then((foods) => setFoods(foods.data));
   }
 
