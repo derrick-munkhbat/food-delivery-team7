@@ -9,8 +9,7 @@ export function checkAuth(req: Request, res: Response, next: NextFunction) {
   }
 
   try {
-    let decoded = jwt.verify(token, "secret_string123");
-    console.log({ decoded });
+    jwt.verify(token, "secret_string123");
     next();
   } catch (err) {
     return res.sendStatus(403);
