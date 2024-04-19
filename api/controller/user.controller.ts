@@ -77,3 +77,21 @@ export async function loginUser(req: any, res: any) {
   // }
   // res.sendStatus(401);
 }
+
+export const updateUser = async (req: Request, res: Response) => {
+  const { userId } = req.params;
+  const { Name, Email, Password, Role } = req.body;
+
+  try {
+    const user = await UserModel.findByIdAndUpdate(userId, {
+      Name,
+      Email,
+      Password,
+      Role,
+    });
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(403);
+  }
+};

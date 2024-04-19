@@ -5,9 +5,17 @@ import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { EmailIcon } from "@/components/icons/EmailIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { CheckIcon } from "@/components/icons/CheckIcon";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEventHandler } from "react";
 import { Loading } from "@/components/Loading";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
+
+type User = {
+  _id: string;
+  Name: string;
+  Email: string;
+  Number: string;
+};
 
 export default function UpDateUserProfile() {
   const [message, setMessage] = useState("");
@@ -27,6 +35,8 @@ export default function UpDateUserProfile() {
   const [emailEditing, setEmailEditing] = useState(false);
   const [tempEmail, setTempEmail] = useState("");
 
+  const [userData, setUserData] = useState<User | null>(null);
+
   const handleChangeProfilePic = (event) => {
     setProfilePic(event.target.files[0]);
   };
@@ -38,6 +48,33 @@ export default function UpDateUserProfile() {
     input.onchange = handleChangeProfilePic;
     input.click();
   };
+
+  async function fetcher(path: string) {
+    try {
+      const token = localStorage.getItem("accessToken");
+
+      if (token) {
+        const response = await axios.get(`http://localhost:8000/${path}`, {
+          headers: {
+            accessToken: token,
+          },
+        });
+
+        console.log("User data fetched:", response.data);
+        setUserData(response.data);
+      } else {
+        console.log("No access token found.");
+      }
+    } catch (error) {
+      console.log("Error fetching user data:", error);
+    }
+  }
+
+  const path = "user";
+
+  useEffect(() => {
+    fetcher(path);
+  }, []);
 
   const handleEditName = () => {
     setNameEditing(true);
@@ -71,63 +108,37 @@ export default function UpDateUserProfile() {
 
   const handleSave = () => {
     setIsLoading(true);
-
-    const getNewInputValue = () => {
-      console.log({ name, phoneNumber, email });
-      setMessage("Таны мэдээлэл амжилттай солигдлоо!");
-      setIsLoading(false);
-
-      setTimeout(() => {
-        setMessage("");
-      }, 3000);
-    };
-
-    setTimeout(getNewInputValue, 3000);
+    
   };
 
-  // const handleSave = () => {
-  //   setIsLoading(true);
+  if (!userData) {
+    return (
+      <div className="flex h-screen w-full justify-center items-center">
+        <CircularProgress />
+      </div>
+    );
+  }
 
-  //   const getNewInputValue = () => {
-  //     console.log({ name, phoneNumber, email });
-  //     setMessage("Таны мэдээлэл амжилттай солигдлоо!");
-  //     setIsLoading(false);
-  //   };
-  //   setTimeout(getNewInputValue, 3000);
-  // };
+  const userNameOnChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setUserData({
+      ...userData,
+      Name: event.target.value,
+    });
+  };
 
-  // function loadTask() {
-  //   axios.get("/users").then((response) => {
-  //     setTransactions(response.data);
-  //   });
-  // }
+  const userEmailOnChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setUserData({
+      ...userData,
+      Email: event.target.value,
+    });
+  };
 
-  // useEffect(() => {
-  //   loadTask();
-  // }, []);
-
-  // const handleSave = () => {
-  //   setIsLoading(true);
-  //   const getNewInputValue = () => {
-  //     console.log({ name, phoneNumber, email });
-  //     axios.post("/user", {
-  //       name: userName,
-  //       phoneNumber: userNumber,
-  //       email: userEmail,
-  //     })
-  //     .then(() => {
-  //       alert("success!");
-  //       loadTask();
-  //     })
-  //     .catch(() => alert("error!"));
-  //     }
-
-  //     setIsLoading(false);
-  //     setMessage("Таны мэдээлэл амжилттай солигдлоо!");
-  //     // window.location.href = "/menu";
-  //   };
-  //   setTimeout(getNewInputValue, 3000); // Delay the execution of getNewInputValue for 3 seconds
-  // };
+  const userPhoneOnChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setUserData({
+      ...userData,
+      Number: event.target.value,
+    });
+  };
 
   return (
     <>
@@ -164,14 +175,14 @@ export default function UpDateUserProfile() {
                   <input
                     placeholder="Нэр..."
                     type="text"
-                    value={tempName}
-                    onChange={(e) => setTempName(e.target.value)}
+                    value={userData.Name}
+                    onChange={userNameOnChange}
                     className="bg-slate-200 rounded p-2 w-full items-center"
                   />
                 ) : (
                   <>
                     <p className="text-slate-400">Нэр</p>
-                    <p>{name}</p>
+                    <p>{userData.Name}</p>
                   </>
                 )}
               </div>
@@ -192,8 +203,8 @@ export default function UpDateUserProfile() {
                   <input
                     placeholder="Утасны дугаар..."
                     type="text"
-                    value={tempPhoneNumber}
-                    onChange={(e) => setTempPhoneNumber(e.target.value)}
+                    value={userData.Number}
+                    onChange={userPhoneOnChange}
                     className="bg-slate-200 rounded p-2 w-full items-center"
                   />
                 ) : (
@@ -224,14 +235,14 @@ export default function UpDateUserProfile() {
                   <input
                     placeholder="Имэйл хаяг..."
                     type="text"
-                    value={tempEmail}
-                    onChange={(e) => setTempEmail(e.target.value)}
+                    value={userData.Email}
+                    onChange={userEmailOnChange}
                     className="bg-slate-200 rounded p-2 w-full items-center"
                   />
                 ) : (
                   <>
                     <p className="text-slate-400">Имэйл хаяг</p>
-                    <p>{email}</p>
+                    <p>{userData.Email}</p>
                   </>
                 )}
               </div>
