@@ -86,8 +86,9 @@ export const updateUser = async (req: Request, res: Response) => {
     const user = await UserModel.findByIdAndUpdate(userId, {
       Name,
       Email,
-      Password
+      Password,
     });
+
     res.status(200).json(user);
   } catch (error) {
     console.log(error);

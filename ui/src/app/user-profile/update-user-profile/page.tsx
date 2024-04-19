@@ -116,10 +116,9 @@ export default function UpDateUserProfile() {
 
     userData.Name = name;
     userData.Number = phoneNumber;
-    userData.Email = email;
 
     axios
-      .put(`/:userId}`, userData)
+      .put(`http://localhost:8000/user/${userData._id}`, userData)
       .then((response) => {
         if (response.status === 200) {
           console.log("User data saved successfully!");
