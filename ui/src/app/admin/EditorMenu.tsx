@@ -39,7 +39,7 @@ export function EditorMenu({
     fetchCategories();
   }, []);
 
-  const fetchCategories = () => {
+  const fetchCategories = async () => {
     fetch("http://localhost:8000/category")
       .then((res) => res.json())
       .then((data) => setCategories(data));
@@ -90,7 +90,7 @@ export function EditorMenu({
     setName("");
     setIngredients("");
     setPrice("");
-    setSales("");
+    setSales(""); 
     setImage("");
   };
 
