@@ -11,22 +11,24 @@ interface IFood {
   image: string;
 }
 
-export async function getFood(req: Request, res: Response) {
-  const { categoryName } = req.params;
+export async function getFoods(req: Request, res: Response) {
+  const { categoryId } = req.query;
 
-  const category = await CategoryModel.findOne({
-    name: categoryName,
-  });
+  try {
+    if (!categoryId) {
+      const foods = await FoodModel.find().sort({ sales: -1 });
+      res.json(foods);
+      return;
+    }
 
-  if (!category) {
-    const foods = await FoodModel.find().sort({ sales: -1 });
+    const foods = await FoodModel.find({
+      category: categoryId,
+    }).sort({ sales: -1 });
+
     res.json(foods);
+  } catch (error) {
+    res.json({ message: error });
   }
-
-  const foods = await FoodModel.find({
-    category: categoryId,
-  }).sort({ sales: -1 });
-  res.json(foods);
 }
 
 export async function getOneFood(req: Request, res: Response) {
@@ -99,20 +101,4 @@ export async function updateFood(req: Request, res: Response) {
     }
   );
   res.json("Success");
-}
-
-export async function getFoodsByCategory(req: Request, res: Response) {
-  const { categoryId } = req.params;
-  console.log(categoryId);
-
-  try {
-    const foods = await FoodModel.find({
-      categoryId,
-    });
-    console.log("foods", foods);
-
-    res.json(foods);
-  } catch (error) {
-    res.json({ message: error });
-  }
 }

@@ -1,7 +1,7 @@
 "use client";
 import React, { FC, useEffect, useState } from "react";
 import { CategoryState } from "@/components/categoryContainer/CategoryState";
-import { CardData } from "@/components/cards/Card";
+import { CardData, UserCard } from "@/components/cards/UserCard";
 import { useCategory, useFood } from "../globals";
 import axios from "axios";
 
@@ -119,29 +119,10 @@ const Menu: FC = () => {
         <CategoryState />
       </div>
       <div className="app-container bg-white mb-10">
-        <div className=" mt-5 inset-1 w-full mx-auto sm:grid flex justify-center flex-col  sm:grid-cols-2 lg:grid-cols-4  gap-5 container md:gap-x-32 md:px-5 md:py-5 xl:py-[8px]  xl:px-[5px]">
-          {CardData.map((food: any) => (
-            <div
-              key={food._id}
-              className="flex items-center justify-center sm:justify-between"
-            >
-              <div>
-                <img
-                  onClick={handleOpenModal}
-                  className="cover cursor-grabbing"
-                  src={food.image}
-                />
-                <p className="ml-2 font-bold">{food.name}</p>
-                <div key={food._id} className="flex gap-4">
-                  <p className="ml-2 font-semibold text-green-600">
-                    {food.price}₮
-                  </p>
-                  <p className="line-through">{food.oldPrice}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="container mx-auto">
+          <UserCard />
         </div>
+
         <Modal isOpen={isOpen} handleClose={handleCloseModal}>
           <p></p>
         </Modal>

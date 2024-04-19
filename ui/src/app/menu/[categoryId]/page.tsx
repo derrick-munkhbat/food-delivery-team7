@@ -1,5 +1,6 @@
 "use client";
 
+import { UserCard } from "@/components/cards/UserCard";
 import { CategoryState } from "@/components/categoryContainer/CategoryState";
 import axios from "axios";
 import { useParams } from "next/navigation";
@@ -17,7 +18,7 @@ export default function Menu() {
   useEffect(() => {
     const getFoodsByCategoryId = async () => {
       const { data } = await axios.get(
-        `http://localhost:8000/food/${categoryId}`
+        `http://localhost:8000/food?categoryId=${categoryId}`
       );
       setFoods(data);
     };
@@ -27,25 +28,9 @@ export default function Menu() {
   return (
     <div>
       <CategoryState />
-      <div>
-        {foods.map((food) => (
-          <FoodCard {...food} />
-        ))}
+      <div className="container mx-auto">
+        <UserCard />
       </div>
     </div>
   );
 }
-
-type FoodCardProps = {
-  name: string;
-  price: number;
-};
-
-const FoodCard = ({ name, price }: FoodCardProps) => {
-  return (
-    <div style={{ display: "flex", gap: 10, border: "1px solid grey" }}>
-      <p>{name}</p>
-      <p>{price}</p>
-    </div>
-  );
-};
