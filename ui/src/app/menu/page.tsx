@@ -4,7 +4,6 @@ import { CategoryState } from "@/components/categoryContainer/CategoryState";
 import { CardData } from "@/components/cards/Card";
 import { useCategory, useFood } from "../globals";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 interface ModalProps {
   isOpen: boolean;
@@ -101,18 +100,18 @@ const Menu: FC = () => {
     setIsOpen(false);
   };
 
-  // const { foods, setFoods }: any = useFood();
-  // const { category }: any = useCategory();
+  const { foods, setFoods }: any = useFood();
+  const { category }: any = useCategory();
 
-  // function fetchFood() {
-  //   axios
-  //     .get(`http://localhost:8000/food?categoryId=${category}`)
-  //     .then((foods) => setFoods(foods.data));
-  // }
+  function fetchFood() {
+    axios
+      .get(`http://localhost:8000/food?categoryId=${category}`)
+      .then((foods) => setFoods(foods.data));
+  }
 
-  // useEffect(() => {
-  //   fetchFood();
-  // }, []);
+  useEffect(() => {
+    fetchFood();
+  }, []);
 
   return (
     <div>

@@ -39,7 +39,7 @@ export function EditorMenu({
     fetchCategories();
   }, []);
 
-  const fetchCategories = () => {
+  const fetchCategories = async () => {
     fetch("http://localhost:8000/category")
       .then((res) => res.json())
       .then((data) => setCategories(data));
@@ -72,7 +72,7 @@ export function EditorMenu({
     };
 
     await axios
-      .put(`http://localhost:8000/food/update/${editingId}`, { ...updateFood })
+      .put(`http://localhost:8000/food/${editingId}`, { ...updateFood })
       .then(() => {
         onClose();
         toast.success(`"${name}" амжилттай засагдлаа.`);
@@ -90,7 +90,7 @@ export function EditorMenu({
     setName("");
     setIngredients("");
     setPrice("");
-    setSales("");
+    setSales(""); 
     setImage("");
   };
 

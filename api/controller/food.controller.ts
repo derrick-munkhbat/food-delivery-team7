@@ -1,4 +1,6 @@
+import { CategoryModel } from "../models/category.models";
 import { FoodModel } from "../models/food.models";
+import type { Request, Response } from "express";
 
 interface IFood {
   name: string;
@@ -10,10 +12,20 @@ interface IFood {
 }
 
 export async function getFood(req: Request, res: Response) {
-  const { categoryId } = req.query;
+  const { categoryName } = req.params;
+
+  const category = await CategoryModel.findOne({
+    name: categoryName,
+  });
+
+  if (!category) {
+    const foods = await FoodModel.find().sort({ sales: -1 });
+    res.json(foods);
+  }
+
   const foods = await FoodModel.find({
     category: categoryId,
-  }).sort({sales: -1});
+  }).sort({ sales: -1 });
   res.json(foods);
 }
 
@@ -26,7 +38,7 @@ export async function getOneFood(req: Request, res: Response) {
 }
 
 export async function createFood(req: Request, res: Response) {
-  const { name, category, ingredients, price, sales, image } = req.body;
+  const { name, category, ingredients, price, sales, image }: IFood = req.body;
 
   try {
     const food = await FoodModel.create({
@@ -37,6 +49,7 @@ export async function createFood(req: Request, res: Response) {
       sales,
       image,
     });
+    res.json("success");
   } catch (error) {
     console.log(error);
   }
@@ -73,15 +86,33 @@ export async function deleteFood(req: Request, res: Response) {
 export async function updateFood(req: Request, res: Response) {
   const { _id } = req.params;
 
-  const { name, category, ingredients, price, sales, image } = req.body;
+  const { name, category, ingredients, price, sales } = req.body;
 
-  await FoodModel.findByIdAndUpdate(_id, {
-    name: name,
-    category: category,
-    ingredients: ingredients,
-    price: price,
-    sales: sales,
-    image: image,
-  });
-  res.sendStatus(204);
+  await FoodModel.findByIdAndUpdate(
+    { _id },
+    {
+      name: name,
+      category: category,
+      ingredients: ingredients,
+      price: price,
+      sales: sales,
+    }
+  );
+  res.json("Success");
+}
+
+export async function getFoodsByCategory(req: Request, res: Response) {
+  const { categoryId } = req.params;
+  console.log(categoryId);
+
+  try {
+    const foods = await FoodModel.find({
+      categoryId,
+    });
+    console.log("foods", foods);
+
+    res.json(foods);
+  } catch (error) {
+    res.json({ message: error });
+  }
 }
