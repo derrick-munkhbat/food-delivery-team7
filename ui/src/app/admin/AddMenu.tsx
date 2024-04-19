@@ -63,7 +63,7 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
     await axios
       .post("http://localhost:8000/food", { ...newFood })
       .then(() => {
-        handleClear;
+        handleClear();
         onClose();
       });
   };
