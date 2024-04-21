@@ -72,7 +72,7 @@ export function EditorMenu({
     };
 
     await axios
-      .put(`http://localhost:8000/food/${editingId}`, { ...updateFood })
+      .put(`http://localhost:8000/${editingId}`, { ...updateFood })
       .then(() => {
         onClose();
         toast.success(`"${name}" амжилттай засагдлаа.`);

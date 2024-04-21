@@ -26,10 +26,13 @@ export async function getFoods(req: Request, res: Response) {
     }).sort({ sales: -1 });
 
     res.json(foods);
+    
   } catch (error) {
     res.json({ message: error });
   }
 }
+
+// works on a menu editor
 
 export async function getOneFood(req: Request, res: Response) {
   const { foodId } = req.query;
@@ -38,6 +41,8 @@ export async function getOneFood(req: Request, res: Response) {
   });
   res.json(food);
 }
+
+// create food
 
 export async function createFood(req: Request, res: Response) {
   const { name, category, ingredients, price, sales, image }: IFood = req.body;
@@ -56,6 +61,8 @@ export async function createFood(req: Request, res: Response) {
     console.log(error);
   }
 }
+
+// for image upload
 
 // try {
 //   // const result = await cloudinary.uploader.upload(image, {
@@ -78,12 +85,16 @@ export async function createFood(req: Request, res: Response) {
 //   console.log(error);
 // }
 
+// delete food
+
 export async function deleteFood(req: Request, res: Response) {
   const { _id } = req.params;
 
   await FoodModel.deleteOne({ _id });
   res.sendStatus(204);
 }
+
+// edit food
 
 export async function updateFood(req: Request, res: Response) {
   const { _id } = req.params;

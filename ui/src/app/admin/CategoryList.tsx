@@ -73,7 +73,7 @@ export function CategoryList() {
 
   // for global category and menu statements
 
-  const { setCategory }: any = useCategory();
+  const { category, setCategory }: any = useCategory();
   const { categoryInfo }: any = useCategoryInfo();
   const setFoods: any = useFood((state: any) => state.setFoods);
   const setCategoryInfo: any = useCategoryInfo(
@@ -82,7 +82,7 @@ export function CategoryList() {
 
   function fetchFood(_id: string) {
     axios
-      .get(`http://localhost:8000/food?categoryId=${_id}`)
+      .get(`http://localhost:8000/food?categoryId=${category}`)
       .then((foods) => setFoods(foods.data));
   }
 
@@ -104,8 +104,6 @@ export function CategoryList() {
   const pushToCategory = (name: string) => {
     router.push(`/admin/${name}`);
   };
-
-  console.log(categoryInfo);
 
   if (loading) return <Loading />;
 

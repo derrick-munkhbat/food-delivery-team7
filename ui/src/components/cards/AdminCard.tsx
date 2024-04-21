@@ -9,8 +9,8 @@ import { useParams } from "next/navigation";
 
 export function AdminCard() {
   const { foods, setFoods }: any = useFood();
-  // const { category }: any = useCategory();
-  const [editingId, setEditingId] = useState("");
+  const { category }: any = useCategory();
+  const [ editingId, setEditingId ] = useState("");
   const { name } = useParams();
 
   useEffect(() => {
@@ -19,14 +19,14 @@ export function AdminCard() {
 
   function fetchFood() {
     axios
-      .get(`http://localhost:8000/food/${name}`)
+      .get(`http://localhost:8000/food?categoryId=${category}`)
       .then((foods) => setFoods(foods.data));
   }
 
   const deleteFood = async (_id: string) => {
     if (confirm("Устгах уу?")) {
       await axios
-        .delete(`http://localhost:8000/food/delete/${_id}`)
+        .delete(`http://localhost:8000/${_id}`)
         .then(() => {
           toast.success("Амжилттай устгалаа");
           fetchFood();
