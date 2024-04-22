@@ -1,5 +1,6 @@
 import express from "express";
 import { getUser, createUser, loginUser } from "../controller/user.controller";
+import { checkAdmin } from "../middleware/admin";
 
 const userRouter = express.Router();
 

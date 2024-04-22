@@ -8,24 +8,43 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { mutator } from "@/app/util";
 import { Toaster, toast } from 'sonner'
 
-import axios from "axios";
-
 export function Login() {
   const [show, setShow] = useState("");
   const [type, setType] = useState("password");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [icon, setIcon] = useState(() => eyeOff);
+  const [checked, setChecked] = useState(()=>false);
+  const [Role, setRole] = useState("user");
+
   
+  const handleChange = (event:any) => {
+    const checkedRole = event.target.checked
+    setChecked(checkedRole);
+    setRole(event.target.value);
+    if(checkedRole === true){
+      setRole("admin")
+    }else{
+      setRole("user");
+    }
+    console.log(checked)
+    console.log(Role)
+  };
+
   async function login() {
-    const data = await mutator("login", { Email, Password });
+    console.log(checked)
+    console.log(Role)
+    const data = await mutator("login", { Email , Password , Role });
     toast.success('Event has been created')
     const { accessToken } = data;
 
     window.location.href = "/";
 
     localStorage.setItem("accessToken", accessToken );
+    if(Role === "admin") {
+    localStorage.setItem("data", "admin");
   }
+}
 
   function handleToggle() {
     if (type === "password") {
@@ -95,6 +114,14 @@ export function Login() {
               </div>
             </div>
             <div className="flex items-center space-x-2"></div>
+            <div className="form-control">
+          <div className="flex items-center">
+            <input type="checkbox"  className="checkbox"  checked={checked} onChange={handleChange} />
+            <label className="label cursor-pointer">
+              <span className="label-text">Админ эрхээр нэвтрэх</span>
+            </label>
+          </div>
+        </div>
             <div>
               <button
                 type="button"
