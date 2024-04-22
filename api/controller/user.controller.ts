@@ -4,13 +4,13 @@ import bcrypt from "bcrypt";
 import type { Request, Response } from "express";
 import { checkAdmin } from "../middleware/admin";
 
-
+const secret = "secret_string123";
 export async function getUser(req: Request, res: Response) {
   const accessToken = req.header("accessToken");
 
   if (!accessToken) return res.json({ error: "User not logged in!" });
 
-  const decoded = jwt.verify(accessToken, secret);
+  const decoded = jwt.verify(accessToken , secret);
   const email = decoded.Email;
 
   const user = await UserModel.findOne({
