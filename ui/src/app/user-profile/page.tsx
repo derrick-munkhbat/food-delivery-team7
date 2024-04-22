@@ -81,7 +81,7 @@ export default function UserProfile() {
             </button>
           </div>
 
-          <h1 className="text-3xl font-bold">УгтахБаяр</h1>
+          <h1 className="text-3xl font-bold">{userData.Name}</h1>
         </div>
 
         <div className="flex flex-col gap-5 mt-5 mb-20 justify-center items-center mx-auto w-[448px] p-5">

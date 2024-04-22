@@ -114,9 +114,6 @@ export default function UpDateUserProfile() {
       return;
     }
 
-    userData.Name = name;
-    userData.Number = phoneNumber;
-
     axios
       .put(`http://localhost:8000/user/${userData._id}`, userData)
       .then((response) => {
@@ -128,10 +125,10 @@ export default function UpDateUserProfile() {
       })
       .catch((error) => {
         console.error("Network error:", error);
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 4000);
   };
 
   if (!userData) {
