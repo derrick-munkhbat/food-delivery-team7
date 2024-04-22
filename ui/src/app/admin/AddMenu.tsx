@@ -4,6 +4,8 @@ import axios from "axios";
 import Select from "react-select";
 import { fetcher } from "../util";
 import { Modal } from "@/components/Modal";
+import { toast } from "sonner";
+import { useCategory, useFood } from "../globals";
 
 
 export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) {
@@ -18,13 +20,16 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
 
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [foodSales, setFoodSales] = useState(false);
-  const [sales, setSales] = useState("");
+  const [sales, setSales] = useState(0);
   const [image, setImage] = useState("");
 
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [categories, setCategories] = useState([]);
+
+  const setFoods: any = useFood((state: any) => state.setFoods);
+  const { category }: any = useCategory();
 
   useEffect(() => {
     fecthCategories();
@@ -63,10 +68,18 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
     await axios
       .post("http://localhost:8000/food", { ...newFood })
       .then(() => {
-        handleClear;
+        handleClear();
+        toast.success(`"${name}" амжилтта үүслээ.`);
         onClose();
+        fetchFood(category);
       });
   };
+
+  function fetchFood(category: string) {
+    axios
+      .get(`http://localhost:8000/food?categoryId=${category}`)
+      .then((foods) => setFoods(foods.data));
+  }
 
   const handleClear = () => {
     setName("");

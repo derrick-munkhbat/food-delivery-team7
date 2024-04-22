@@ -1,4 +1,4 @@
-import { Card } from "@/components/cards/Card";
+import { Card } from "@/components/cards/UserCard";
 
 export function HomeSlider() {
   return (

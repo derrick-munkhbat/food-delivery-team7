@@ -10,8 +10,13 @@ import KhorooSelector from "./KhorooSelector";
 import ApartmentSelector from "./ApartmentSelector";
 import { sizing } from "@mui/system";
 import { Step1 } from "./Step1";
+import { useRouter } from "next/navigation";
 
 export function Step2Order() {
+  const router = useRouter();
+  const pushToOrderDetail = () => {
+    router.push("/orderDetails");
+  };
   return (
     <>
       <Step1 isFieldValues={false} />
@@ -38,7 +43,10 @@ export function Step2Order() {
             </p>
             <p className="text-[#121316] font-bold text-lg	">34,800₮</p>
           </div>
-          <button className=" hover:scale-110 duration-200 rounded-xl bg-[#EEEFF2] w-[187px] h-[48px]">
+          <button
+            onClick={pushToOrderDetail}
+            className=" hover:scale-110 duration-200 rounded-xl bg-[#EEEFF2] w-[187px] h-[48px]"
+          >
             Захиалах
           </button>
         </div>

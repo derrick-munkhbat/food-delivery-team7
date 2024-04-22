@@ -8,15 +8,29 @@ import { LogoutIcon } from "@/components/icons/LogoutIcon";
 import { EditIcon } from "@/components/icons/EditIcon";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { mutator } from "@/app/util";
+import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { Loading } from "@/components/Loading";
+import { CheckIcon } from "@/components/icons/CheckIcon";
+
+type User = {
+  _id: string;
+  Name: string;
+  Email: string;
+  Phone: string;
+};
 
 export default function UserProfile() {
   const [isShowModal, setIsShowModal] = useState(false);
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState<User | null>(null);
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   async function fetcher(path: string) {
     try {
       const token = localStorage.getItem("accessToken");
+
       if (token) {
         const response = await axios.get(`http://localhost:8000/${path}`, {
           headers: {
@@ -24,32 +38,53 @@ export default function UserProfile() {
           },
         });
 
+        console.log("User data fetched:", response.data);
         setUserData(response.data);
+      } else {
+        console.log("No access token found.");
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error fetching user data:", error);
     }
   }
 
+  const path = "user";
+
   useEffect(() => {
-    fetcher("user");
+    fetcher(path);
   }, []);
 
   const toggleModal = () => {
     setIsShowModal(!isShowModal);
   };
 
-  const editPage = () => {
-    window.location.href = "/user-profile/update-user-profile";
+  const pushToUpdateUserData = () => {
+    router.push("/user-profile/update-user-profile");
   };
 
-  const logOut = () => {
-    window.location.href = "/";
+  const goToDetails = () => {
+    router.push("/orderDetails");
   };
 
-  const jumpToOrderDetails = () => {
-    window.location.href = "/orderDetails";
+  const goToLogin = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setMessage("SIGN OUT!");
+    }, 3000);
+
+    setTimeout(() => {
+      router.push("/sign-in");
+    }, 3000); // 4-second delay
   };
+
+  if (!userData) {
+    return (
+      <div className="flex h-screen w-full justify-center items-center">
+        <CircularProgress />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -60,13 +95,13 @@ export default function UserProfile() {
 
             <button
               className="absolute right-0 bottom-0 bg-white border-2 rounded-full p-1"
-              onClick={editPage}
+              onClick={pushToUpdateUserData}
             >
               <EditIcon />
             </button>
           </div>
 
-          <h1 className="text-3xl font-bold">УгтахБаяр</h1>
+          <h1 className="text-3xl font-bold">{userData.Name}</h1>
         </div>
 
         <div className="flex flex-col gap-5 mt-5 mb-20 justify-center items-center mx-auto w-[448px] p-5">
@@ -74,14 +109,10 @@ export default function UserProfile() {
             <div className="flex  rounded p-2 w-full items-center gap-3">
               <UserIcon />
               <div>
-                {userData.map((user) => (
-                  <p className="text-slate-400">{user.userName}</p>
-                ))}
-
-                {/* <p onChange={(e) => setUserName}>{userName}</p> */}
+                <p className="text-slate-400">{userData.Name}</p>
               </div>
             </div>
-            <button className="p-3" onClick={editPage}>
+            <button className="p-3" onClick={pushToUpdateUserData}>
               <EditIcon />
             </button>
           </div>
@@ -91,10 +122,9 @@ export default function UserProfile() {
               <PhoneIcon />
               <div>
                 <p className="text-slate-400">Утасны дугаар</p>
-                {/* <p onChange={(e) => setUserPhoneNumber}>{userPhoneNumber}</p> */}
               </div>
             </div>
-            <button className="p-3" onClick={editPage}>
+            <button className="p-3" onClick={pushToUpdateUserData}>
               <EditIcon />
             </button>
           </div>
@@ -103,20 +133,18 @@ export default function UserProfile() {
             <div className="flex rounded p-2 w-full items-center gap-3">
               <EmailIcon />
               <div>
-                {userData.map((user) => (
-                  <p className="text-slate-400">{user.userEmail}</p>
-                ))}
+                <p className="text-slate-400">{userData.Email}</p>
                 {/* <p onChange={(e) => setUserEmail}>{userEmail}</p> */}
               </div>
             </div>
-            <button className="p-3" onClick={editPage}>
+            <button className="p-3" onClick={pushToUpdateUserData}>
               <EditIcon />
             </button>
           </div>
 
           <button
             className="flex rounded p-2 w-full items-center gap-3"
-            onClick={jumpToOrderDetails}
+            onClick={goToDetails}
           >
             <TimeIcon />
             <p>Захиалгын түүх</p>
@@ -138,10 +166,14 @@ export default function UserProfile() {
                   <div className="flex bg-green-200 justify-around w-full h-full text-2xl rounded-b-xl">
                     <button
                       className="hover:bg-green-500 font-bold w-1/2 rounded-b-xl"
-                      onClick={logOut}
+                      onClick={() => {
+                        localStorage.removeItem("accessToken");
+                        goToLogin();
+                      }}
                     >
                       Тийм
                     </button>
+
                     <button
                       onClick={() => setIsShowModal(false)}
                       className="hover:bg-green-500 font-bold w-1/2 rounded-b-xl"
@@ -155,6 +187,18 @@ export default function UserProfile() {
 
             <p>Гарах</p>
           </button>
+          {isLoading ? (
+            <div className="mt-5">
+              <Loading />
+            </div>
+          ) : (
+            message && (
+              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-auto p-5 mt-20 top-10">
+                <CheckIcon />
+                <h1 className="text-green-800">{message}</h1>
+              </div>
+            )
+          )}
         </div>
       </div>
     </>

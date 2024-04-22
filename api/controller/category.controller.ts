@@ -1,4 +1,6 @@
+import { response } from "express";
 import { CategoryModel } from "../models/category.models";
+import { FoodModel } from "../models/food.models";
 
 export async function getCategory(req: any, res: any) {
   const categories = await CategoryModel.find();
@@ -6,8 +8,8 @@ export async function getCategory(req: any, res: any) {
 }
 
 export async function getOneCategory(req: Request, res: Response) {
-  const {_id} = req.params;
-  const category = await CategoryModel.findById({_id}, "name");
+  const { _id } = req.params;
+  const category = await CategoryModel.findById({ _id }, "name");
   res.json(category);
 }
 

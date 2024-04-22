@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const orderItemsSchema = new Schema({
     orderId: Schema.Types.ObjectId,
-    menuId: Schema.Types.ObjectId,
+    foodId: Schema.Types.ObjectId,
     quantity: Number,
     subTotal: Number
 });

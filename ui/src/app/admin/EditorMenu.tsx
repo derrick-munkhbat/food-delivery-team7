@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
 import { fetcher } from "../util";
-import { Modal } from "@/components/Modal";
 import { toast } from "sonner";
 import { useCategory, useFood } from "../globals";
 
@@ -39,7 +38,7 @@ export function EditorMenu({
     fetchCategories();
   }, []);
 
-  const fetchCategories = () => {
+  const fetchCategories = async () => {
     fetch("http://localhost:8000/category")
       .then((res) => res.json())
       .then((data) => setCategories(data));
@@ -72,7 +71,7 @@ export function EditorMenu({
     };
 
     await axios
-      .put(`http://localhost:8000/food/update/${editingId}`, { ...updateFood })
+      .put(`http://localhost:8000/${editingId}`, { ...updateFood })
       .then(() => {
         onClose();
         toast.success(`"${name}" амжилттай засагдлаа.`);
@@ -90,7 +89,7 @@ export function EditorMenu({
     setName("");
     setIngredients("");
     setPrice("");
-    setSales("");
+    setSales(""); 
     setImage("");
   };
 

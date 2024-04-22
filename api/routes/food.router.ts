@@ -1,19 +1,19 @@
 const express = require("express");
 
 const {
-  getFood,
+  getFoods,
   getOneFood,
   createFood,
   deleteFood,
-  updateFood
+  updateFood,
 } = require("../controller/food.controller");
 
 const foodRouter = express.Router();
 
-foodRouter.get("/", getFood);
+foodRouter.get("/", getFoods);
 foodRouter.get("/editor", getOneFood);
 foodRouter.post("/", createFood);
-foodRouter.delete("/delete/:_id", deleteFood);
-foodRouter.put("/update/:_id", updateFood);
+foodRouter.delete("/:_id", deleteFood);
+foodRouter.put("/:_id", updateFood);
 
 export default foodRouter;

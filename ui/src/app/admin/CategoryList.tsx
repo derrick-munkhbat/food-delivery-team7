@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { AddIcon } from "@/components/icons/AddIcon";
 import axios from "axios";
@@ -73,14 +73,16 @@ export function CategoryList() {
 
   // for global category and menu statements
 
-  const { setCategory }: any = useCategory();
-  const { categoryInfo } : any = useCategoryInfo();
+  const { category, setCategory }: any = useCategory();
+  const { categoryInfo }: any = useCategoryInfo();
   const setFoods: any = useFood((state: any) => state.setFoods);
-  const setCategoryInfo: any = useCategoryInfo((state: any) => state.setCategoryInfo);
+  const setCategoryInfo: any = useCategoryInfo(
+    (state: any) => state.setCategoryInfo
+  );
 
   function fetchFood(_id: string) {
     axios
-      .get(`http://localhost:8000/food?categoryId=${_id}`)
+      .get(`http://localhost:8000/food?categoryId=${category}`)
       .then((foods) => setFoods(foods.data));
   }
 
@@ -99,11 +101,9 @@ export function CategoryList() {
     pushToCategory(name);
   };
 
-    const pushToCategory = (name: string) => {
+  const pushToCategory = (name: string) => {
     router.push(`/admin/${name}`);
   };
-
-  console.log(categoryInfo)
 
   if (loading) return <Loading />;
 

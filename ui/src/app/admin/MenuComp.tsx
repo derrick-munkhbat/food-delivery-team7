@@ -1,52 +1,44 @@
-// import { BigAddIcon } from "@/components/icons/BigAddIcon";
-// import { AddMenu } from "./AddMenu";
-// import { AdminCard } from "@/components/cards/AdminCard";
-// import { useEffect, useState } from "react";
-// import { useCategory, useFood } from "../globals";
-// import axios from "axios";
+"use client"
 
-// export function MenuComp() {
-//   const [open, setOpen] = useState(false);
-//   const { category }: any = useCategory();
-//   const { foods }: any = useFood();
-//   const [categoryInfo, setCategoryInfo] = useState([]);
+import { AddMenu } from "./AddMenu";
+import { useEffect, useState } from "react";
+import { useCategory } from "../globals";
+import axios from "axios";
 
-//   useEffect(() => {
-//     fetchCategory();
-//   }, [category]);
+export default function MenuComp() {
+  const [ open, setOpen ] = useState(false);
+  const { category } : any = useCategory();
+  const [ categoryName, setCategoryName ] = useState([]);
 
-//   const fetchCategory = () => {
-//     axios
-//       .get(`http://localhost:8000/category/${category}`)
-//       .then((category) => setCategoryInfo(category.data));
-//   };
+  useEffect(() => {
+    fetchCategory();
+  }, [category]);
 
-//   return (
-//     <div className="w-3/4 bg-[#F7F7F8] pl-6 py-6">
-//       <div className="flex justify-between py-4">
-//         <h1 className="text-[22px] text-[#272727] font-bold ">
-//           {categoryInfo.name}
-//         </h1>
-//         <button
-//           className="btn sm:btn-sm md:btn-md bg-[#18BA51] text-white no-animation"
-//           onClick={() => setOpen(true)}
-//         >
-//           Add new food
-//         </button>
-//       </div>
+  const fetchCategory = () => {
+    axios
+      .get(`http://localhost:8000/category/${category}`)
+      .then((category) => setCategoryName(category.data));
+  };
 
-//       {foods.length === 0 && (
-//         <div className="flex flex-col items-center gap-[30px] mt-10">
-//           <button onClick={() => setOpen(true)}>
-//             <BigAddIcon />
-//           </button>
-//           <p className="text-[#808080]">Уучлаарай, Таны меню хоосон байна.</p>
-//         </div>
-//       )}
+  return (
+    <div>
+      <div className="flex justify-between py-4">
 
-//       <AdminCard />
+        <h1 className="text-[22px] text-[#272727] font-bold ">
+          {categoryName.name}
+        </h1>
 
-//       <AddMenu open={open} onClose={() => setOpen(false)} />
-//     </div>
-//   );
-// }
+        <button
+          className="btn sm:btn-sm md:btn-md bg-[#18BA51] text-white no-animation"
+          onClick={() => setOpen(true)}
+        >
+          Add new food
+        </button>
+
+      </div>
+
+      <AddMenu open={open} onClose={() => setOpen(false)} />
+
+    </div>
+  );
+}
