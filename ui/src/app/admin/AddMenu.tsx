@@ -20,9 +20,9 @@ export function AddMenu({open, onClose} : {open: Boolean, onClose: () => void}) 
 
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [foodSales, setFoodSales] = useState(false);
-  const [sales, setSales] = useState("");
+  const [sales, setSales] = useState(0);
   const [image, setImage] = useState("");
 
   const [selectedCategory, setSelectedCategory] = useState<any>(null);

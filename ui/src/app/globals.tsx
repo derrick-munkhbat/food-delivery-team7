@@ -14,3 +14,8 @@ export const useCategoryInfo = create((set) => ({
     categoryInfo: [],
     setCategoryInfo: (newList: any) => set(() => ({categoryInfo: newList}))
 }))
+
+export const useOrderId = create((set) => ({
+    orderId: "",
+    setOrderId: (orderId: string) => set(() => ({orderId: orderId}))
+}))

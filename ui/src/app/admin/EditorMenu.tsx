@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
 import { fetcher } from "../util";
-import { Modal } from "@/components/Modal";
 import { toast } from "sonner";
 import { useCategory, useFood } from "../globals";
 
