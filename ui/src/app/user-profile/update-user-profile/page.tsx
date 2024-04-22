@@ -9,6 +9,7 @@ import { useState, useEffect, ChangeEventHandler } from "react";
 import { Loading } from "@/components/Loading";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 type User = {
   _id: string;
@@ -30,6 +31,7 @@ export default function UpDateUserProfile() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberEditing, setPhoneNumberEditing] = useState(false);
   const [tempPhoneNumber, setTempPhoneNumber] = useState("");
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [emailEditing, setEmailEditing] = useState(false);
@@ -126,9 +128,15 @@ export default function UpDateUserProfile() {
       .catch((error) => {
         console.error("Network error:", error);
       });
+      
     setTimeout(() => {
       setIsLoading(false);
+      setMessage("Таны мэдээлэл амжилттай солигдлоо!");
     }, 4000);
+
+    setTimeout(() => {
+      backToProfile();
+    }, 7000);
   };
 
   if (!userData) {
@@ -158,6 +166,10 @@ export default function UpDateUserProfile() {
       ...userData,
       Number: event.target.value,
     });
+  };
+
+  const backToProfile = () => {
+    router.push("/user-profile");
   };
 
   return (

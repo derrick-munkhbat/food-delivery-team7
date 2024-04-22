@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { Loading } from "@/components/Loading";
+import { CheckIcon } from "@/components/icons/CheckIcon";
 
 type User = {
   _id: string;
@@ -22,6 +24,8 @@ export default function UserProfile() {
   const [isShowModal, setIsShowModal] = useState(false);
   const [userData, setUserData] = useState<User | null>(null);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   async function fetcher(path: string) {
     try {
@@ -56,6 +60,22 @@ export default function UserProfile() {
 
   const pushToUpdateUserData = () => {
     router.push("/user-profile/update-user-profile");
+  };
+
+  const goToDetails = () => {
+    router.push("/orderDetails");
+  };
+
+  const goToLogin = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setMessage("SIGN OUT!");
+    }, 3000);
+
+    setTimeout(() => {
+      router.push("/sign-in");
+    }, 3000); // 4-second delay
   };
 
   if (!userData) {
@@ -122,7 +142,10 @@ export default function UserProfile() {
             </button>
           </div>
 
-          <button className="flex rounded p-2 w-full items-center gap-3">
+          <button
+            className="flex rounded p-2 w-full items-center gap-3"
+            onClick={goToDetails}
+          >
             <TimeIcon />
             <p>Захиалгын түүх</p>
           </button>
@@ -141,9 +164,16 @@ export default function UserProfile() {
                     Та системээс гарахдаа итгэлтэй байна уу?
                   </h1>
                   <div className="flex bg-green-200 justify-around w-full h-full text-2xl rounded-b-xl">
-                    <button className="hover:bg-green-500 font-bold w-1/2 rounded-b-xl">
+                    <button
+                      className="hover:bg-green-500 font-bold w-1/2 rounded-b-xl"
+                      onClick={() => {
+                        localStorage.removeItem("accessToken");
+                        goToLogin();
+                      }}
+                    >
                       Тийм
                     </button>
+
                     <button
                       onClick={() => setIsShowModal(false)}
                       className="hover:bg-green-500 font-bold w-1/2 rounded-b-xl"
@@ -157,6 +187,18 @@ export default function UserProfile() {
 
             <p>Гарах</p>
           </button>
+          {isLoading ? (
+            <div className="mt-5">
+              <Loading />
+            </div>
+          ) : (
+            message && (
+              <div className="alert alert-success fixed bg-white flex gap-5 border-2 rounded-2xl justify-center items-center mx-auto w-auto p-5 mt-20 top-10">
+                <CheckIcon />
+                <h1 className="text-green-800">{message}</h1>
+              </div>
+            )
+          )}
         </div>
       </div>
     </>

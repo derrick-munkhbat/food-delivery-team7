@@ -20,6 +20,9 @@ app.use("/category", categoryRouter);
 app.use("/user", userRouter);
 app.use("/order", orderRouter);
 
+app.get("/", (req, res) => {
+  res.send("hello team, the backend is running");
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
