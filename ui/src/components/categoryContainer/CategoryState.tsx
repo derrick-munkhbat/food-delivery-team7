@@ -3,15 +3,19 @@ import { fetcher } from "@/app/util";
 import { usePathname, useRouter } from "next/navigation";
 import { useCategory, useFood } from "@/app/globals";
 import axios from "axios";
+import { Loading } from "../Loading";
 
 export function CategoryState() {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
+    setLoading(true);
     fetcher("category").then((data) => {
       setCategories(data);
+      setLoading(false);
       console.log(data);
     });
   }, []);
@@ -33,6 +37,8 @@ export function CategoryState() {
   const pushToCategory = (_id: string) => {
     router.push(`/menu/${_id}`);
   };
+
+  if (loading) return <Loading />;
   return (
     <div className="lg:h-[107px] w-10/12 lg:w-full  grid grid-cols-1 sm:grid-cols-2 lg:flex gap-2 container mx-auto xl:py-[8px]  xl:px-[26px] border-[black] border-1 lg:py-8 bg-white  lg:justify-between mt-10">
       {categories.map((category: any) => (

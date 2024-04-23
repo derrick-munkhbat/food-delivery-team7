@@ -78,7 +78,7 @@ export function DeleteEdit({
         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
       >
         <li onClick={() => showModal(categoryId)}>
-          <div>
+          <div className="text-black">
             <MdModeEdit />
             <p>Edit name</p>
           </div>

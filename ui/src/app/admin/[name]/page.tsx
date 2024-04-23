@@ -9,15 +9,14 @@ import { useState } from "react";
 import { AddMenu } from "../AddMenu";
 
 export default function AdminMenu() {
-  const { name } = useParams();
-  const [ open, setOpen ] = useState(false);
+  const { _id } = useParams();
+  const [open, setOpen] = useState(false);
   const { foods }: any = useFood();
 
-  console.log(name);
+  console.log(_id);
 
   return (
     <div>
-
       {foods.length === 0 && (
         <div className="flex flex-col items-center gap-[30px] mt-10">
           <button onClick={() => setOpen(true)}>
