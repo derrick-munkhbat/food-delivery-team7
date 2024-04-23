@@ -1,3 +1,4 @@
+import cloudinary from "../database/cloudinary";
 import { CategoryModel } from "../models/category.models";
 import { FoodModel } from "../models/food.models";
 import type { Request, Response } from "express";
@@ -42,7 +43,23 @@ export async function getOneFood(req: Request, res: Response) {
   res.json(food);
 }
 
+// ger featured food
+
+// get on sale food
+
+
+
 // create food
+
+export async function uploadFoodImage (req: Request, res: Response) {
+  const filePath = req.file?.path;
+
+  if (filePath) {
+    const result = await cloudinary.uploader.upload(filePath);
+    console.log(result);
+    res.json({ url: result.secure_url });
+  }
+}
 
 export async function createFood(req: Request, res: Response) {
   const { name, category, ingredients, price, sales, image }: IFood = req.body;

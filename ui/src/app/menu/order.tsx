@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
-import { useId } from "react";
 import { useOrderId } from "../globals";
+import { dark } from "@mui/material/styles/createPalette";
+import { useRouter } from "next/navigation";
 
 export function OrderModal({
   foodId,
@@ -13,6 +14,7 @@ export function OrderModal({
 }) {
   let [number, setNumber] = useState(1);
   let [subTotal, setSubtotal] = useState(0);
+
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [price, setPrice] = useState(0);
@@ -40,6 +42,7 @@ export function OrderModal({
     setIngredients("");
     setPrice(0);
     setSales(0);
+    setNumber(1);
     setImage("");
   };
 
@@ -66,7 +69,7 @@ export function OrderModal({
     };
 
     await axios
-      .post("http://localhost:8000/order", { ...newOrder })
+      .post("http://localhost:8000/orderItems", { ...newOrder })
       .then((data) => {
         setOrderId(data);
         handleClear();
@@ -74,7 +77,7 @@ export function OrderModal({
       });
   };
 
-  console.log(orderId);
+  console.log(orderId.data);
 
   return (
     <div className={`modal ${foodId ? "modal-open" : ""}`}>

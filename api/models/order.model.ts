@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
+  _id: Number,
   userId: Schema.Types.ObjectId,
   totalAmount: Number,
   creationDate: Date,

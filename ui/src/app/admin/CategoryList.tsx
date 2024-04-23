@@ -8,9 +8,8 @@ import { DeleteEdit } from "./DeleteEdit";
 import { Loading } from "@/components/Loading";
 import { useCategory, useCategoryInfo, useFood } from "../globals";
 import { Toaster, toast } from "sonner";
-import { green } from "@mui/material/colors";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Category = {
   name: string;
@@ -76,6 +75,7 @@ export function CategoryList() {
   const { category, setCategory }: any = useCategory();
   const { categoryInfo }: any = useCategoryInfo();
   const setFoods: any = useFood((state: any) => state.setFoods);
+  const pathname = usePathname();
   const setCategoryInfo: any = useCategoryInfo(
     (state: any) => state.setCategoryInfo
   );
@@ -101,8 +101,8 @@ export function CategoryList() {
     pushToCategory(name);
   };
 
-  const pushToCategory = (name: string) => {
-    router.push(`/admin/${name}`);
+  const pushToCategory = (_id: string) => {
+    router.push(`/admin/${_id}`);
   };
 
   if (loading) return <Loading />;
@@ -111,19 +111,25 @@ export function CategoryList() {
     <div className="grid gap-[26px]">
       {categories.map((category) => {
         return (
-          <div
-            key={category._id}
-            className={`btn sm:btn-sm md:btn-md bg-white hover:bg-[#18BA51] justify-between`}
-            onClick={() => {
-              handleCategory(category._id, category.name);
-            }}
-          >
-            <p className="text-lg font-medium">{category.name}</p>
-            <DeleteEdit
-              categoryName={category.name}
-              categoryId={category._id}
-              onChange={loadCategory}
-            />
+          <div onClick={() => pushToCategory(category._id)}>
+            <div
+              key={category._id}
+              className={`border-[#D6D8DB] hover:bg-green-500 btn sm:btn-sm md:btn-md justify-between w-full ${
+                pathname === `/admin/${category._id}`
+                  ? "bg-green-500 text-white"
+                  : "bg-white"
+              } `}
+              onClick={() => {
+                handleCategory(category._id, category.name);
+              }}
+            >
+              <p className="text-lg font-medium">{category.name}</p>
+              <DeleteEdit
+                categoryName={category.name}
+                categoryId={category._id}
+                onChange={loadCategory}
+              />
+            </div>
           </div>
         );
       })}

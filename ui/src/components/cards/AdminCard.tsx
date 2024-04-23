@@ -10,8 +10,8 @@ import { useParams } from "next/navigation";
 export function AdminCard() {
   const { foods, setFoods }: any = useFood();
   const { category }: any = useCategory();
-  const [ editingId, setEditingId ] = useState("");
-  const { name } = useParams();
+  const [editingId, setEditingId] = useState("");
+  const { _id } = useParams();
 
   useEffect(() => {
     fetchFood();
@@ -25,12 +25,10 @@ export function AdminCard() {
 
   const deleteFood = async (_id: string) => {
     if (confirm("Устгах уу?")) {
-      await axios
-        .delete(`http://localhost:8000/${_id}`)
-        .then(() => {
-          toast.success("Амжилттай устгалаа");
-          fetchFood();
-        });
+      await axios.delete(`http://localhost:8000/food/${_id}`).then(() => {
+        toast.success("Амжилттай устгалаа");
+        fetchFood();
+      });
     }
   };
 
@@ -67,7 +65,7 @@ export function AdminCard() {
               {food.sales > 0 && (
                 <div className="flex">
                   <NumericFormat
-                    value={food.price - (food.sales/100)*food.price}
+                    value={food.price - (food.sales / 100) * food.price}
                     allowLeadingZeros
                     thousandSeparator=","
                     suffix="₮"
