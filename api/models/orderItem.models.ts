@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const orderItemsSchema = new Schema({
-    orderId: Schema.Types.ObjectId,
+    orderId: Number,
     foodId: Schema.Types.ObjectId,
     quantity: Number,
     subTotal: Number

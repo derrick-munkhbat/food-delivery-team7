@@ -1,6 +1,8 @@
 import { OrderModel } from "../models/order.model";
 import { OrderItemsModel } from "../models/orderItem.models";
 import type { Request, Response } from "express";
+import { customAlphabet } from 'nanoid'
+import { nanoid } from "nanoid";
 
 export async function getOrder(req: any, res: any) {
   const { id } = req.params;
@@ -35,10 +37,14 @@ export async function deleteOrder(req: any, res: any) {
   res.sendStatus(204);
 }
 
+// create order 1st
+
 export async function createOrder(req: Request, res: Response) {
   const {foodId, price, number} = req.body;
+  const nanoid = customAlphabet('1234567890', 5);
 
   const order = await OrderModel.create({
+    _id: nanoid(), //filled
     creationDate: Date.now()
   });
   res.json(order._id);
