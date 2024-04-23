@@ -4,7 +4,8 @@ import { usePathname } from "next/navigation";
 
 export function Mainmenu() {
   const pathname = usePathname();
-
+  
+  
   return (
     <>
       <div className="flex p-2 md:flex items-center justify-center flex-1 gap-10  ">

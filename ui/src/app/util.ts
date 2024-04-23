@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import axios from "axios";
-
+import { Toaster, toast } from 'sonner'
 export async function fetcher(path: string) {
   const response: any = await axios.get(`http://localhost:8000/${path}`, {
     headers: {
@@ -27,9 +27,10 @@ export async function mutator(path: string, postData: {}) {
       "access-token": localStorage.getItem("accessToken") || "",
     }
   }).catch((e) => {
-    if (e.response.status === 401) {
-      alert("Username or password is incorrect");
-    }
+    toast.error('Нэвтрэхэд асуудал гарлаа')
+    // if (e.response.status === 401) {
+    //   alert("Username or password is incorrect"); 
+    // }
   });
 
   return response.data;
