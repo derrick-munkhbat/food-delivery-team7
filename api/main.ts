@@ -25,6 +25,7 @@ app.use("/token", tokenRouter);
 app.get("/", (req, res) => {
   res.send("hello team, the backend is running");
 });
+app.use("/orderItems", orderRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
