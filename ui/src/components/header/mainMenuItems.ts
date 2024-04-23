@@ -1,3 +1,4 @@
+
 export const mainMenuitems = [
   { id: 1, label: "Нүүр", link: "/" },
   { id: 2, label: "ХООЛНЫ ЦЭС", link: "/menu" },
@@ -12,9 +13,9 @@ export const menuItems = [
   { id: "5", name: "Хүргэлтийн бүс", link: "/zone" },
   { id: "6", name: "Нууцлалын бодлого", link: "/privacy-policy" },
 ];
-
 export const userMenuItems = [
   // { id: 1, label: "Сагс", link: "/basket" },
-  { id: 2, label: "Нэвтрэх", link: "/sign-in" },
+  { id: 2, label: "Нэвтрэх", link: "/sign-in"},
   { id: 3, label: "Хэрэглэгч", link: "/user-profile" },
 ];
+

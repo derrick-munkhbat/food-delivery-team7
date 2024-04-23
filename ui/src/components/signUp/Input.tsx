@@ -18,8 +18,13 @@ export function Input() {
   const [address , setAddress] = useState("")
   const submit = async()=>{
     console.log({Name, Email, Password})
-    if (pass!==Password){
-      alert("Please check your password")
+    if (pass!==Password || Password.length < 8){
+      toast.error('Please check your password')
+      return;
+    }
+    if(!Name || !Email || !Password){
+      toast.error('Please fill all the fields')
+      // alert("Please fill all the fields")
       return;
     }
     try{
@@ -28,7 +33,6 @@ export function Input() {
         Name,
         Email,
         Password,
-
       });
       setName(""),
       setEmail(""),
@@ -37,10 +41,11 @@ export function Input() {
       setPass(""),
 
 
-      toast.success('Event has been created')
+      toast.success('Амжилттай бүртгүүллээ!')
       window.location.href = "/sign-in";
       fetchUsers()
     }catch (error){
+      toast.error('Please check your email')
       console.error("Error:", error);
     }
 

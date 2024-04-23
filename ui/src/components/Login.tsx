@@ -35,7 +35,7 @@ export function Login() {
     console.log(checked)
     console.log(Role)
     const data = await mutator("login", { Email , Password , Role });
-    toast.success('Event has been created')
+    toast.success('Амжилттай нэвтэрлээ!')
     const { accessToken } = data;
 
     window.location.href = "/";
@@ -44,6 +44,7 @@ export function Login() {
     if(Role === "admin") {
     localStorage.setItem("data", "admin");
   }
+
 }
 
   function handleToggle() {
