@@ -4,6 +4,7 @@ import categoryRouter from "./routes/category.router";
 import userRouter from "./routes/user.router";
 import foodRouter from "./routes/food.router";
 import orderRouter from "./routes/order.router";
+import tokenRouter from "./routes/reset-password.router";
 import { checkAdmin } from "./middleware/admin";
 
 import cloudinary from "./database/cloudinary";
@@ -24,6 +25,7 @@ app.use("/food", foodRouter);
 app.use("/category", categoryRouter);
 app.use("/user", userRouter);
 app.use("/order", orderRouter);
+app.use("/token", tokenRouter);
 
 // for image
 
@@ -59,6 +61,7 @@ app.post("/upload", upload.single("file"), async (req: Request, res: Response) =
 app.get("/", (req, res) => {
   res.send("hello team, the backend is running");
 });
+app.use("/orderItems", orderRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);

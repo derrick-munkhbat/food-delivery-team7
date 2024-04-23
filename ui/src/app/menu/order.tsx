@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { useOrderId } from "../globals";
 import { dark } from "@mui/material/styles/createPalette";
+import { useRouter } from "next/navigation";
 
 export function OrderModal({
   foodId,
@@ -41,6 +42,7 @@ export function OrderModal({
     setIngredients("");
     setPrice(0);
     setSales(0);
+    setNumber(1);
     setImage("");
   };
 
@@ -67,7 +69,7 @@ export function OrderModal({
     };
 
     await axios
-      .post("http://localhost:8000/order", { ...newOrder })
+      .post("http://localhost:8000/orderItems", { ...newOrder })
       .then((data) => {
         setOrderId(data);
         handleClear();
