@@ -4,6 +4,7 @@ import { userMenuItems } from "../mainMenuItems";
 import { usePathname } from "next/navigation";
 
 import Basket from "@/app/basket/page";
+import { access } from "fs";
 
 export function UserMenu() {
   const pathname = usePathname();

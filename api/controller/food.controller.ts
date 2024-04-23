@@ -26,7 +26,6 @@ export async function getFoods(req: Request, res: Response) {
     }).sort({ sales: -1 });
 
     res.json(foods);
-    
   } catch (error) {
     res.json({ message: error });
   }
