@@ -4,6 +4,9 @@ import { SearchIcon } from "@/components/icons/SearchIcon";
 import { userMenuItems } from "../mainMenuItems";
 import { usePathname } from "next/navigation";
 import { UserIcon } from "@/components/icons/UserIcon";
+import { useEffect } from "react";
+import { useUser } from "@/store/useUser";
+import axios from "axios";
 
 import Basket from "@/app/basket/page";
 
