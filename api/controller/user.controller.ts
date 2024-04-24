@@ -5,19 +5,46 @@ import type { Request, Response } from "express";
 import { checkAdmin } from "../middleware/admin";
 
 const secret = "secret_string123";
+const sup = "SUPER_SECRET";
 export async function getUser(req: Request, res: Response) {
   const accessToken = req.header("accessToken");
+  console.log(accessToken);
 
   if (!accessToken) return res.json({ error: "User not logged in!" });
 
-  const decoded = jwt.verify(accessToken , secret);
-  const email = decoded.Email;
+  try {
+    const decoded = jwt.verify(accessToken, secret);
+    const email = decoded.Email;
+    
+    const user = await UserModel.findOne({
+      Email: email,
+    }).select("-Password");
 
-  const user = await UserModel.findOne({
-    Email: email,
-  }).select("-Password");
+    res.json(user);
+  } catch (error) {
+    return res.status(403).json({ error: "User not logged in!" });
+  }
+}
 
-  res.json(user);
+export async function me(req: Request, res: Response) {
+  const accessToken = req.header("accessToken");
+  
+  console.log(accessToken);
+
+  if (!accessToken) return res.json({ error: "User not logged in!" });
+
+  try {
+    const decoded = jwt.verify(accessToken, sup);
+    const email = decoded.Email;
+    
+    const user = await UserModel.findOne({
+      Email: email,
+    }).select("-Password");
+
+    res.json(user);
+  } catch (error) {
+    return res.status(403).json({ error: "User not logged in!" });
+  }
 }
 
 export async function createUser(req: any, res: any) {
@@ -41,30 +68,31 @@ export async function createUser(req: any, res: any) {
   res.json(newUser);
 }
 
-export async function  loginUser(req:any, res:any) {
-  const {Email , Password, Role} = req.body;
+export async function loginUser(req: any, res: any) {
+  const { Email, Password, Role } = req.body;
 
-  const user = await UserModel.findOne({Email });
-  const userRole = await UserModel.findOne({Role});
-  console.log(userRole)
-  if(!user) return  res.sendStatus(400).send('invalid email')
-  
- if(user.Password){
-  const validPassword = await bcrypt.compare(Password , `${user.Password}`);
-  if (!validPassword) return res.status(400).send('Invalid password');
- }
- const loggedIn = true;
- if(Role===user.Role){
-  const accessToken = jwt.sign({ userEmail: Email }, "SUPER_SECRET");
-  res.json({ accessToken });
-  res.sendStatus(202).send('admin mon baina')
- }
+  const user = await UserModel.findOne({ Email });
+  const userRole = await UserModel.findOne({ Role });
+  console.log(userRole);
+  if (!user) return res.sendStatus(400).send("invalid email");
 
-if (loggedIn) {
-  const accessToken = jwt.sign({ Email: Email }, "secret_string123");
-  res.json({accessToken });
-}
-res.sendStatus(401).send("asas");
+  if (user.Password) {
+    const validPassword = await bcrypt.compare(Password, `${user.Password}`);
+    if (!validPassword) return res.status(400).send("Invalid password");
+  }
+  const loggedIn = true;
+  // if (Role === user.Role && loggedIn) {
+  //   const accessToken = jwt.sign({ userEmail: Email }, "SUPER_SECRET");
+  //   res.json({ accessToken });
+  //   res.sendStatus(202).send("admin mon baina");
+  //   return;
+  // }
+
+  if (loggedIn) {
+    const accessToken = jwt.sign({ Email: Email }, "secret_string123");
+    res.json({ accessToken });
+  }
+  res.sendStatus(401).send("asas");
   //   const {userEmail , userPassword} = req.body;
 
   //   const user = await UserModel.findOne({userEmail});
