@@ -33,6 +33,7 @@ export function OrderModal({
           setIngredients(data.ingredients);
           setPrice(data.price);
           setSales(data.sales);
+          setImage(data.image);
         });
     }
   }, [foodId]);
@@ -45,6 +46,8 @@ export function OrderModal({
     setNumber(1);
     setImage("");
   };
+
+  console
 
   if (!foodId) {
     return null;
@@ -84,11 +87,11 @@ export function OrderModal({
       <div className="w-screen mx-auto flex top-0 h-full justify-center items-center fixed z-1 bg-gray-500 bg-opacity-70">
         <div className="flex items-center  z-1 absolute inset-0 w-11/12 lg:w-1/2  justify-center  mx-auto ">
           <div className="flex flex-col overflow-hidden lg:rounded-xl  max md:flex-row  md:flex-1  mx-auto">
-            <div className="p-5  flex  bg-white md:flex-1 min-h-[500px] w-full rounded-xl lg:mx-auto gap-5">
+            <div className="p-5 flex bg-white md:flex-1 min-h-[500px] w-full rounded-xl lg:mx-auto gap-5">
               <div className="h-[500px] hidden md:flex md:w-1/2 ">
                 <img
-                  className="rounded-md w-[500px]  h-[460px] cover"
-                  src="../images/pizza.svg"
+                  className="rounded-md w-[500px] h-[460px] object-cover"
+                  src={image}
                   alt="Shoes"
                 />
               </div>
