@@ -48,7 +48,6 @@ const upload = multer({
 });
 
 app.post("/upload", upload.single("file"), async (req: Request, res: Response) => {
-  // req.file
   const filePath = req.file?.path;
 
   if (filePath) {
@@ -57,11 +56,6 @@ app.post("/upload", upload.single("file"), async (req: Request, res: Response) =
     res.json({ url: result.secure_url });
   }
 });
-
-app.get("/", (req, res) => {
-  res.send("hello team, the backend is running");
-});
-app.use("/orderItems", orderRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);

@@ -1,12 +1,12 @@
 "use client";
 import React, { FC, useEffect, useState } from "react";
 import { CategoryState } from "@/components/categoryContainer/CategoryState";
-import { UserCard } from "@/components/cards/UserCard";
 import { useCategory, useFood } from "../globals";
 import axios from "axios";
+import { HomeUserCard } from "@/components/cards/HomeUserCard";
 
 const Menu: FC = () => {
-  const { foods, setFoods }: any = useFood();
+  const { _foods, setFoods }: any = useFood();
   const { category }: any = useCategory();
 
   function fetchFood() {
@@ -26,9 +26,8 @@ const Menu: FC = () => {
       </div>
       <div className="app-container bg-white mb-10">
         <div className="container mx-auto">
-          <UserCard />
+          <HomeUserCard />
         </div>
-
       </div>
     </div>
   );

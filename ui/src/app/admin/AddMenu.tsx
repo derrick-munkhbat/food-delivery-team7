@@ -59,8 +59,6 @@ export function AddMenu({ open, onClose }: { open: Boolean, onClose: () => void 
     }
   }
 
-  console.log(image);
-
   const newFood = async () => {
     const newFood: Menu = {
       name,
@@ -199,6 +197,7 @@ export function AddMenu({ open, onClose }: { open: Boolean, onClose: () => void 
               <p className="text-sm font-medium text-[#121316]">Хоолны зураг</p>
 
               <div className="flex gap-4">
+
                 <div className="w-[284px] h-[122px] bg-[#BABCC4]/[12%] border-[1px] border-dashed border-[#D6D7DC] text-[#525252] rounded-lg">
                   <div className="flex flex-col gap-2 items-center mt-6">
                     <h3>Add image for the food</h3>

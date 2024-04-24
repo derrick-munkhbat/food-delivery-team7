@@ -1,3 +1,5 @@
+"use client"
+
 import { CloseIcon } from "@/components/icons/CloseIcon";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -24,15 +26,33 @@ export function EditorMenu({
 
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [foodSales, setFoodSales] = useState(false);
-  const [sales, setSales] = useState("");
+  const [sales, setSales] = useState(0);
   const [image, setImage] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [categories, setCategories] = useState([]);
 
   const setFoods: any = useFood((state: any) => state.setFoods);
   const { category }: any = useCategory();
+
+  const updateImage = async (event: any) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file, file.name);
+
+    const res = await fetch("http://localhost:8000/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      const { url } = await res.json();
+      setImage(url);
+    }
+  };
+
+  console.log(image);
 
   useEffect(() => {
     fetchCategories();
@@ -88,8 +108,8 @@ export function EditorMenu({
   const handleClear = () => {
     setName("");
     setIngredients("");
-    setPrice("");
-    setSales(""); 
+    setPrice(0);
+    setSales(0);
     setImage("");
   };
 
@@ -102,15 +122,11 @@ export function EditorMenu({
   };
 
   const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(event?.target.value);
+    setPrice(+event?.target.value);
   };
 
   const handleSales = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSales(event?.target.value);
-  };
-
-  const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setImage(event?.target.value);
+    setSales(+event?.target.value);
   };
 
   const options = categories.map((category) => {
@@ -200,16 +216,21 @@ export function EditorMenu({
             <div className="grid gap-2">
               <p className="text-sm font-medium text-[#121316]">Хоолны зураг</p>
 
-              <div className="w-[284px] h-[122px] bg-[#BABCC4]/[12%] border-[1px] border-dashed border-[#D6D7DC] text-[#525252] rounded-lg">
-                <div className="flex flex-col gap-2 items-center mt-6">
-                  <h3>Add image for the food</h3>
-                  <label htmlFor="file" className="cursor-pointer">
-                    <div className="bg-[#393939] px-2 py-1 flex border rounded-lg text-white">
-                      <span>Add image</span>
-                    </div>
-                    <input id="file" type="file" className="hidden" />
-                  </label>
+              <div className="flex gap-4">
+
+                <div className="w-[284px] h-[122px] bg-[#BABCC4]/[12%] border-[1px] border-dashed border-[#D6D7DC] text-[#525252] rounded-lg">
+                  <div className="flex flex-col gap-2 items-center mt-6">
+                    <h3>Add image for the food</h3>
+                    <label htmlFor="file" className="cursor-pointer">
+                      <div className="bg-[#393939] px-2 py-1 flex border rounded-lg text-white">
+                        <span>Add image</span>
+                      </div>
+                      <input id="file" type="file" className="hidden" onChange={updateImage} />
+                    </label>
+                  </div>
                 </div>
+
+                {image && <img className="w-[284px] h-[122px] object-cover border-[1px] border-dashed border-[#D6D7DC] rounded-lg" src={image} />}
               </div>
             </div>
           </div>

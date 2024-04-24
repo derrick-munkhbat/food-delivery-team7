@@ -37,7 +37,11 @@ export function AdminCard() {
       {foods.map((food: any) => (
         <div className="grid gap-[14px]" key={food._id}>
           <div className="w-[282px]">
-            <div className="bg-[url('/images/menuZurag.jpg')] grid items-center justify-items-center group-hover:opacity-60 h-[186px]  duration-300  rounded-2xl ease-in-out  bg-center w-[282px] relative">
+            <div className="bg-white grid items-center justify-items-center group-hover:opacity-60 h-[186px]  duration-300  rounded-2xl ease-in-out  bg-center w-[282px] relative">
+              <img
+                className="absolute h-[186px] rounded-2xl w-[282px] object-cover"
+                src={food.image}
+              />
               {food.sales > 0 && (
                 <div className="border-2 border-white text-white bg-[#18BA51] rounded-2xl py-1 px-4 absolute top-4 right-4 font-semibold text-lg">
                   {food.sales}%
@@ -61,7 +65,7 @@ export function AdminCard() {
           </div>
           <div className="gap-1">
             <p className="text-xl font-semibold text-black">{food.name}</p>
-            <p className="text-lg font-semibold text-[#18BA51] ">
+            <div className="text-lg font-semibold text-[#18BA51] ">
               {food.sales > 0 && (
                 <div className="flex">
                   <NumericFormat
@@ -92,7 +96,7 @@ export function AdminCard() {
                   disabled
                 />
               )}
-            </p>
+            </div>
           </div>
         </div>
       ))}
