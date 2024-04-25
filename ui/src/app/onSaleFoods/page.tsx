@@ -15,7 +15,7 @@ export default function OnSaleFoods() {
               <h1 className="font-bold text-2xl"> Хямдралтай</h1>
             </div>
             <div className="flex items-center text-[#18BA51] font-normal text-sm">
-              <a href="/">bustah</a>
+              <a href="/">Back</a>
               <FaChevronRight />
             </div>
           </div>

@@ -16,18 +16,6 @@ export function HomeFoodCards() {
       title: "Хямдралтай",
       seeAll: "Бүгдийг харах",
     },
-    {
-      title: "Үндсэн хоол",
-      seeAll: "Бүгдийг харах",
-    },
-    {
-      title: "Салад ба зууш",
-      seeAll: "Бүгдийг харах",
-    },
-    {
-      title: "Амттан",
-      seeAll: "Бүгдийг харах",
-    },
   ];
 
   const { _foods, setFoods }: any = useFood();
