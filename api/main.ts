@@ -27,6 +27,10 @@ app.use("/user", userRouter);
 app.use("/order", orderRouter);
 app.use("/token", tokenRouter);
 
+app.get("/", (req, res) => {
+  res.send("hello team, the backend is running");
+});
+
 // for image
 
 function getExtension(filename: string) {
@@ -47,15 +51,19 @@ const upload = multer({
   }),
 });
 
-app.post("/upload", upload.single("file"), async (req: Request, res: Response) => {
-  const filePath = req.file?.path;
+app.post(
+  "/upload",
+  upload.single("file"),
+  async (req: Request, res: Response) => {
+    const filePath = req.file?.path;
 
-  if (filePath) {
-    const result = await cloudinary.uploader.upload(filePath);
-    console.log(result);
-    res.json({ url: result.secure_url });
+    if (filePath) {
+      const result = await cloudinary.uploader.upload(filePath);
+      console.log(result);
+      res.json({ url: result.secure_url });
+    }
   }
-});
+);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
