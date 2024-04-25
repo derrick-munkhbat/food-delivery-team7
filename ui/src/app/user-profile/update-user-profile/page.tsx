@@ -39,7 +39,7 @@ export default function UpDateUserProfile() {
 
   const [userData, setUserData] = useState<User | null>(null);
 
-  const handleChangeProfilePic = (event) => {
+  const handleChangeProfilePic = (event: any) => {
     setProfilePic(event.target.files[0]);
   };
 
@@ -50,6 +50,8 @@ export default function UpDateUserProfile() {
     input.onchange = handleChangeProfilePic;
     input.click();
   };
+
+
 
   async function fetcher(path: string) {
     try {
