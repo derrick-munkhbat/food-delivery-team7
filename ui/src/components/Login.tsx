@@ -42,6 +42,8 @@ export function Login() {
 
     localStorage.setItem("accessToken", accessToken );
     if(Role === "admin") {
+      console.log("adminbaina")
+    localStorage.setItem("accessToken", accessToken );
     localStorage.setItem("data", "admin");
   }
 

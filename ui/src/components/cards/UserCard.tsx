@@ -18,6 +18,10 @@ export function UserCard() {
         >
           <div className="w-[282px]">
             <div className="bg-[url('/images/menuZurag.jpg')] grid items-center justify-items-center group-hover:opacity-60 h-[186px] duration-300  rounded-2xl ease-in-out  bg-center w-[282px] relative">
+              <img
+                className="absolute h-[186px] rounded-2xl w-[282px] object-cover"
+                src={food.image}
+              />
               {food.sales > 0 && (
                 <div className="border-2 border-white text-white bg-[#18BA51] rounded-2xl py-1 px-4 absolute top-4 right-4 font-semibold text-lg">
                   {food.sales}%

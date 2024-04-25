@@ -128,7 +128,7 @@ export async function deleteFood(req: Request, res: Response) {
 export async function updateFood(req: Request, res: Response) {
   const { _id } = req.params;
 
-  const { name, category, ingredients, price, sales } = req.body;
+  const { name, category, ingredients, price, sales, image } = req.body;
 
   await FoodModel.findByIdAndUpdate(
     { _id },
@@ -138,6 +138,7 @@ export async function updateFood(req: Request, res: Response) {
       ingredients: ingredients,
       price: price,
       sales: sales,
+      image: image,
     }
   );
   res.json("Success");

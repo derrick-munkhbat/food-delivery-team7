@@ -111,7 +111,7 @@ export function CategoryList() {
     <div className="grid gap-[26px]">
       {categories.map((category) => {
         return (
-          <div onClick={() => pushToCategory(category._id)}>
+          <div onClick={() => pushToCategory(category._id)} key={category._id}>
             <div
               key={category._id}
               className={`border-[#D6D8DB] hover:bg-green-500 btn sm:btn-sm md:btn-md justify-between w-full ${
