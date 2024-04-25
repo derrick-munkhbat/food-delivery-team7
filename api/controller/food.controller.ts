@@ -42,15 +42,28 @@ export async function getOneFood(req: Request, res: Response) {
   res.json(food);
 }
 
-// ger featured food
+// get featured food
 
-// get on sale food
+//================== get on sale foods
 
+export async function getOnSaleFoods(req: Request, res: Response) {
+  const { size } = req.query;
+  const saledFoods = await FoodModel.find({
+    sales: {
+      $ne: 0,
+    },
+  })
+    .sort({
+      sales: 1,
+    })
+    .limit(Number(size));
 
+  res.json(saledFoods);
+}
 
 // create food
 
-export async function uploadFoodImage (req: Request, res: Response) {
+export async function uploadFoodImage(req: Request, res: Response) {
   const filePath = req.file?.path;
 
   if (filePath) {

@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useFood } from "@/app/globals";
+import { useEffect, useState } from "react";
+import { useFood, useSaledFoods } from "@/app/globals";
 import { NumericFormat } from "react-number-format";
 import { OrderModal } from "@/app/menu/order";
+import { getOnSaleFoods } from "@/app/util";
 
 export function UserCard() {
   const { foods }: any = useFood();
