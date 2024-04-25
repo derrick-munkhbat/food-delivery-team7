@@ -2,6 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
+import { categories } from "@/components/CategoryData";
 export async function fetcher(path: string) {
   const response: any = await axios.get(`http://localhost:8000/${path}`, {
     headers: {
@@ -42,6 +43,18 @@ export async function mutator(path: string, postData: {}) {
 export async function getOnSaleFoods(size?: number) {
   const response: any = await axios.get(
     `http://localhost:8000/food/saledFoods?size=${size}`,
+    {
+      headers: {
+        accessToken: "dummyAccessToken",
+      },
+    }
+  );
+  return response.data;
+}
+
+export async function getOnMainCourse(size?: number, categoryId?: string) {
+  const response: any = await axios.get(
+    `http://localhost:8000/food/featuredFood?size=${size}&categoryId=${categoryId}`,
     {
       headers: {
         accessToken: "dummyAccessToken",

@@ -3,6 +3,7 @@
 import { FastDeliveryCard } from "@/components/homePage/FastDeliveryCard";
 import { HomeSlider } from "../components/homePage/HomeSlider";
 import { HomeFoodCards } from "@/components/homePage/HomeSaledFoods";
+import { HomeFoods } from "@/components/homePage/HomeFoods";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HomeSlider />
       <FastDeliveryCard />
       <HomeFoodCards />
+      <HomeFoods />
     </>
   );
 }

@@ -1,24 +1,13 @@
-import { useEffect, useState } from "react";
-import { useFood, useSaledFoods } from "@/app/globals";
+import { useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { OrderModal } from "@/app/menu/order";
-import { getOnSaleFoods } from "@/app/util";
 
-export function OtherFoodsCards({ size }: { size?: number }) {
+export function HomeFoods({ foods }: { foods: any[] }) {
   const [foodId, setFoodId] = useState("");
-  const { saledFoods, setSaledFoods }: any = useSaledFoods();
 
-  useEffect(() => {
-    getOnSaleFoods(size).then((data) => {
-      setSaledFoods(data);
-      console.log(data);
-    });
-  }, []);
-
-  console.log({ saledFoods });
   return (
     <div className="w-fit mx-auto grid grid-cols-1 xl:grid-cols-4 sm:grid-cols-2 justify-items-center justify-center sm:gap-x-[50px] xl:gap-[115px] mt-10 mb-5">
-      {saledFoods.map((food: any) => (
+      {foods.map((food: any) => (
         <div
           className="w-[282px] h-[253px] gap-1 flex flex-col"
           key={food._id}
