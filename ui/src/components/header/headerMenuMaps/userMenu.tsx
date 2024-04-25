@@ -4,18 +4,18 @@ import { SearchIcon } from "@/components/icons/SearchIcon";
 import { userMenuItems } from "../mainMenuItems";
 import { usePathname } from "next/navigation";
 import { UserIcon } from "@/components/icons/UserIcon";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@/store/useUser";
 import axios from "axios";
 
 import Basket from "@/app/basket/page";
-
 export function UserMenu() {
   const { user, login } = useUser()
-
-  const token = localStorage.getItem("accessToken")
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    setToken(token)
     const getUser = async () => {
       if (!token) {
         return
@@ -25,7 +25,6 @@ export function UserMenu() {
           accessToken: token
         }
       })
-      console.log({data});
     }
     getUser()
   }, [])
