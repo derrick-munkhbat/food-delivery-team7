@@ -14,7 +14,7 @@ export function HomeFoods({ foods }: { foods: any[] }) {
           onClick={() => setFoodId(food._id)}
         >
           <div className="w-[282px]">
-            <div className="bg-[url('/images/menuZurag.jpg')] shadow-md duration-500 hover:scale-105 hover:shadow-xl object-cover h-[186px] grid justify-items-end bg-center max-xl:w-72 w-[335px] rounded-xl  relative">
+            <div className=" shadow-md duration-500 hover:scale-105 hover:shadow-xl object-cover h-[186px] grid justify-items-end bg-center max-xl:w-72 w-[335px] rounded-xl  relative">
               <img
                 className="absolute h-[186px] rounded-2xl w-[335px] object-cover overflow-hidden"
                 src={food.image}
