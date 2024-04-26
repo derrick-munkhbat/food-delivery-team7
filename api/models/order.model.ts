@@ -7,7 +7,7 @@ const orderSchema = new Schema({
   userId: Schema.Types.ObjectId,
   totalAmount: Number,
   creationDate: Date,
-  
+
   district: String,
   khoroo: String,
   apartment: String,

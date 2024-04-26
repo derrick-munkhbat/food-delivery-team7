@@ -4,7 +4,7 @@ import categoryRouter from "./routes/category.router";
 import userRouter from "./routes/user.router";
 import foodRouter from "./routes/food.router";
 import orderRouter from "./routes/order.router";
-import tokenRouter from "./routes/reset-password.router";
+import tokenRouter from "./routes/token.router";
 import { checkAdmin } from "./middleware/admin";
 
 import cloudinary from "./database/cloudinary";

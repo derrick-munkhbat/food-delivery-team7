@@ -61,6 +61,17 @@ export async function getOnSaleFoods(req: Request, res: Response) {
   res.json(saledFoods);
 }
 
+export async function getFeatured(req: Request, res: Response) {
+  const { size, categoryId } = req.query;
+
+  console.log({ categoryId, size });
+
+  const saledFoods = await FoodModel.find({
+    category: categoryId,
+  }).limit(Number(size));
+
+  res.json(saledFoods);
+}
 // create food
 
 export async function uploadFoodImage(req: Request, res: Response) {

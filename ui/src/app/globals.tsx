@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { getOnSaleFoods } from "./util";
 
 export const useFood = create((set) => ({
   foods: [],
@@ -25,4 +24,9 @@ export const useOrderId = create((set) => ({
 export const useSaledFoods = create((set) => ({
   saledFoods: [],
   setSaledFoods: (newList: any) => set(() => ({ saledFoods: newList })),
+}));
+
+export const useMainCourse = create((set) => ({
+  mainCourse: [],
+  setMainCourse: (newList: any) => set(() => ({ mainCourse: newList })),
 }));
