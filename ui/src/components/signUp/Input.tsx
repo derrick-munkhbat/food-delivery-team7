@@ -2,7 +2,7 @@
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { fetchUsers } from "@/app/util";
 import { Toaster, toast } from 'sonner'
@@ -16,15 +16,18 @@ export function Input() {
   const [icon, setIcon] = useState(() => eyeOff);
   const[ pass , setPass]= useState("")
   const [address , setAddress] = useState("")
+
+  // useEffect(() => {
+  //   fetchUsers()
+  //   console.log()
+  // },[])
   const submit = async()=>{
-    console.log({Name, Email, Password})
     if (pass!==Password || Password.length < 8){
       toast.error('Please check your password')
       return;
     }
     if(!Name || !Email || !Password){
       toast.error('Please fill all the fields')
-      // alert("Please fill all the fields")
       return;
     }
     try{
@@ -42,10 +45,13 @@ export function Input() {
 
 
       toast.success('Амжилттай бүртгүүллээ!')
-      window.location.href = "/sign-in";
+      setTimeout(() => {
+        window.location.href = "/sign-in";
+      }, 700);
+      
       fetchUsers()
     }catch (error){
-      toast.error('Please check your email')
+      // toast.error('Please check your email')
       console.error("Error:", error);
     }
 

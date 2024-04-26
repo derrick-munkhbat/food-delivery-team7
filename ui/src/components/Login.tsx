@@ -37,8 +37,9 @@ export function Login() {
     const data = await mutator("login", { Email , Password , Role });
     toast.success('Амжилттай нэвтэрлээ!')
     const { accessToken } = data;
-
-    window.location.href = "/";
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 700);
 
     localStorage.setItem("accessToken", accessToken );
     if(Role === "admin") {
