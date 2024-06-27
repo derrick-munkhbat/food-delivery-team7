@@ -24,7 +24,7 @@ const ImageUploader: React.FC = () => {
         style={{
           height: "60px",
           width: "60px",
-          border: "1px dashed black"
+          border: "1px dashed black",
         }}
       >
         <img
@@ -32,7 +32,7 @@ const ImageUploader: React.FC = () => {
           style={{
             width: "100%",
             height: "100%",
-            position: "absolute"
+            position: "absolute",
           }}
         />
       </div>
