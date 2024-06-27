@@ -92,7 +92,7 @@ export function AdminCard() {
                   allowLeadingZeros
                   thousandSeparator=","
                   suffix="₮"
-                  className="bg-transparent text-lg font-semibold w-20"
+                  className="bg-transparent text-lg font-semibold w-20 text-black"
                   disabled
                 />
               )}
